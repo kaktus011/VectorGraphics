@@ -1,0 +1,10 @@
+C:\Users\PiwKi\Desktop\k rab\k rab\obj\Debug\k rab.csproj.AssemblyReference.cache
+C:\Users\PiwKi\Desktop\k rab\k rab\obj\Debug\k rab.csproj.SuggestedBindingRedirects.cache
+C:\Users\PiwKi\Desktop\k rab\k rab\obj\Debug\k_rab.Properties.Resources.resources
+C:\Users\PiwKi\Desktop\k rab\k rab\obj\Debug\k rab.csproj.GenerateResource.cache
+C:\Users\PiwKi\Desktop\k rab\k rab\obj\Debug\k rab.csproj.CoreCompileInputs.cache
+C:\Users\PiwKi\Desktop\k rab\k rab\bin\Debug\k rab.exe.config
+C:\Users\PiwKi\Desktop\k rab\k rab\bin\Debug\k rab.exe
+C:\Users\PiwKi\Desktop\k rab\k rab\bin\Debug\k rab.pdb
+C:\Users\PiwKi\Desktop\k rab\k rab\obj\Debug\k rab.exe
+C:\Users\PiwKi\Desktop\k rab\k rab\obj\Debug\k rab.pdb
