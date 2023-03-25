@@ -15,7 +15,7 @@ namespace k_rab
         private int yCord;
         private Color _color;
         
-        public Square(int sideLength, int x, int y)
+        public Square(int x, int y, int sideLength)
         {
             this.sideLength = sideLength;
             xCord = x;

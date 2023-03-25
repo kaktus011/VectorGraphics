@@ -11,9 +11,13 @@ namespace k_rab
     {
         private Color _color;
         private int _size;
-        public Triangle(int size)
+        private int _x;
+        private int _y;
+        public Triangle(int x, int y, int size)
         {
             _size = size;
+            _x = x;
+            _y = y;
         }
 
         public override float GetArea()

@@ -15,7 +15,7 @@ namespace k_rab
         private int xCord;
         private int yCord;
 
-        public Rectangle(int width, int height, int x, int y)
+        public Rectangle(int x, int y, int width, int height)
         {
             this.width = width;
             this.height = height;

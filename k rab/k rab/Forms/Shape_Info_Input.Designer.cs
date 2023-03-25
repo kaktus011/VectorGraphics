@@ -1,4 +1,6 @@
-﻿namespace k_rab.Forms
+﻿using System;
+
+namespace k_rab.Forms
 {
     partial class Shape_Info_Input
     {
@@ -28,109 +30,115 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.xVal = new System.Windows.Forms.Label();
-            this.yVal = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.xValBox = new System.Windows.Forms.TextBox();
+            this.yValBox = new System.Windows.Forms.TextBox();
+            this.xValLabel = new System.Windows.Forms.Label();
+            this.yValLabel = new System.Windows.Forms.Label();
+            this.WidthBox = new System.Windows.Forms.TextBox();
+            this.HeightBox = new System.Windows.Forms.TextBox();
+            this.SideLengthBox = new System.Windows.Forms.TextBox();
+            this.widthValLabel = new System.Windows.Forms.Label();
+            this.heightValLabel = new System.Windows.Forms.Label();
+            this.SideLengthLabel = new System.Windows.Forms.Label();
             this.Submit_InfoBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // xValBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(634, 118);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(202, 53);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.xValBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xValBox.Location = new System.Drawing.Point(635, 125);
+            this.xValBox.Name = "xValBox";
+            this.xValBox.Size = new System.Drawing.Size(202, 53);
+            this.xValBox.TabIndex = 0;
+            this.xValBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // yValBox
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(635, 214);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(202, 53);
-            this.textBox2.TabIndex = 1;
+            this.yValBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yValBox.Location = new System.Drawing.Point(635, 214);
+            this.yValBox.Name = "yValBox";
+            this.yValBox.Size = new System.Drawing.Size(202, 53);
+            this.yValBox.TabIndex = 1;
             // 
-            // xVal
+            // xValLabel
             // 
-            this.xVal.AutoSize = true;
-            this.xVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xVal.Location = new System.Drawing.Point(456, 125);
-            this.xVal.Name = "xVal";
-            this.xVal.Size = new System.Drawing.Size(152, 46);
-            this.xVal.TabIndex = 2;
-            this.xVal.Text = "X value";
+            this.xValLabel.AutoSize = true;
+            this.xValLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xValLabel.Location = new System.Drawing.Point(456, 125);
+            this.xValLabel.Name = "xValLabel";
+            this.xValLabel.Size = new System.Drawing.Size(152, 46);
+            this.xValLabel.TabIndex = 2;
+            this.xValLabel.Text = "X value";
             // 
-            // yVal
+            // yValLabel
             // 
-            this.yVal.AutoSize = true;
-            this.yVal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yVal.Location = new System.Drawing.Point(457, 221);
-            this.yVal.Name = "yVal";
-            this.yVal.Size = new System.Drawing.Size(151, 46);
-            this.yVal.TabIndex = 3;
-            this.yVal.Text = "Y value";
+            this.yValLabel.AutoSize = true;
+            this.yValLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yValLabel.Location = new System.Drawing.Point(457, 221);
+            this.yValLabel.Name = "yValLabel";
+            this.yValLabel.Size = new System.Drawing.Size(151, 46);
+            this.yValLabel.TabIndex = 3;
+            this.yValLabel.Text = "Y value";
             // 
-            // textBox3
+            // WidthBox
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(634, 404);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(202, 53);
-            this.textBox3.TabIndex = 4;
+            this.WidthBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WidthBox.Location = new System.Drawing.Point(634, 404);
+            this.WidthBox.Name = "WidthBox";
+            this.WidthBox.Size = new System.Drawing.Size(202, 53);
+            this.WidthBox.TabIndex = 4;
+            this.WidthBox.TextChanged += new System.EventHandler(this.WidthBox_TextChanged);
             // 
-            // textBox4
+            // HeightBox
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(634, 504);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(202, 53);
-            this.textBox4.TabIndex = 5;
+            this.HeightBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HeightBox.Location = new System.Drawing.Point(634, 504);
+            this.HeightBox.Name = "HeightBox";
+            this.HeightBox.Size = new System.Drawing.Size(202, 53);
+            this.HeightBox.TabIndex = 5;
+            this.HeightBox.TextChanged += new System.EventHandler(this.HeightBox_TextChanged);
             // 
-            // textBox5
+            // SideLengthBox
             // 
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(634, 314);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(202, 53);
-            this.textBox5.TabIndex = 6;
+            this.SideLengthBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SideLengthBox.Location = new System.Drawing.Point(634, 314);
+            this.SideLengthBox.Name = "SideLengthBox";
+            this.SideLengthBox.Size = new System.Drawing.Size(202, 53);
+            this.SideLengthBox.TabIndex = 6;
+            this.SideLengthBox.TextChanged += new System.EventHandler(this.SideLengthBox_TextChanged);
             // 
-            // label1
+            // widthValLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(456, 407);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 46);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Width";
+            this.widthValLabel.AutoSize = true;
+            this.widthValLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.widthValLabel.Location = new System.Drawing.Point(456, 407);
+            this.widthValLabel.Name = "widthValLabel";
+            this.widthValLabel.Size = new System.Drawing.Size(122, 46);
+            this.widthValLabel.TabIndex = 7;
+            this.widthValLabel.Text = "Width";
+            this.widthValLabel.Click += new System.EventHandler(this.WidthValLabel_Click);
             // 
-            // label2
+            // heightValLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(456, 511);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(135, 46);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Height";
+            this.heightValLabel.AutoSize = true;
+            this.heightValLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.heightValLabel.Location = new System.Drawing.Point(456, 511);
+            this.heightValLabel.Name = "heightValLabel";
+            this.heightValLabel.Size = new System.Drawing.Size(135, 46);
+            this.heightValLabel.TabIndex = 8;
+            this.heightValLabel.Text = "Height";
+            this.heightValLabel.Click += new System.EventHandler(this.HeightValLabel_Click);
             // 
-            // label3
+            // SideLengthLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(375, 314);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(232, 46);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Side Length";
+            this.SideLengthLabel.AutoSize = true;
+            this.SideLengthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SideLengthLabel.Location = new System.Drawing.Point(375, 314);
+            this.SideLengthLabel.Name = "SideLengthLabel";
+            this.SideLengthLabel.Size = new System.Drawing.Size(232, 46);
+            this.SideLengthLabel.TabIndex = 9;
+            this.SideLengthLabel.Text = "Side Length";
+            this.SideLengthLabel.Click += new System.EventHandler(this.SideLengthLabel_Click);
             // 
             // Submit_InfoBtn
             // 
@@ -141,6 +149,7 @@
             this.Submit_InfoBtn.TabIndex = 10;
             this.Submit_InfoBtn.Text = "Submit";
             this.Submit_InfoBtn.UseVisualStyleBackColor = true;
+            this.Submit_InfoBtn.Click += new System.EventHandler(this.Submit_InfoBtn_Click);
             // 
             // Shape_Info_Input
             // 
@@ -148,16 +157,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1314, 888);
             this.Controls.Add(this.Submit_InfoBtn);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.yVal);
-            this.Controls.Add(this.xVal);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.SideLengthLabel);
+            this.Controls.Add(this.heightValLabel);
+            this.Controls.Add(this.widthValLabel);
+            this.Controls.Add(this.SideLengthBox);
+            this.Controls.Add(this.HeightBox);
+            this.Controls.Add(this.WidthBox);
+            this.Controls.Add(this.yValLabel);
+            this.Controls.Add(this.xValLabel);
+            this.Controls.Add(this.yValBox);
+            this.Controls.Add(this.xValBox);
             this.Name = "Shape_Info_Input";
             this.Text = "Shape Info ";
             this.ResumeLayout(false);
@@ -165,18 +174,23 @@
 
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label xVal;
-        private System.Windows.Forms.Label yVal;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox xValBox;
+        private System.Windows.Forms.TextBox yValBox;
+        private System.Windows.Forms.Label xValLabel;
+        private System.Windows.Forms.Label yValLabel;
+        private System.Windows.Forms.TextBox WidthBox;
+        private System.Windows.Forms.TextBox HeightBox;
+        private System.Windows.Forms.TextBox SideLengthBox;
+        private System.Windows.Forms.Label widthValLabel;
+        private System.Windows.Forms.Label heightValLabel;
+        private System.Windows.Forms.Label SideLengthLabel;
         private System.Windows.Forms.Button Submit_InfoBtn;
     }
 }

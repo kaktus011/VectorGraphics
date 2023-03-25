@@ -44,6 +44,7 @@
             this.ElipseBtn.TabIndex = 0;
             this.ElipseBtn.Text = "Elipse";
             this.ElipseBtn.UseVisualStyleBackColor = true;
+            this.ElipseBtn.Click += new System.EventHandler(this.ElipseBtn_Click);
             // 
             // TriangleBtn
             // 
@@ -54,6 +55,7 @@
             this.TriangleBtn.TabIndex = 1;
             this.TriangleBtn.Text = "Triangle";
             this.TriangleBtn.UseVisualStyleBackColor = true;
+            this.TriangleBtn.Click += new System.EventHandler(this.TriangleBtn_Click);
             // 
             // SquareBtn
             // 
@@ -64,6 +66,7 @@
             this.SquareBtn.TabIndex = 2;
             this.SquareBtn.Text = "Square";
             this.SquareBtn.UseVisualStyleBackColor = true;
+            this.SquareBtn.Click += new System.EventHandler(this.SquareBtn_Click);
             // 
             // RectangleBtn
             // 
@@ -74,6 +77,7 @@
             this.RectangleBtn.TabIndex = 3;
             this.RectangleBtn.Text = "Rectangle";
             this.RectangleBtn.UseVisualStyleBackColor = true;
+            this.RectangleBtn.Click += new System.EventHandler(this.RectangleBtn_Click);
             // 
             // panel1
             // 
