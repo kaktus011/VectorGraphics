@@ -14,7 +14,7 @@ namespace k_rab
     public partial class FormMain : Form
     {
         private List<IDrawable> _shapes = new List<IDrawable>();
-        public bool sideLengthVis = true;
+        public bool sideLengthVis;
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -56,12 +56,14 @@ namespace k_rab
 
         private void TriangleBtn_Click(object sender, EventArgs e)
         {
+            sideLengthVis = true;
             Shape_Info_Input shape_Input = new Shape_Info_Input(sideLengthVis);
             shape_Input.Show();
         }
 
         private void SquareBtn_Click(object sender, EventArgs e)
         {
+            sideLengthVis = true;
             Shape_Info_Input shape_Input = new Shape_Info_Input(sideLengthVis);
             shape_Input.Show();
         }

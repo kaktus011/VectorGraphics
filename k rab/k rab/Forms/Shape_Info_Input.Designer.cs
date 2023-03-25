@@ -50,7 +50,6 @@ namespace k_rab.Forms
             this.xValBox.Name = "xValBox";
             this.xValBox.Size = new System.Drawing.Size(202, 53);
             this.xValBox.TabIndex = 0;
-            this.xValBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // yValBox
             // 
@@ -87,7 +86,6 @@ namespace k_rab.Forms
             this.WidthBox.Name = "WidthBox";
             this.WidthBox.Size = new System.Drawing.Size(202, 53);
             this.WidthBox.TabIndex = 4;
-            this.WidthBox.TextChanged += new System.EventHandler(this.WidthBox_TextChanged);
             // 
             // HeightBox
             // 
@@ -96,7 +94,6 @@ namespace k_rab.Forms
             this.HeightBox.Name = "HeightBox";
             this.HeightBox.Size = new System.Drawing.Size(202, 53);
             this.HeightBox.TabIndex = 5;
-            this.HeightBox.TextChanged += new System.EventHandler(this.HeightBox_TextChanged);
             // 
             // SideLengthBox
             // 
@@ -105,7 +102,6 @@ namespace k_rab.Forms
             this.SideLengthBox.Name = "SideLengthBox";
             this.SideLengthBox.Size = new System.Drawing.Size(202, 53);
             this.SideLengthBox.TabIndex = 6;
-            this.SideLengthBox.TextChanged += new System.EventHandler(this.SideLengthBox_TextChanged);
             // 
             // widthValLabel
             // 
@@ -116,7 +112,6 @@ namespace k_rab.Forms
             this.widthValLabel.Size = new System.Drawing.Size(122, 46);
             this.widthValLabel.TabIndex = 7;
             this.widthValLabel.Text = "Width";
-            this.widthValLabel.Click += new System.EventHandler(this.WidthValLabel_Click);
             // 
             // heightValLabel
             // 
@@ -127,7 +122,6 @@ namespace k_rab.Forms
             this.heightValLabel.Size = new System.Drawing.Size(135, 46);
             this.heightValLabel.TabIndex = 8;
             this.heightValLabel.Text = "Height";
-            this.heightValLabel.Click += new System.EventHandler(this.HeightValLabel_Click);
             // 
             // SideLengthLabel
             // 
@@ -138,7 +132,6 @@ namespace k_rab.Forms
             this.SideLengthLabel.Size = new System.Drawing.Size(232, 46);
             this.SideLengthLabel.TabIndex = 9;
             this.SideLengthLabel.Text = "Side Length";
-            this.SideLengthLabel.Click += new System.EventHandler(this.SideLengthLabel_Click);
             // 
             // Submit_InfoBtn
             // 
@@ -169,6 +162,7 @@ namespace k_rab.Forms
             this.Controls.Add(this.xValBox);
             this.Name = "Shape_Info_Input";
             this.Text = "Shape Info ";
+            this.Load += new System.EventHandler(this.Shape_Info_Input_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 
