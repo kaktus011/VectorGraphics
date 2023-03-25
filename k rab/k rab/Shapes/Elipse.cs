@@ -10,20 +10,26 @@ namespace k_rab
     internal class Elipse : Shape
     {
         private Color _color;
-        private int radius;
-        private int xCord;
-        private int yCord;
+        private int _xCord;
+        private int _yCord;
+        internal int _width;
+        internal int _height;
 
-        public Elipse(int radius, int x, int y)
+        public Elipse(int x, int y, int width, int height)
         {
-            this.radius = radius;
-            x = xCord;
-            y = yCord;
+            _xCord = x;
+            _yCord = y;
+            _width = width;
+            _height = height;
         }
 
+        
         public override float GetArea()
         {
-            return (float)(Math.PI * radius * radius);
+            if(_width == _height)// if shape is Circle
+                return (float)(Math.PI * _width * _width);
+            else
+                return (float)(Math.PI * _width * _height);
         }
 
         public override void Draw(Graphics g, SolidBrush brush)

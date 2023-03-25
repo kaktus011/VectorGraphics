@@ -66,6 +66,12 @@
     <Compile Include="Main Classes\Shape.cs" />
     <Compile Include="Shapes\Sqaure.cs" />
     <Compile Include="Shapes\Triangle.cs" />
+    <EmbeddedResource Include="Forms\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Shape_Info_Input.resx">
+      <DependentUpon>Shape_Info_Input.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
