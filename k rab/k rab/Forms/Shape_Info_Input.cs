@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace k_rab.Forms
@@ -13,11 +6,13 @@ namespace k_rab.Forms
     public partial class Shape_Info_Input : Form
     {
         private bool _sideLengthVis;
-        public int _X;
-        public int _Y;
-        public int _Side;
-        public int _Height;
-        public int _Width;
+        //public string Shape { get; }
+        internal int _X;
+        internal int _Y;
+        internal int _Side;
+        internal int _height;
+        internal int _width;
+        
         public Shape_Info_Input(bool sideLengthVis)
         {
             _sideLengthVis = sideLengthVis;
@@ -37,12 +32,16 @@ namespace k_rab.Forms
         {
             _X = int.Parse(xValBox.Text);
             _Y = int.Parse(yValBox.Text);
-            _Side = int.Parse(SideLengthBox.Text);
-            _Height = int.Parse(HeightBox.Text);
-            _Width = int.Parse(WidthBox.Text);
-            //tezi parametri ne se podavat vse oshte kum glavnata
-            //forma za da se suzdade figura s tqh
+            if (_sideLengthVis)
+            {
+                _Side = int.Parse(SideLengthBox.Text);
+            }
+            else
+            {
+                _height = int.Parse(HeightBox.Text);
+                _width = int.Parse(WidthBox.Text);
+            }
+            Close();
         }
-
     }
 }

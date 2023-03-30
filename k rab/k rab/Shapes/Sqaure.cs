@@ -1,4 +1,5 @@
-﻿using System;
+﻿using k_rab.Forms;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -10,16 +11,17 @@ namespace k_rab
 {
     internal class Square : Shape
     {
-        private int sideLength;
-        private int xCord;
-        private int yCord;
         private Color _color;
-        
-        public Square(int x, int y, int sideLength)
+        private int sideLength;
+
+        public Square(Shape_Info_Input info) : base(info)
         {
-            this.sideLength = sideLength;
-            xCord = x;
-            yCord = y;
+            sideLength = info._Side;
+        }
+
+        public Square(int x, int y, int side) : base(x, y)
+        {
+            sideLength = side;
         }
 
         public override float GetArea()
@@ -29,7 +31,7 @@ namespace k_rab
 
         public override void Draw(Graphics g, SolidBrush brush)
         {
-             throw new NotImplementedException();
+            g.FillRectangle(brush, X, Y, sideLength, sideLength);
         }
 
     }

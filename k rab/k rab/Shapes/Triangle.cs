@@ -1,4 +1,5 @@
-﻿using System;
+﻿using k_rab.Forms;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -10,25 +11,31 @@ namespace k_rab
     internal class Triangle : Shape
     {
         private Color _color;
-        private int _size;
-        private int _x;
-        private int _y;
-        public Triangle(int x, int y, int size)
+        private int sideLength;
+
+        public Triangle(Shape_Info_Input info) : base(info)
         {
-            _size = size;
-            _x = x;
-            _y = y;
+            sideLength = info._Side;
+        }
+        public Triangle(int x, int y, int size): base(x, y)
+        {
+            sideLength = size;
         }
 
         public override float GetArea()
         {
-            return (float)(_size * 1.732 * 0.25);
+            return (float)(sideLength * 1.732 * 0.25);
         }
 
         public override void Draw(Graphics g, SolidBrush brush)
         {
-            throw new NotImplementedException();
+            Point[] points =
+            {
+                new Point(X, Y),
+                new Point(X + sideLength, Y),
+                new Point(X + sideLength / 2, Y - (int)(sideLength * Math.Sin(Math.PI / 3)))
+            };
+            g.FillPolygon(brush, points);
         }
-
     }
 }

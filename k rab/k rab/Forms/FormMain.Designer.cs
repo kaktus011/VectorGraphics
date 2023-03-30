@@ -81,10 +81,12 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(78, 111);
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Location = new System.Drawing.Point(54, 109);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1160, 706);
+            this.panel1.Size = new System.Drawing.Size(1198, 740);
             this.panel1.TabIndex = 4;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // FormMain
             // 
@@ -96,6 +98,7 @@
             this.Controls.Add(this.SquareBtn);
             this.Controls.Add(this.TriangleBtn);
             this.Controls.Add(this.ElipseBtn);
+            this.DoubleBuffered = true;
             this.Name = "FormMain";
             this.Text = "FormMain";
             this.ResumeLayout(false);

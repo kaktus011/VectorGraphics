@@ -1,4 +1,5 @@
-﻿using System;
+﻿using k_rab.Forms;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -10,15 +11,17 @@ namespace k_rab
     internal class Elipse : Shape
     {
         private Color _color;
-        private int _xCord;
-        private int _yCord;
         internal int _width;
         internal int _height;
 
-        public Elipse(int x, int y, int width, int height)
+        public Elipse(Shape_Info_Input info) : base(info)
         {
-            _xCord = x;
-            _yCord = y;
+            _width = info._width;
+            _height = info._height;
+        }
+
+        public Elipse(int x, int y, int width, int height) : base(x, y)
+        {
             _width = width;
             _height = height;
         }
@@ -34,7 +37,7 @@ namespace k_rab
 
         public override void Draw(Graphics g, SolidBrush brush)
         {
-            throw new NotImplementedException();
+            g.FillEllipse(brush, X, Y, _width, _height);
         }
 
     }
