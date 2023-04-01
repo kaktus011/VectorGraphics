@@ -36,5 +36,7 @@ namespace k_rab
             };
             g.FillPolygon(brush, points);
         }
+        public override bool IsPointInside(Point point) =>
+            base.IsPointInside(point);
     }
 }

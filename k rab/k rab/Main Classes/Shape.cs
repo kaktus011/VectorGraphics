@@ -28,5 +28,6 @@ namespace k_rab
             X = x;
             Y = y;
         }
+
     }
 }

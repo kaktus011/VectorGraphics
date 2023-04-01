@@ -27,15 +27,34 @@ namespace k_rab
         }
         public override float GetArea()
         {
-            if(_width == _height)// if shape is Circle
-                return (float)(Math.PI * _width * _width);
-            else
-                return (float)(Math.PI * _width * _height);
+            return (float)(Math.PI * _width * _height);
         }
 
         public override void Draw(Graphics g, SolidBrush brush)
         {
             g.FillEllipse(brush, X, Y, _width, _height);
+        }
+        public override bool IsPointInside(Point point)
+        {
+            return base.IsPointInside(point) &&
+                   point.X <= X + _width &&
+                   point.Y <= Y + _height;
+            //tova ne raboti
+            //ako e krug opredeli dali lokaciqta na mihskata e vuv kruga 
+            //if (_width == _height)
+            //{
+            //    Point center = new Point((X + point.X) / 2, 
+            //                             (Y + point.Y) / 2);
+            //    int d = (point.X - center.X)*(point.X - center.X)
+            //            + (point.Y - center.Y)*(point.Y - center.Y);
+            //    return d <= _width * _height;
+            //}
+            //else
+            //{
+            //    return base.IsPointInside(point) &&
+            //           point.X <= X + _width &&
+            //           point.Y <= Y + _height;
+            //}
         }
     }
 }

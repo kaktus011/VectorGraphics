@@ -55,7 +55,9 @@ namespace k_rab.Forms
                 ShapeHeight = int.Parse(HeightBox.Text);
                 ShapeWidth = int.Parse(WidthBox.Text);
             }
+            FormMain inst = new FormMain();
             Close();
+            inst.RefreshPanel();
         }
     }
 }

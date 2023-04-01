@@ -33,5 +33,9 @@ namespace k_rab
         {
             g.FillRectangle(brush, X, Y, sideLength, sideLength);
         }
+        public override bool IsPointInside(Point point) =>
+            base.IsPointInside(point) &&
+            point.X <= X + sideLength &&
+            point.Y <= Y + sideLength;
     }
 }

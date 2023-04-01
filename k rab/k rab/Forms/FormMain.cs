@@ -22,6 +22,7 @@ namespace k_rab
         {
             foreach (var shape in _shapes)
                 shape.Draw(e.Graphics, brush);
+            panel1.Update();
         }
 
         public FormMain()
@@ -55,10 +56,14 @@ namespace k_rab
             //l.Show();
             //l.BringToFront();
         }
+        public void RefreshPanel()
+        {
+            panel1.Update();
+        }
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            panel1.Refresh();
+            
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
