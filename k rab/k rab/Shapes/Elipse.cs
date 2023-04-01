@@ -10,7 +10,6 @@ namespace k_rab
 {
     internal class Elipse : Shape
     {
-        private Color _color;
         private int _width;
         private int _height;
 

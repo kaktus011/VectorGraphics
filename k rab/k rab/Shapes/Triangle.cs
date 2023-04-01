@@ -10,7 +10,6 @@ namespace k_rab
 {
     internal class Triangle : Shape
     {
-        private Color _color;
         private int sideLength;
         public Triangle(Shape_Info_Input info) : base(info)
         {

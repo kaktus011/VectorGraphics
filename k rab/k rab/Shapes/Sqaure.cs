@@ -11,7 +11,6 @@ namespace k_rab
 {
     internal class Square : Shape
     {
-        private Color _color;
         private int sideLength;
 
         public Square(Shape_Info_Input info) : base(info)

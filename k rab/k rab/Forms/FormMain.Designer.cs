@@ -33,6 +33,7 @@
             this.SquareBtn = new System.Windows.Forms.Button();
             this.RectangleBtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.doubleBufferedPanel1 = new k_rab.DoubleBufferedPanel();
             this.SuspendLayout();
             // 
             // ElipseBtn
@@ -82,20 +83,30 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Location = new System.Drawing.Point(54, 109);
+            this.panel1.Location = new System.Drawing.Point(58, 779);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1198, 740);
             this.panel1.TabIndex = 4;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
-            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
-            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
+            this.panel1.Visible = false;
+            // 
+            // doubleBufferedPanel1
+            // 
+            this.doubleBufferedPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.doubleBufferedPanel1.Location = new System.Drawing.Point(58, 103);
+            this.doubleBufferedPanel1.Name = "doubleBufferedPanel1";
+            this.doubleBufferedPanel1.Size = new System.Drawing.Size(1172, 766);
+            this.doubleBufferedPanel1.TabIndex = 5;
+            this.doubleBufferedPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.doubleBufferedPanel1_Paint);
+            this.doubleBufferedPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.doubleBufferedPanel1_MouseDown);
+            this.doubleBufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.doubleBufferedPanel1_MouseMove);
+            this.doubleBufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.doubleBufferedPanel1_MouseUp);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1314, 910);
+            this.Controls.Add(this.doubleBufferedPanel1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.RectangleBtn);
             this.Controls.Add(this.SquareBtn);
@@ -114,6 +125,7 @@
         private System.Windows.Forms.Button SquareBtn;
         private System.Windows.Forms.Button RectangleBtn;
         private System.Windows.Forms.Panel panel1;
+        private DoubleBufferedPanel doubleBufferedPanel1;
     }
 }
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -7,7 +7,7 @@ namespace k_rab.Forms
 {
     public partial class Shape_Info_Input : Form
     {
-        private bool _sideLengthVis;
+        private readonly bool _isOneSided;
         //public string Shape { get; }
         public int X { get; private set; }
         public int Y { get; private set; }
@@ -15,9 +15,9 @@ namespace k_rab.Forms
         public int ShapeHeight { get; private set; }
         public int ShapeWidth { get; private set; }
         
-        public Shape_Info_Input(bool sideLengthVis)
+        private Shape_Info_Input(bool isOneSided)
         {
-            _sideLengthVis = sideLengthVis;
+            _isOneSided = isOneSided;
             InitializeComponent();
             //var shapes = typeof(Shape).Assembly
             //    .GetTypes()
@@ -32,21 +32,38 @@ namespace k_rab.Forms
             //l.Show();
             //l.BringToFront();
         }
+
+        public static Shape_Info_Input FromOneSide()
+        {
+            Shape_Info_Input info = new Shape_Info_Input(false);
+            info.ShowDialog();
+            return info;
+        }
+
+        public static Shape_Info_Input FromTwoSides()
+        {
+            Shape_Info_Input info = new Shape_Info_Input(true);
+            info.ShowDialog();
+            return info;
+        }
+
         private void Shape_Info_Input_Load_1(object sender, EventArgs e)
         {
-            SideLengthLabel.Visible = _sideLengthVis;
-            SideLengthBox.Visible = _sideLengthVis;
-            widthValLabel.Visible = !_sideLengthVis;
-            WidthBox.Visible = !_sideLengthVis;
-            HeightBox.Visible = !_sideLengthVis;
-            heightValLabel.Visible = !_sideLengthVis;
+            SideLengthLabel.Visible = _isOneSided;
+            SideLengthBox.Visible = _isOneSided;
+
+            widthValLabel.Visible = !_isOneSided;
+            WidthBox.Visible = !_isOneSided;
+
+            heightValLabel.Visible = !_isOneSided;
+            HeightBox.Visible = !_isOneSided;
         }
 
         private void Submit_InfoBtn_Click(object sender, EventArgs e)
         {
             X = int.Parse(xValBox.Text);
             Y = int.Parse(yValBox.Text);
-            if (_sideLengthVis)
+            if (_isOneSided)
             {
                 ShapeSide = int.Parse(SideLengthBox.Text);
             }
@@ -55,9 +72,8 @@ namespace k_rab.Forms
                 ShapeHeight = int.Parse(HeightBox.Text);
                 ShapeWidth = int.Parse(WidthBox.Text);
             }
-            FormMain inst = new FormMain();
+
             Close();
-            inst.RefreshPanel();
         }
     }
 }
