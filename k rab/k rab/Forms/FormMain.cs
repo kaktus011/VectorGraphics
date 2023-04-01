@@ -22,7 +22,7 @@ namespace k_rab
         {
             foreach (var shape in _shapes)
                 shape.Draw(e.Graphics, brush);
-            panel1.Update();
+            panel1.Refresh();
         }
 
         public FormMain()
@@ -58,7 +58,7 @@ namespace k_rab
         }
         public void RefreshPanel()
         {
-            panel1.Update();
+            panel1.Invalidate();
         }
         protected override void OnPaint(PaintEventArgs e)
         {

@@ -101,7 +101,6 @@
             this.Controls.Add(this.SquareBtn);
             this.Controls.Add(this.TriangleBtn);
             this.Controls.Add(this.ElipseBtn);
-            this.DoubleBuffered = true;
             this.Name = "FormMain";
             this.Text = "FormMain";
             this.ResumeLayout(false);
