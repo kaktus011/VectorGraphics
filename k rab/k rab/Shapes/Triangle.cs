@@ -12,10 +12,9 @@ namespace k_rab
     {
         private Color _color;
         private int sideLength;
-
         public Triangle(Shape_Info_Input info) : base(info)
         {
-            sideLength = info._Side;
+            sideLength = info.ShapeSide;
         }
         public Triangle(int x, int y, int size): base(x, y)
         {

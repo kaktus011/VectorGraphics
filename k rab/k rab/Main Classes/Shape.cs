@@ -12,10 +12,16 @@ namespace k_rab
     {
         public int X { get; set; }
         public int Y { get; set; }
+        public bool IsSelected { get; set; }
         public abstract float GetArea();
         public abstract void Draw(Graphics g, SolidBrush brush);
 
-        public Shape(Shape_Info_Input info) : this(info._X, info._Y) { }
+        public virtual bool IsPointInside(Point point) =>
+            point.X >= X &&
+            point.Y >= Y;
+        public Point GetOffset(Point point) => new Point(point.X - X, point.Y - Y);
+
+        public Shape(Shape_Info_Input info) : this(info.X, info.Y) { }
 
         public Shape(int x, int y)
         {

@@ -87,18 +87,20 @@
             this.panel1.Size = new System.Drawing.Size(1198, 740);
             this.panel1.TabIndex = 4;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1314, 888);
+            this.ClientSize = new System.Drawing.Size(1314, 910);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.RectangleBtn);
             this.Controls.Add(this.SquareBtn);
             this.Controls.Add(this.TriangleBtn);
             this.Controls.Add(this.ElipseBtn);
-            this.DoubleBuffered = true;
             this.Name = "FormMain";
             this.Text = "FormMain";
             this.ResumeLayout(false);

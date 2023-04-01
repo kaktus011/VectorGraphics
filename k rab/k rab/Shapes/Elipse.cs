@@ -11,13 +11,13 @@ namespace k_rab
     internal class Elipse : Shape
     {
         private Color _color;
-        internal int _width;
-        internal int _height;
+        private int _width;
+        private int _height;
 
         public Elipse(Shape_Info_Input info) : base(info)
         {
-            _width = info._width;
-            _height = info._height;
+            _width = info.ShapeWidth;
+            _height = info.ShapeHeight;
         }
 
         public Elipse(int x, int y, int width, int height) : base(x, y)
@@ -25,8 +25,6 @@ namespace k_rab
             _width = width;
             _height = height;
         }
-
-        
         public override float GetArea()
         {
             if(_width == _height)// if shape is Circle
@@ -39,6 +37,5 @@ namespace k_rab
         {
             g.FillEllipse(brush, X, Y, _width, _height);
         }
-
     }
 }

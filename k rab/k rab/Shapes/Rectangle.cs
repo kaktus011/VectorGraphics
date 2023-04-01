@@ -14,11 +14,10 @@ namespace k_rab
         private int _width;
         private int _height;
 
-
         public Rectangle(Shape_Info_Input info) : base(info)
         {
-            _width = info._width;
-            _height = info._height;
+            _width = info.ShapeWidth;
+            _height = info.ShapeHeight;
         }
 
         public Rectangle(int x, int y, int width, int height) : base(x, y)
@@ -36,6 +35,9 @@ namespace k_rab
         {
             g.FillRectangle(brush, X, Y, _width, _height);
         }
-
+        public override bool IsPointInside(Point point) =>
+            base.IsPointInside(point) &&
+            point.X <= X + _width &&
+            point.Y <= Y + _height;
     }
 }

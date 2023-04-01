@@ -10,5 +10,6 @@ namespace k_rab
     internal interface IDrawable
     {
         void Draw(Graphics g, SolidBrush brush);
+        bool IsPointInside(Point point);
     }
 }

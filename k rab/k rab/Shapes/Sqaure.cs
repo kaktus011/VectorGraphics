@@ -16,7 +16,7 @@ namespace k_rab
 
         public Square(Shape_Info_Input info) : base(info)
         {
-            sideLength = info._Side;
+            sideLength = info.ShapeSide;
         }
 
         public Square(int x, int y, int side) : base(x, y)
@@ -33,6 +33,5 @@ namespace k_rab
         {
             g.FillRectangle(brush, X, Y, sideLength, sideLength);
         }
-
     }
 }
