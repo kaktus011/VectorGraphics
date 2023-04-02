@@ -35,25 +35,28 @@ namespace k_rab
         }
         public override bool IsPointInside(Point point)
         {
-            return base.IsPointInside(point) &&
-                   point.X <= X + _width &&
-                   point.Y <= Y + _height;
-            //tova ne raboti
-            //ako e krug opredeli dali lokaciqta na mihskata e vuv kruga 
-            //if (_width == _height)
-            //{
-            //    Point center = new Point((X + point.X) / 2, 
-            //                             (Y + point.Y) / 2);
-            //    int d = (point.X - center.X)*(point.X - center.X)
-            //            + (point.Y - center.Y)*(point.Y - center.Y);
-            //    return d <= _width * _height;
-            //}
-            //else
-            //{
-            //    return base.IsPointInside(point) &&
-            //           point.X <= X + _width &&
-            //           point.Y <= Y + _height;
-            //}
+            Point center = new Point((X + X+_width) / 2,
+                                     (Y + Y+_height) / 2);
+
+            if (_width == _height)//cirlce
+            {
+                int d = (point.X - center.X)*(point.X - center.X)
+                      + (point.Y - center.Y)*(point.Y - center.Y);
+                return d <= (_width/2) * (_height/2);
+            }
+
+            else//elipse
+            { 
+                double xRadius = _width/2.0;
+                double yRadius = _height/2.0;
+
+                double d = ((double)Math.Pow((point.X - center.X), 2)
+                   / (double)Math.Pow(xRadius, 2))
+                  + ((double)Math.Pow((point.Y - center.Y), 2)
+                     / (double)Math.Pow(yRadius, 2));
+
+                return d <= 1;
+            }
         }
     }
 }
