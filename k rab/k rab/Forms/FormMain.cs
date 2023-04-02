@@ -16,6 +16,7 @@ namespace k_rab
     {
         private readonly List<IDrawable> _shapes = new List<IDrawable>();
         private readonly SolidBrush _brush = new SolidBrush(Color.Black);
+        private readonly Pen _pen = new Pen(Color.Pink, 5);
         private Shape _selectedShape;
         private Point _offset;
 
@@ -60,7 +61,7 @@ namespace k_rab
         private void doubleBufferedPanel1_Paint(object sender, PaintEventArgs e)
         {
             foreach (var shape in _shapes)
-                shape.Draw(e.Graphics, _brush);
+                shape.Draw(e.Graphics, _brush, _pen);
         }
 
         private void doubleBufferedPanel1_MouseDown(object sender, MouseEventArgs e)
@@ -68,13 +69,19 @@ namespace k_rab
             base.OnMouseDown(e);
             if (e.Button == MouseButtons.Left)
             {
-                foreach (var shape in _shapes)
+                for (int i = _shapes.Count - 1; i >= 0; --i)
                 {
-                    if (!shape.IsPointInside(e.Location)) continue;
+                    if (!_shapes[i].IsPointInside(e.Location))
+                    {
+                        _selectedShape = null;
+                        continue;
+                    }
 
-                    _selectedShape = (Shape)shape;
+                    _selectedShape = (Shape)_shapes[i];
                     _offset = _selectedShape.GetOffset(e.Location);
                     _selectedShape.IsSelected = true;
+                    _shapes[i] = _shapes[_shapes.Count - 1];
+                    _shapes[_shapes.Count - 1] = _selectedShape;
                     break;
                 }
             }

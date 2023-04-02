@@ -29,9 +29,13 @@ namespace k_rab
             return (float)(Math.PI * _width * _height);
         }
 
-        public override void Draw(Graphics g, SolidBrush brush)
+        public override void Draw(Graphics g, SolidBrush brush, Pen pen)
         {
             g.FillEllipse(brush, X, Y, _width, _height);
+            if (!IsSelected) return;
+
+            g.DrawEllipse(pen, X, Y, _width, _height);
+
         }
         public override bool IsPointInside(Point point)
         {

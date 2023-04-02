@@ -28,9 +28,12 @@ namespace k_rab
            return sideLength * sideLength;
         }
 
-        public override void Draw(Graphics g, SolidBrush brush)
+        public override void Draw(Graphics g, SolidBrush brush, Pen pen)
         {
             g.FillRectangle(brush, X, Y, sideLength, sideLength);
+            if (!IsSelected) return;
+
+            g.DrawRectangle(pen, X, Y, sideLength, sideLength);
         }
         public override bool IsPointInside(Point point) =>
             base.IsPointInside(point) &&

@@ -29,7 +29,7 @@ namespace k_rab
             return (float)(sideLength * 1.732 * 0.25);
         }
 
-        public override void Draw(Graphics g, SolidBrush brush)
+        public override void Draw(Graphics g, SolidBrush brush, Pen pen)
         {
             p1 = new Point(X, Y);
             p2 = new Point(X + sideLength, Y);
@@ -38,6 +38,9 @@ namespace k_rab
             Point[] points ={ p1, p2, p3 };
 
             g.FillPolygon(brush, points);
+            if (!IsSelected) return;
+
+            g.DrawPolygon(pen, points);
         }
         public override bool IsPointInside(Point point)
         {
