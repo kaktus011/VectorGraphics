@@ -18,6 +18,7 @@ namespace k_rab
         private readonly SolidBrush _brush = new SolidBrush(Color.Black);
         private readonly Pen _pen = new Pen(Color.Pink, 5);
         private Shape _selectedShape;
+        private Shape _shapeForDeleting;
         private Point _offset;
 
         public FormMain()
@@ -62,6 +63,7 @@ namespace k_rab
         {
             foreach (var shape in _shapes)
                 shape.Draw(e.Graphics, _brush, _pen);
+            Area();
         }
 
         private void doubleBufferedPanel1_MouseDown(object sender, MouseEventArgs e)
@@ -78,10 +80,12 @@ namespace k_rab
                     }
 
                     _selectedShape = (Shape)_shapes[i];
+                    _shapeForDeleting = _selectedShape;
                     _offset = _selectedShape.GetOffset(e.Location);
                     _selectedShape.IsSelected = true;
                     _shapes[i] = _shapes[_shapes.Count - 1];
                     _shapes[_shapes.Count - 1] = _selectedShape;
+                    
                     break;
                 }
             }
@@ -136,6 +140,25 @@ namespace k_rab
             doubleBufferedPanel1.Refresh();
         }
 
+        private void Area()
+        {
+            if (_selectedShape == null)
+                AreaLabel.Text = "No shape selected";
+            else
+                AreaLabel.Text = _selectedShape.GetArea().ToString();
+        }
+        private void DeleteShapeBtn_Click(object sender, EventArgs e)
+        {
+            if(_shapeForDeleting == null) return;
+
+            _shapes.Remove(_shapeForDeleting);
+            doubleBufferedPanel1.Refresh();
+        }
+
+        private void LabelForArea_Click(object sender, EventArgs e)
+        {
+
+        }
     }
     public class DoubleBufferedPanel : Panel
     {
