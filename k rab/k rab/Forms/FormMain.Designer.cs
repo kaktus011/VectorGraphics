@@ -35,6 +35,9 @@
             this.LabelForArea = new System.Windows.Forms.Label();
             this.AreaLabel = new System.Windows.Forms.Label();
             this.DeleteShapeBtn = new System.Windows.Forms.Button();
+            this.ChangeColorBtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.BorderColorBtn = new System.Windows.Forms.Button();
             this.doubleBufferedPanel1 = new k_rab.DoubleBufferedPanel();
             this.SuspendLayout();
             // 
@@ -91,7 +94,6 @@
             this.LabelForArea.Size = new System.Drawing.Size(352, 37);
             this.LabelForArea.TabIndex = 6;
             this.LabelForArea.Text = "Area of selected shape:";
-            this.LabelForArea.Click += new System.EventHandler(this.LabelForArea_Click);
             // 
             // AreaLabel
             // 
@@ -113,6 +115,38 @@
             this.DeleteShapeBtn.UseVisualStyleBackColor = true;
             this.DeleteShapeBtn.Click += new System.EventHandler(this.DeleteShapeBtn_Click);
             // 
+            // ChangeColorBtn
+            // 
+            this.ChangeColorBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChangeColorBtn.Location = new System.Drawing.Point(203, 894);
+            this.ChangeColorBtn.Name = "ChangeColorBtn";
+            this.ChangeColorBtn.Size = new System.Drawing.Size(173, 54);
+            this.ChangeColorBtn.TabIndex = 9;
+            this.ChangeColorBtn.Text = "Shape";
+            this.ChangeColorBtn.UseVisualStyleBackColor = true;
+            this.ChangeColorBtn.Click += new System.EventHandler(this.ChangeColorBtn_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 901);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(196, 37);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Edit color of:";
+            // 
+            // BorderColorBtn
+            // 
+            this.BorderColorBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BorderColorBtn.Location = new System.Drawing.Point(382, 894);
+            this.BorderColorBtn.Name = "BorderColorBtn";
+            this.BorderColorBtn.Size = new System.Drawing.Size(188, 54);
+            this.BorderColorBtn.TabIndex = 11;
+            this.BorderColorBtn.Text = "Shape border";
+            this.BorderColorBtn.UseVisualStyleBackColor = true;
+            this.BorderColorBtn.Click += new System.EventHandler(this.BorderColorBtn_Click);
+            // 
             // doubleBufferedPanel1
             // 
             this.doubleBufferedPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -130,7 +164,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1368, 914);
+            this.ClientSize = new System.Drawing.Size(1368, 1012);
+            this.Controls.Add(this.BorderColorBtn);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ChangeColorBtn);
             this.Controls.Add(this.DeleteShapeBtn);
             this.Controls.Add(this.AreaLabel);
             this.Controls.Add(this.LabelForArea);
@@ -156,6 +193,9 @@
         private System.Windows.Forms.Label LabelForArea;
         private System.Windows.Forms.Label AreaLabel;
         private System.Windows.Forms.Button DeleteShapeBtn;
+        private System.Windows.Forms.Button ChangeColorBtn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button BorderColorBtn;
     }
 }
 

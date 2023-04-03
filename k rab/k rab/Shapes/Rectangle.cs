@@ -32,9 +32,13 @@ namespace k_rab
 
         public override void Draw(Graphics g, SolidBrush brush, Pen pen)
         {
+            brush.Color = _Color;
+            pen.Color = _BorderColor;
             g.FillRectangle(brush, X, Y, _width, _height);
+            g.DrawRectangle(pen, X, Y, _width, _height);
             if (!IsSelected) return;
 
+            pen.Color = Color.Pink;
             g.DrawRectangle(pen, X, Y, _width, _height);
         }
         public override bool IsPointInside(Point point) =>

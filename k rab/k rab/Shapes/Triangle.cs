@@ -37,9 +37,13 @@ namespace k_rab
 
             Point[] points ={ p1, p2, p3 };
 
+            brush.Color = _Color;
+            pen.Color = _BorderColor;
             g.FillPolygon(brush, points);
+            g.DrawPolygon(pen, points);
             if (!IsSelected) return;
 
+            pen.Color = Color.Pink;
             g.DrawPolygon(pen, points);
         }
         public override bool IsPointInside(Point point)

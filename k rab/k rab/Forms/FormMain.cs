@@ -18,7 +18,7 @@ namespace k_rab
         private readonly SolidBrush _brush = new SolidBrush(Color.Black);
         private readonly Pen _pen = new Pen(Color.Pink, 5);
         private Shape _selectedShape;
-        private Shape _shapeForDeleting;
+        private Shape _shapeForEditing;
         private Point _offset;
 
         public FormMain()
@@ -80,7 +80,7 @@ namespace k_rab
                     }
 
                     _selectedShape = (Shape)_shapes[i];
-                    _shapeForDeleting = _selectedShape;
+                    _shapeForEditing = _selectedShape;
                     _offset = _selectedShape.GetOffset(e.Location);
                     _selectedShape.IsSelected = true;
                     _shapes[i] = _shapes[_shapes.Count - 1];
@@ -149,15 +149,30 @@ namespace k_rab
         }
         private void DeleteShapeBtn_Click(object sender, EventArgs e)
         {
-            if(_shapeForDeleting == null) return;
+            if(_shapeForEditing == null) return;
 
-            _shapes.Remove(_shapeForDeleting);
+            _shapes.Remove(_shapeForEditing);
             doubleBufferedPanel1.Refresh();
         }
 
-        private void LabelForArea_Click(object sender, EventArgs e)
+        private void ChangeColorBtn_Click(object sender, EventArgs e)
         {
+            ColorDialog cd = new ColorDialog();
+            if (cd.ShowDialog() == DialogResult.OK && _shapeForEditing != null)
+            {
+                _shapeForEditing._Color = cd.Color;
+                doubleBufferedPanel1.Refresh();
+            }
+        }
 
+        private void BorderColorBtn_Click(object sender, EventArgs e)
+        {
+            ColorDialog cd = new ColorDialog();
+            if (cd.ShowDialog() == DialogResult.OK && _shapeForEditing != null)
+            {
+                _shapeForEditing._BorderColor = cd.Color;
+                doubleBufferedPanel1.Refresh();
+            }
         }
     }
     public class DoubleBufferedPanel : Panel

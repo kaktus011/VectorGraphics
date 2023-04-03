@@ -31,9 +31,13 @@ namespace k_rab
 
         public override void Draw(Graphics g, SolidBrush brush, Pen pen)
         {
+            brush.Color = _Color;
+            pen.Color = _BorderColor;
             g.FillEllipse(brush, X, Y, _width, _height);
+            g.DrawEllipse(pen, X, Y, _width, _height);
             if (!IsSelected) return;
 
+            pen.Color = Color.Pink;
             g.DrawEllipse(pen, X, Y, _width, _height);
 
         }
