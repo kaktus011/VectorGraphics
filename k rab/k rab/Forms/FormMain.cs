@@ -24,17 +24,11 @@ namespace k_rab
         public FormMain()
         {
             InitializeComponent();
-            //typeof(Panel).InvokeMember(
-            //    "DoubleBuffered",
-            //    BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
-            //    null,
-            //    panel1,
-            //    new object[] { true });
-            //var shapes = typeof(Shape).Assembly
-            //    .GetTypes()
-            //    .Where(f => f.IsSubclassOf(typeof(Shape)))
-            //    .ToArray();
-            //var constructorNames = shapes.Select(f => f.Name).ToArray();
+            var shapes = typeof(Shape).Assembly
+                .GetTypes()
+                .Where(f => f.IsSubclassOf(typeof(Shape)))
+                .ToArray();
+            var constructorNames = shapes.Select(f => f.Name).ToArray();
 
             //var buttons = new List<Button>();
             //foreach (var name in constructorNames)
@@ -131,6 +125,56 @@ namespace k_rab
             _shapes.Add(new Rectangle(Shape_Info_Input.FromOneSide()));
             doubleBufferedPanel1.Refresh();
         }
+        private void DeleteShapeBtn_Click(object sender, EventArgs e)
+        {
+            if(_shapeForEditing == null) return;
+
+            _shapes.Remove(_shapeForEditing);
+            doubleBufferedPanel1.Refresh();
+        }
+
+        private void ChangeColorBtn_Click(object sender, EventArgs e)
+        {
+            ColorDialog cd = new ColorDialog();
+            if (cd.ShowDialog() == DialogResult.OK && _shapeForEditing != null)
+            {
+                _shapeForEditing.Color = cd.Color;
+                doubleBufferedPanel1.Refresh();
+            }
+        }
+
+        private void BorderColorBtn_Click(object sender, EventArgs e)
+        {
+            ColorDialog cd = new ColorDialog();
+            if (cd.ShowDialog() == DialogResult.OK && _shapeForEditing != null)
+            {
+                _shapeForEditing.BorderColor = cd.Color;
+                doubleBufferedPanel1.Refresh();
+            }
+        }
+
+        private void EditShapeBtn_Click(object sender, EventArgs e)
+        {
+            if (_shapeForEditing == null) return;
+
+            string k = _shapeForEditing.GetType().Name.ToString();
+            switch (k)
+            {
+                case "Elipse":
+                    ;
+                    break;
+                case "Rectangle":
+                    ;
+                    break;
+                case "Triangle":
+                    ;
+                    break;
+                case "Square":
+                    ;
+                    break;
+            }
+
+        }
 
         private void MoveSelected(Point point)
         {
@@ -146,33 +190,6 @@ namespace k_rab
                 AreaLabel.Text = "No shape selected";
             else
                 AreaLabel.Text = _selectedShape.GetArea().ToString();
-        }
-        private void DeleteShapeBtn_Click(object sender, EventArgs e)
-        {
-            if(_shapeForEditing == null) return;
-
-            _shapes.Remove(_shapeForEditing);
-            doubleBufferedPanel1.Refresh();
-        }
-
-        private void ChangeColorBtn_Click(object sender, EventArgs e)
-        {
-            ColorDialog cd = new ColorDialog();
-            if (cd.ShowDialog() == DialogResult.OK && _shapeForEditing != null)
-            {
-                _shapeForEditing._Color = cd.Color;
-                doubleBufferedPanel1.Refresh();
-            }
-        }
-
-        private void BorderColorBtn_Click(object sender, EventArgs e)
-        {
-            ColorDialog cd = new ColorDialog();
-            if (cd.ShowDialog() == DialogResult.OK && _shapeForEditing != null)
-            {
-                _shapeForEditing._BorderColor = cd.Color;
-                doubleBufferedPanel1.Refresh();
-            }
         }
     }
     public class DoubleBufferedPanel : Panel

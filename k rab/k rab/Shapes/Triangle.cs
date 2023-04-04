@@ -37,8 +37,8 @@ namespace k_rab
 
             Point[] points ={ p1, p2, p3 };
 
-            brush.Color = _Color;
-            pen.Color = _BorderColor;
+            brush.Color = Color;
+            pen.Color = BorderColor;
             g.FillPolygon(brush, points);
             g.DrawPolygon(pen, points);
             if (!IsSelected) return;

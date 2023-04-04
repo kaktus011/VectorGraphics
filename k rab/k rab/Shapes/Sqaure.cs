@@ -30,8 +30,8 @@ namespace k_rab
 
         public override void Draw(Graphics g, SolidBrush brush, Pen pen)
         {
-            brush.Color = _Color;
-            pen.Color = _BorderColor;
+            brush.Color = Color;
+            pen.Color = BorderColor;
             g.FillRectangle(brush, X, Y, sideLength, sideLength);
             g.DrawRectangle(pen, X, Y, sideLength, sideLength);
             if (!IsSelected) return;

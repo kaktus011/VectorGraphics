@@ -46,7 +46,7 @@ namespace k_rab.Forms
             // xValBox
             // 
             this.xValBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xValBox.Location = new System.Drawing.Point(635, 125);
+            this.xValBox.Location = new System.Drawing.Point(341, 35);
             this.xValBox.Name = "xValBox";
             this.xValBox.Size = new System.Drawing.Size(202, 53);
             this.xValBox.TabIndex = 0;
@@ -54,7 +54,7 @@ namespace k_rab.Forms
             // yValBox
             // 
             this.yValBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yValBox.Location = new System.Drawing.Point(635, 214);
+            this.yValBox.Location = new System.Drawing.Point(341, 124);
             this.yValBox.Name = "yValBox";
             this.yValBox.Size = new System.Drawing.Size(202, 53);
             this.yValBox.TabIndex = 1;
@@ -63,7 +63,7 @@ namespace k_rab.Forms
             // 
             this.xValLabel.AutoSize = true;
             this.xValLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xValLabel.Location = new System.Drawing.Point(456, 125);
+            this.xValLabel.Location = new System.Drawing.Point(162, 35);
             this.xValLabel.Name = "xValLabel";
             this.xValLabel.Size = new System.Drawing.Size(152, 46);
             this.xValLabel.TabIndex = 2;
@@ -73,7 +73,7 @@ namespace k_rab.Forms
             // 
             this.yValLabel.AutoSize = true;
             this.yValLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yValLabel.Location = new System.Drawing.Point(457, 221);
+            this.yValLabel.Location = new System.Drawing.Point(163, 131);
             this.yValLabel.Name = "yValLabel";
             this.yValLabel.Size = new System.Drawing.Size(151, 46);
             this.yValLabel.TabIndex = 3;
@@ -82,7 +82,7 @@ namespace k_rab.Forms
             // WidthBox
             // 
             this.WidthBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WidthBox.Location = new System.Drawing.Point(634, 404);
+            this.WidthBox.Location = new System.Drawing.Point(340, 314);
             this.WidthBox.Name = "WidthBox";
             this.WidthBox.Size = new System.Drawing.Size(202, 53);
             this.WidthBox.TabIndex = 4;
@@ -90,7 +90,7 @@ namespace k_rab.Forms
             // HeightBox
             // 
             this.HeightBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HeightBox.Location = new System.Drawing.Point(634, 504);
+            this.HeightBox.Location = new System.Drawing.Point(340, 414);
             this.HeightBox.Name = "HeightBox";
             this.HeightBox.Size = new System.Drawing.Size(202, 53);
             this.HeightBox.TabIndex = 5;
@@ -98,7 +98,7 @@ namespace k_rab.Forms
             // SideLengthBox
             // 
             this.SideLengthBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SideLengthBox.Location = new System.Drawing.Point(634, 314);
+            this.SideLengthBox.Location = new System.Drawing.Point(340, 224);
             this.SideLengthBox.Name = "SideLengthBox";
             this.SideLengthBox.Size = new System.Drawing.Size(202, 53);
             this.SideLengthBox.TabIndex = 6;
@@ -107,7 +107,7 @@ namespace k_rab.Forms
             // 
             this.widthValLabel.AutoSize = true;
             this.widthValLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.widthValLabel.Location = new System.Drawing.Point(456, 407);
+            this.widthValLabel.Location = new System.Drawing.Point(162, 317);
             this.widthValLabel.Name = "widthValLabel";
             this.widthValLabel.Size = new System.Drawing.Size(122, 46);
             this.widthValLabel.TabIndex = 7;
@@ -117,7 +117,7 @@ namespace k_rab.Forms
             // 
             this.heightValLabel.AutoSize = true;
             this.heightValLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.heightValLabel.Location = new System.Drawing.Point(456, 511);
+            this.heightValLabel.Location = new System.Drawing.Point(162, 421);
             this.heightValLabel.Name = "heightValLabel";
             this.heightValLabel.Size = new System.Drawing.Size(135, 46);
             this.heightValLabel.TabIndex = 8;
@@ -127,7 +127,7 @@ namespace k_rab.Forms
             // 
             this.SideLengthLabel.AutoSize = true;
             this.SideLengthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SideLengthLabel.Location = new System.Drawing.Point(375, 314);
+            this.SideLengthLabel.Location = new System.Drawing.Point(81, 224);
             this.SideLengthLabel.Name = "SideLengthLabel";
             this.SideLengthLabel.Size = new System.Drawing.Size(232, 46);
             this.SideLengthLabel.TabIndex = 9;
@@ -136,7 +136,7 @@ namespace k_rab.Forms
             // Submit_InfoBtn
             // 
             this.Submit_InfoBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Submit_InfoBtn.Location = new System.Drawing.Point(535, 686);
+            this.Submit_InfoBtn.Location = new System.Drawing.Point(241, 596);
             this.Submit_InfoBtn.Name = "Submit_InfoBtn";
             this.Submit_InfoBtn.Size = new System.Drawing.Size(227, 91);
             this.Submit_InfoBtn.TabIndex = 10;
@@ -148,7 +148,8 @@ namespace k_rab.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1314, 888);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(694, 742);
             this.Controls.Add(this.Submit_InfoBtn);
             this.Controls.Add(this.SideLengthLabel);
             this.Controls.Add(this.heightValLabel);

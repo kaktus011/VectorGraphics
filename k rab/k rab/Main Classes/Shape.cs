@@ -10,8 +10,8 @@ namespace k_rab
 {
     abstract class Shape : IDrawable
     {
-        public Color _Color { get; set; } = Color.Black;
-        public Color _BorderColor { get; set; }
+        public Color Color { get; set; } = Color.Black;
+        public Color BorderColor { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
         public bool IsSelected { get; set; }

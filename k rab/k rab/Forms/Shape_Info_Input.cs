@@ -8,16 +8,17 @@ namespace k_rab.Forms
     public partial class Shape_Info_Input : Form
     {
         private readonly bool _isOneSided;
-        //public string Shape { get; }
+        private readonly bool _isEditing;
         public int X { get; private set; }
         public int Y { get; private set; }
         public int ShapeSide { get; private set; }
         public int ShapeHeight { get; private set; }
         public int ShapeWidth { get; private set; }
         
-        private Shape_Info_Input(bool isOneSided)
+        private Shape_Info_Input(bool isOneSided, bool isEditing)
         {
             _isOneSided = isOneSided;
+            _isEditing = isEditing;
             InitializeComponent();
             //var shapes = typeof(Shape).Assembly
             //    .GetTypes()
@@ -35,17 +36,21 @@ namespace k_rab.Forms
 
         public static Shape_Info_Input FromOneSide()
         {
-            Shape_Info_Input info = new Shape_Info_Input(false);
+            Shape_Info_Input info = new Shape_Info_Input(false, false);
             info.ShowDialog();
             return info;
         }
 
         public static Shape_Info_Input FromTwoSides()
         {
-            Shape_Info_Input info = new Shape_Info_Input(true);
+            Shape_Info_Input info = new Shape_Info_Input(true, false);
             info.ShowDialog();
             return info;
         }
+        //public static Shape_Info_Input IsForEditing()
+        //{ 
+
+        //}
 
         private void Shape_Info_Input_Load_1(object sender, EventArgs e)
         {
@@ -63,6 +68,7 @@ namespace k_rab.Forms
         {
             X = int.Parse(xValBox.Text);
             Y = int.Parse(yValBox.Text);
+
             if (_isOneSided)
             {
                 ShapeSide = int.Parse(SideLengthBox.Text);

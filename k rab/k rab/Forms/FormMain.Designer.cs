@@ -39,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.BorderColorBtn = new System.Windows.Forms.Button();
             this.doubleBufferedPanel1 = new k_rab.DoubleBufferedPanel();
+            this.EditShapeBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ElipseBtn
@@ -159,12 +160,24 @@
             this.doubleBufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.doubleBufferedPanel1_MouseMove);
             this.doubleBufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.doubleBufferedPanel1_MouseUp);
             // 
+            // EditShapeBtn
+            // 
+            this.EditShapeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditShapeBtn.Location = new System.Drawing.Point(350, 825);
+            this.EditShapeBtn.Name = "EditShapeBtn";
+            this.EditShapeBtn.Size = new System.Drawing.Size(266, 63);
+            this.EditShapeBtn.TabIndex = 12;
+            this.EditShapeBtn.Text = "Edit selected shape";
+            this.EditShapeBtn.UseVisualStyleBackColor = true;
+            this.EditShapeBtn.Click += new System.EventHandler(this.EditShapeBtn_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1368, 1012);
+            this.Controls.Add(this.EditShapeBtn);
             this.Controls.Add(this.BorderColorBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ChangeColorBtn);
@@ -196,6 +209,7 @@
         private System.Windows.Forms.Button ChangeColorBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BorderColorBtn;
+        private System.Windows.Forms.Button EditShapeBtn;
     }
 }
 
