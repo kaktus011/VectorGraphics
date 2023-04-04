@@ -46,6 +46,11 @@ namespace k_rab
             pen.Color = Color.Pink;
             g.DrawPolygon(pen, points);
         }
+        public override void EditShape()
+        {
+            Shape_Info_Input info = Shape_Info_Input.FromTwoSides(true);
+            sideLength = info.ShapeSide;
+        }
         public override bool IsPointInside(Point point)
         {
             double A = area(p1.X, p1.Y, p2.X, p2.Y, p3.X, p3.Y);
@@ -59,5 +64,6 @@ namespace k_rab
             Math.Abs((x1 * (y2 - y3) +
                       x2 * (y3 - y1) +
                       x3 * (y1 - y2)) / 2.0);
+
     }
 }

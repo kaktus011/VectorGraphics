@@ -15,10 +15,10 @@ namespace k_rab.Forms
         public int ShapeHeight { get; private set; }
         public int ShapeWidth { get; private set; }
         
-        private Shape_Info_Input(bool isOneSided, bool isEditing)
+        private Shape_Info_Input(bool isOneSided, bool edit)
         {
             _isOneSided = isOneSided;
-            _isEditing = isEditing;
+            _isEditing = edit;
             InitializeComponent();
             //var shapes = typeof(Shape).Assembly
             //    .GetTypes()
@@ -34,26 +34,28 @@ namespace k_rab.Forms
             //l.BringToFront();
         }
 
-        public static Shape_Info_Input FromOneSide()
+        public static Shape_Info_Input FromOneSide(bool edit)
         {
-            Shape_Info_Input info = new Shape_Info_Input(false, false);
+            Shape_Info_Input info = new Shape_Info_Input(false, edit);
             info.ShowDialog();
             return info;
         }
 
-        public static Shape_Info_Input FromTwoSides()
+        public static Shape_Info_Input FromTwoSides(bool edit)
         {
-            Shape_Info_Input info = new Shape_Info_Input(true, false);
+            Shape_Info_Input info = new Shape_Info_Input(true, edit);
             info.ShowDialog();
             return info;
         }
-        //public static Shape_Info_Input IsForEditing()
-        //{ 
-
-        //}
 
         private void Shape_Info_Input_Load_1(object sender, EventArgs e)
         {
+            xValLabel.Visible = !_isEditing;
+            xValBox.Visible = !_isEditing;
+
+            yValLabel.Visible = !_isEditing;
+            yValBox.Visible = !_isEditing;
+
             SideLengthLabel.Visible = _isOneSided;
             SideLengthBox.Visible = _isOneSided;
 
@@ -66,8 +68,11 @@ namespace k_rab.Forms
 
         private void Submit_InfoBtn_Click(object sender, EventArgs e)
         {
-            X = int.Parse(xValBox.Text);
-            Y = int.Parse(yValBox.Text);
+            if(!_isEditing)
+            {
+                X = int.Parse(xValBox.Text);
+                Y = int.Parse(yValBox.Text);
+            }
 
             if (_isOneSided)
             {

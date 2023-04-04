@@ -41,19 +41,25 @@ namespace k_rab
             g.DrawEllipse(pen, X, Y, _width, _height);
 
         }
+        public override void EditShape()
+        {
+            Shape_Info_Input info = Shape_Info_Input.FromOneSide(true);
+            _width = info.ShapeWidth;
+            _height = info.ShapeHeight;
+        }
         public override bool IsPointInside(Point point)
         {
             Point center = new Point((X + X+_width) / 2,
                                      (Y + Y+_height) / 2);
 
-            if (_width == _height)//cirlce
+            if (_width == _height)
             {
                 int d = (point.X - center.X)*(point.X - center.X)
                       + (point.Y - center.Y)*(point.Y - center.Y);
                 return d <= (_width/2) * (_height/2);
             }
 
-            else//elipse
+            else
             { 
                 double xRadius = _width/2.0;
                 double yRadius = _height/2.0;
@@ -66,5 +72,6 @@ namespace k_rab
                 return d <= 1;
             }
         }
+
     }
 }

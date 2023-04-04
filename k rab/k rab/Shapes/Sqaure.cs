@@ -39,9 +39,15 @@ namespace k_rab
             pen.Color = Color.Pink; 
             g.DrawRectangle(pen, X, Y, sideLength, sideLength);
         }
+        public override void EditShape()
+        {
+            Shape_Info_Input info = Shape_Info_Input.FromTwoSides(true);
+            sideLength = info.ShapeSide;
+        }
         public override bool IsPointInside(Point point) =>
             base.IsPointInside(point) &&
             point.X <= X + sideLength &&
             point.Y <= Y + sideLength;
+
     }
 }

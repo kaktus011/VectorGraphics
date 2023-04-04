@@ -104,25 +104,25 @@ namespace k_rab
 
         private void ElipseBtn_Click(object sender, EventArgs e)
         { 
-            _shapes.Add(new Elipse(Shape_Info_Input.FromOneSide()));
+            _shapes.Add(new Elipse(Shape_Info_Input.FromOneSide(false)));
             doubleBufferedPanel1.Refresh();
         }
 
         private void TriangleBtn_Click(object sender, EventArgs e)
         {
-            _shapes.Add(new Triangle(Shape_Info_Input.FromTwoSides()));
+            _shapes.Add(new Triangle(Shape_Info_Input.FromTwoSides(false)));
             doubleBufferedPanel1.Refresh();
         }
 
         private void SquareBtn_Click(object sender, EventArgs e)
         {
-            _shapes.Add(new Square(Shape_Info_Input.FromTwoSides()));
+            _shapes.Add(new Square(Shape_Info_Input.FromTwoSides(false)));
             doubleBufferedPanel1.Refresh();
         }
 
         private void RectangleBtn_Click(object sender, EventArgs e)
         {
-            _shapes.Add(new Rectangle(Shape_Info_Input.FromOneSide()));
+            _shapes.Add(new Rectangle(Shape_Info_Input.FromOneSide(false)));
             doubleBufferedPanel1.Refresh();
         }
         private void DeleteShapeBtn_Click(object sender, EventArgs e)
@@ -157,23 +157,9 @@ namespace k_rab
         {
             if (_shapeForEditing == null) return;
 
-            string k = _shapeForEditing.GetType().Name.ToString();
-            switch (k)
-            {
-                case "Elipse":
-                    ;
-                    break;
-                case "Rectangle":
-                    ;
-                    break;
-                case "Triangle":
-                    ;
-                    break;
-                case "Square":
-                    ;
-                    break;
-            }
-
+            _shapeForEditing.EditShape();
+            _shapes[_shapes.Count - 1] = _shapeForEditing;
+            doubleBufferedPanel1.Refresh();
         }
 
         private void MoveSelected(Point point)

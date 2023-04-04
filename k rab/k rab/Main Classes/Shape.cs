@@ -17,6 +17,7 @@ namespace k_rab
         public bool IsSelected { get; set; }
         public abstract float GetArea();
         public abstract void Draw(Graphics g, SolidBrush brush, Pen pen);
+        public abstract void EditShape();
 
         public virtual bool IsPointInside(Point point) =>
             point.X >= X &&
