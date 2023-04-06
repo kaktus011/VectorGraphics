@@ -65,11 +65,11 @@
     <Compile Include="Forms\FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Main Classes\IDrawable.cs" />
-    <Compile Include="Main Classes\Program.cs" />
+    <Compile Include="IDrawable.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shapes\Rectangle.cs" />
-    <Compile Include="Main Classes\Shape.cs" />
+    <Compile Include="Shapes\Shape.cs" />
     <Compile Include="Shapes\Sqaure.cs" />
     <Compile Include="Shapes\Triangle.cs" />
     <EmbeddedResource Include="Forms\FormMain.resx">

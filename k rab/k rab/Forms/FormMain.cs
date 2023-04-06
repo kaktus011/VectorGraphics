@@ -16,8 +16,8 @@ namespace k_rab
     {
         private readonly List<IDrawable> _shapes = new List<IDrawable>();
 
-        private Stack<Shape> _UndoStack = new Stack<Shape>();
-        private Stack<Shape> _RedoStack = new Stack<Shape>();
+        private readonly Stack<Shape> undoStack = new Stack<Shape>();
+        private readonly Stack<Shape> redoStack = new Stack<Shape>();
 
         private readonly SolidBrush _brush = new SolidBrush(Color.Black);
         private readonly Pen _pen = new Pen(Color.Pink, 5);
@@ -61,7 +61,7 @@ namespace k_rab
         {
             foreach (var shape in _shapes)
                 shape.Draw(e.Graphics, _brush, _pen);
-            Area();
+            DisplaySelectedShapeArea();
         }
 
         private void doubleBufferedPanel1_MouseDown(object sender, MouseEventArgs e)
@@ -83,7 +83,7 @@ namespace k_rab
                     _selectedShape.IsSelected = true;
                     _shapes[i] = _shapes[_shapes.Count - 1];
                     _shapes[_shapes.Count - 1] = _selectedShape;
-                    //_UndoStack.Push(_selectedShape);//ne trqbva da e tuk
+                    undoStack.Push(_selectedShape);//ne trqbva da e tuk
 
                     break;
                 }
@@ -137,7 +137,7 @@ namespace k_rab
         {
             if(_shapeForEditing == null) return;
 
-            _UndoStack.Push(_shapeForEditing);
+            undoStack.Push(_shapeForEditing);
             _shapes.Remove(_shapeForEditing);
             doubleBufferedPanel1.Refresh();
         }
@@ -147,7 +147,7 @@ namespace k_rab
             ColorDialog cd = new ColorDialog();
             if (cd.ShowDialog() == DialogResult.OK && _shapeForEditing != null)
             {
-                _UndoStack.Push(_shapeForEditing.GetCopy());
+                undoStack.Push(_shapeForEditing.GetCopy());
                 _shapeForEditing.Color = cd.Color;
                 doubleBufferedPanel1.Refresh();
             }
@@ -158,7 +158,7 @@ namespace k_rab
             ColorDialog cd = new ColorDialog();
             if (cd.ShowDialog() == DialogResult.OK && _shapeForEditing != null)
             {
-                _UndoStack.Push(_shapeForEditing.GetCopy());
+                undoStack.Push(_shapeForEditing.GetCopy());
                 _shapeForEditing.BorderColor = cd.Color;
                 doubleBufferedPanel1.Refresh();
             }
@@ -168,7 +168,7 @@ namespace k_rab
         {
             if (_shapeForEditing == null) return;
 
-            _UndoStack.Push(_shapeForEditing.GetCopy());
+            undoStack.Push(_shapeForEditing.GetCopy());
             _shapeForEditing.EditShape();
             _shapes[_shapes.Count - 1] = _shapeForEditing;
             doubleBufferedPanel1.Refresh();
@@ -183,7 +183,7 @@ namespace k_rab
             doubleBufferedPanel1.Refresh();
         }
 
-        private void Area()
+        private void DisplaySelectedShapeArea()
         {
             if (_selectedShape == null)
                 AreaLabel.Text = "No shape selected";
@@ -193,22 +193,22 @@ namespace k_rab
 
         private void UndoBtn_Click(object sender, EventArgs e)
         {
-            if(_UndoStack.Count == 0) return;
+            if(undoStack.Count == 0) return;
 
-            Shape UndoneShape = _UndoStack.Pop();
+            Shape UndoneShape = undoStack.Pop();
             if (_shapes.Count > 0) _shapes.Remove(_shapeForEditing);
             _shapes.Add(UndoneShape);
-            _RedoStack.Push(UndoneShape);
+            redoStack.Push(UndoneShape);
             doubleBufferedPanel1.Refresh();
         }
 
         private void RedoBtn_Click(object sender, EventArgs e)
         {
-            if(_RedoStack.Count == 0) return;
+            if(redoStack.Count == 0) return;
 
-            Shape RedoneShape = _RedoStack.Pop();
+            Shape RedoneShape = redoStack.Pop();
             _shapes.Remove(RedoneShape);
-            _UndoStack.Push(RedoneShape);
+            undoStack.Push(RedoneShape);
             doubleBufferedPanel1.Refresh();
         }
     }
