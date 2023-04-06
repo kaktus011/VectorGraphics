@@ -51,5 +51,8 @@ namespace k_rab
             base.IsPointInside(point) &&
             point.X <= X + _width &&
             point.Y <= Y + _height;
+
+        public override Shape GetCopy() =>
+            new Rectangle(X, Y, _width, _height);
     }
 }

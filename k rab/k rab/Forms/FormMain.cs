@@ -15,6 +15,10 @@ namespace k_rab
     public partial class FormMain : Form
     {
         private readonly List<IDrawable> _shapes = new List<IDrawable>();
+
+        private Stack<Shape> _UndoStack = new Stack<Shape>();
+        private Stack<Shape> _RedoStack = new Stack<Shape>();
+
         private readonly SolidBrush _brush = new SolidBrush(Color.Black);
         private readonly Pen _pen = new Pen(Color.Pink, 5);
         private Shape _selectedShape;
@@ -24,11 +28,11 @@ namespace k_rab
         public FormMain()
         {
             InitializeComponent();
-            var shapes = typeof(Shape).Assembly
-                .GetTypes()
-                .Where(f => f.IsSubclassOf(typeof(Shape)))
-                .ToArray();
-            var constructorNames = shapes.Select(f => f.Name).ToArray();
+            //var shapes = typeof(Shape).Assembly
+            //    .GetTypes()
+            //    .Where(f => f.IsSubclassOf(typeof(Shape)))
+            //    .ToArray();
+            //var constructorNames = shapes.Select(f => f.Name).ToArray();
 
             //var buttons = new List<Button>();
             //foreach (var name in constructorNames)
@@ -79,7 +83,8 @@ namespace k_rab
                     _selectedShape.IsSelected = true;
                     _shapes[i] = _shapes[_shapes.Count - 1];
                     _shapes[_shapes.Count - 1] = _selectedShape;
-                    
+                    //_UndoStack.Push(_selectedShape);//ne trqbva da e tuk
+
                     break;
                 }
             }
@@ -88,7 +93,7 @@ namespace k_rab
         private void doubleBufferedPanel1_MouseMove(object sender, MouseEventArgs e)
         {
             base.OnMouseMove(e);
-
+            
             MoveSelected(e.Location);
         }
 
@@ -97,6 +102,8 @@ namespace k_rab
             base.OnMouseUp(e);
 
             if (_selectedShape == null) return;
+
+            
             MoveSelected(e.Location);
             _selectedShape.IsSelected = false;
             _selectedShape = null;
@@ -125,10 +132,12 @@ namespace k_rab
             _shapes.Add(new Rectangle(Shape_Info_Input.FromOneSide(false)));
             doubleBufferedPanel1.Refresh();
         }
+
         private void DeleteShapeBtn_Click(object sender, EventArgs e)
         {
             if(_shapeForEditing == null) return;
 
+            _UndoStack.Push(_shapeForEditing);
             _shapes.Remove(_shapeForEditing);
             doubleBufferedPanel1.Refresh();
         }
@@ -138,6 +147,7 @@ namespace k_rab
             ColorDialog cd = new ColorDialog();
             if (cd.ShowDialog() == DialogResult.OK && _shapeForEditing != null)
             {
+                _UndoStack.Push(_shapeForEditing.GetCopy());
                 _shapeForEditing.Color = cd.Color;
                 doubleBufferedPanel1.Refresh();
             }
@@ -148,6 +158,7 @@ namespace k_rab
             ColorDialog cd = new ColorDialog();
             if (cd.ShowDialog() == DialogResult.OK && _shapeForEditing != null)
             {
+                _UndoStack.Push(_shapeForEditing.GetCopy());
                 _shapeForEditing.BorderColor = cd.Color;
                 doubleBufferedPanel1.Refresh();
             }
@@ -157,6 +168,7 @@ namespace k_rab
         {
             if (_shapeForEditing == null) return;
 
+            _UndoStack.Push(_shapeForEditing.GetCopy());
             _shapeForEditing.EditShape();
             _shapes[_shapes.Count - 1] = _shapeForEditing;
             doubleBufferedPanel1.Refresh();
@@ -165,6 +177,7 @@ namespace k_rab
         private void MoveSelected(Point point)
         {
             if (_selectedShape == null) return;
+
             _selectedShape.X = point.X - _offset.X;
             _selectedShape.Y = point.Y - _offset.Y;
             doubleBufferedPanel1.Refresh();
@@ -177,12 +190,30 @@ namespace k_rab
             else
                 AreaLabel.Text = _selectedShape.GetArea().ToString();
         }
+
+        private void UndoBtn_Click(object sender, EventArgs e)
+        {
+            if(_UndoStack.Count == 0) return;
+
+            Shape UndoneShape = _UndoStack.Pop();
+            if (_shapes.Count > 0) _shapes.Remove(_shapeForEditing);
+            _shapes.Add(UndoneShape);
+            _RedoStack.Push(UndoneShape);
+            doubleBufferedPanel1.Refresh();
+        }
+
+        private void RedoBtn_Click(object sender, EventArgs e)
+        {
+            if(_RedoStack.Count == 0) return;
+
+            Shape RedoneShape = _RedoStack.Pop();
+            _shapes.Remove(RedoneShape);
+            _UndoStack.Push(RedoneShape);
+            doubleBufferedPanel1.Refresh();
+        }
     }
     public class DoubleBufferedPanel : Panel
     {
-        public DoubleBufferedPanel()
-        {
-            this.DoubleBuffered = true;
-        }
+        public DoubleBufferedPanel() => DoubleBuffered = true;
     }
 }

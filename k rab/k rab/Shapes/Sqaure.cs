@@ -49,5 +49,7 @@ namespace k_rab
             point.X <= X + sideLength &&
             point.Y <= Y + sideLength;
 
+        public override Shape GetCopy() =>
+            new Square(X, Y, sideLength);
     }
 }

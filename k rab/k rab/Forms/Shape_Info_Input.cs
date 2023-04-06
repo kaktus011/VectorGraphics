@@ -51,19 +51,19 @@ namespace k_rab.Forms
         private void Shape_Info_Input_Load_1(object sender, EventArgs e)
         {
             xValLabel.Visible = !_isEditing;
-            xValBox.Visible = !_isEditing;
+            xValBox.Visible = xValLabel.Visible;
 
             yValLabel.Visible = !_isEditing;
-            yValBox.Visible = !_isEditing;
+            yValBox.Visible = yValLabel.Visible;
 
             SideLengthLabel.Visible = _isOneSided;
-            SideLengthBox.Visible = _isOneSided;
+            SideLengthBox.Visible = SideLengthLabel.Visible;
 
             widthValLabel.Visible = !_isOneSided;
-            WidthBox.Visible = !_isOneSided;
+            WidthBox.Visible = widthValLabel.Visible;
 
             heightValLabel.Visible = !_isOneSided;
-            HeightBox.Visible = !_isOneSided;
+            HeightBox.Visible = heightValLabel.Visible;
         }
 
         private void Submit_InfoBtn_Click(object sender, EventArgs e)

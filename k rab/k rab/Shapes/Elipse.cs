@@ -12,7 +12,6 @@ namespace k_rab
     {
         private int _width;
         private int _height;
-
         public Elipse(Shape_Info_Input info) : base(info)
         {
             _width = info.ShapeWidth;
@@ -72,6 +71,7 @@ namespace k_rab
                 return d <= 1;
             }
         }
-
+        public override Shape GetCopy() =>
+            new Elipse(X, Y, _width, _height);
     }
 }

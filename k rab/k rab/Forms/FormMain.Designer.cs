@@ -40,12 +40,14 @@
             this.BorderColorBtn = new System.Windows.Forms.Button();
             this.doubleBufferedPanel1 = new k_rab.DoubleBufferedPanel();
             this.EditShapeBtn = new System.Windows.Forms.Button();
+            this.UndoBtn = new System.Windows.Forms.Button();
+            this.RedoBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ElipseBtn
             // 
             this.ElipseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ElipseBtn.Location = new System.Drawing.Point(160, 12);
+            this.ElipseBtn.Location = new System.Drawing.Point(319, 12);
             this.ElipseBtn.Name = "ElipseBtn";
             this.ElipseBtn.Size = new System.Drawing.Size(193, 67);
             this.ElipseBtn.TabIndex = 0;
@@ -56,7 +58,7 @@
             // TriangleBtn
             // 
             this.TriangleBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TriangleBtn.Location = new System.Drawing.Point(423, 12);
+            this.TriangleBtn.Location = new System.Drawing.Point(518, 12);
             this.TriangleBtn.Name = "TriangleBtn";
             this.TriangleBtn.Size = new System.Drawing.Size(193, 67);
             this.TriangleBtn.TabIndex = 1;
@@ -67,7 +69,7 @@
             // SquareBtn
             // 
             this.SquareBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SquareBtn.Location = new System.Drawing.Point(679, 12);
+            this.SquareBtn.Location = new System.Drawing.Point(717, 12);
             this.SquareBtn.Name = "SquareBtn";
             this.SquareBtn.Size = new System.Drawing.Size(193, 67);
             this.SquareBtn.TabIndex = 2;
@@ -78,7 +80,7 @@
             // RectangleBtn
             // 
             this.RectangleBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RectangleBtn.Location = new System.Drawing.Point(929, 12);
+            this.RectangleBtn.Location = new System.Drawing.Point(916, 12);
             this.RectangleBtn.Name = "RectangleBtn";
             this.RectangleBtn.Size = new System.Drawing.Size(193, 67);
             this.RectangleBtn.TabIndex = 3;
@@ -171,12 +173,36 @@
             this.EditShapeBtn.UseVisualStyleBackColor = true;
             this.EditShapeBtn.Click += new System.EventHandler(this.EditShapeBtn_Click);
             // 
+            // UndoBtn
+            // 
+            this.UndoBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UndoBtn.Location = new System.Drawing.Point(19, 12);
+            this.UndoBtn.Name = "UndoBtn";
+            this.UndoBtn.Size = new System.Drawing.Size(111, 67);
+            this.UndoBtn.TabIndex = 13;
+            this.UndoBtn.Text = "Undo";
+            this.UndoBtn.UseVisualStyleBackColor = true;
+            this.UndoBtn.Click += new System.EventHandler(this.UndoBtn_Click);
+            // 
+            // RedoBtn
+            // 
+            this.RedoBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RedoBtn.Location = new System.Drawing.Point(136, 12);
+            this.RedoBtn.Name = "RedoBtn";
+            this.RedoBtn.Size = new System.Drawing.Size(115, 67);
+            this.RedoBtn.TabIndex = 14;
+            this.RedoBtn.Text = "Redo";
+            this.RedoBtn.UseVisualStyleBackColor = true;
+            this.RedoBtn.Click += new System.EventHandler(this.RedoBtn_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1368, 1012);
+            this.Controls.Add(this.RedoBtn);
+            this.Controls.Add(this.UndoBtn);
             this.Controls.Add(this.EditShapeBtn);
             this.Controls.Add(this.BorderColorBtn);
             this.Controls.Add(this.label1);
@@ -210,6 +236,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button BorderColorBtn;
         private System.Windows.Forms.Button EditShapeBtn;
+        private System.Windows.Forms.Button UndoBtn;
+        private System.Windows.Forms.Button RedoBtn;
     }
 }
 
