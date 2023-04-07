@@ -84,6 +84,10 @@ namespace k_rab
                     _shapes[i] = _shapes[_shapes.Count - 1];
                     _shapes[_shapes.Count - 1] = _selectedShape;
                     undoStack.Push(_selectedShape.GetCopy());
+                    if (redoStack.Count > 0)
+                    {
+                        undoStack.Push(redoStack.Pop());
+                    }
 
                     break;
                 }
@@ -137,6 +141,8 @@ namespace k_rab
             if(_shapeForEditing == null) return;
 
             undoStack.Push(_shapeForEditing);
+            if (redoStack.Count > 0)
+                undoStack.Push(redoStack.Pop());
             _shapes.Remove(_shapeForEditing);
             doubleBufferedPanel1.Refresh();
         }
@@ -147,6 +153,8 @@ namespace k_rab
             if (cd.ShowDialog() == DialogResult.OK && _shapeForEditing != null)
             {
                 undoStack.Push(_shapeForEditing.GetCopy());
+                if (redoStack.Count > 0)
+                    undoStack.Push(redoStack.Pop());
                 _shapeForEditing.Color = cd.Color;
                 doubleBufferedPanel1.Refresh();
             }
@@ -158,6 +166,8 @@ namespace k_rab
             if (cd.ShowDialog() == DialogResult.OK && _shapeForEditing != null)
             {
                 undoStack.Push(_shapeForEditing.GetCopy());
+                if (redoStack.Count > 0)
+                    undoStack.Push(redoStack.Pop());
                 _shapeForEditing.BorderColor = cd.Color;
                 doubleBufferedPanel1.Refresh();
             }
@@ -168,6 +178,8 @@ namespace k_rab
             if (_shapeForEditing == null) return;
 
             undoStack.Push(_shapeForEditing.GetCopy());
+            if (redoStack.Count > 0)
+                undoStack.Push(redoStack.Pop());
             _shapeForEditing.EditShape();
             _shapes[_shapes.Count - 1] = _shapeForEditing;
             doubleBufferedPanel1.Refresh();
@@ -194,11 +206,10 @@ namespace k_rab
         {
             if(undoStack.Count == 0) return;
 
-            Shape UndoneShape = undoStack.Pop();
             _shapes.Remove(_shapeForEditing);
-            _shapes.Add(UndoneShape);
             redoStack.Push(_shapeForEditing.GetCopy());
-            _shapeForEditing = UndoneShape;
+            _shapeForEditing = undoStack.Pop();
+            _shapes.Add(_shapeForEditing);
             doubleBufferedPanel1.Refresh();
         }
 
@@ -206,10 +217,10 @@ namespace k_rab
         {
             if (redoStack.Count == 0) return;
 
-            Shape RedoneShape = redoStack.Pop();
             _shapes.Remove(_shapeForEditing);
-            _shapes.Add(RedoneShape);
-            //undoStack.Push(RedoneShape.GetCopy());
+            _shapeForEditing = redoStack.Pop();
+            _shapes.Add(_shapeForEditing);
+            undoStack.Push(_shapeForEditing.GetCopy());
             doubleBufferedPanel1.Refresh();
         }
     }
