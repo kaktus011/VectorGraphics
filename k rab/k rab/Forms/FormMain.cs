@@ -83,7 +83,7 @@ namespace k_rab
                     _selectedShape.IsSelected = true;
                     _shapes[i] = _shapes[_shapes.Count - 1];
                     _shapes[_shapes.Count - 1] = _selectedShape;
-                    undoStack.Push(_selectedShape.GetCopy());//ne trqbva da e tuk
+                    undoStack.Push(_selectedShape.GetCopy());
 
                     break;
                 }
@@ -197,7 +197,8 @@ namespace k_rab
             Shape UndoneShape = undoStack.Pop();
             _shapes.Remove(_shapeForEditing);
             _shapes.Add(UndoneShape);
-            redoStack.Push(UndoneShape.GetCopy());
+            redoStack.Push(_shapeForEditing.GetCopy());
+            _shapeForEditing = UndoneShape;
             doubleBufferedPanel1.Refresh();
         }
 
@@ -206,7 +207,8 @@ namespace k_rab
             if (redoStack.Count == 0) return;
 
             Shape RedoneShape = redoStack.Pop();
-            _shapes.Remove(RedoneShape);
+            _shapes.Remove(_shapeForEditing);
+            _shapes.Add(RedoneShape);
             //undoStack.Push(RedoneShape.GetCopy());
             doubleBufferedPanel1.Refresh();
         }
