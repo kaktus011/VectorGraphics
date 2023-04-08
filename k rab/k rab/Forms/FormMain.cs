@@ -263,7 +263,7 @@ namespace k_rab
 
         private void LoadBtn_Click(object sender, EventArgs e)
         {
-            using (SaveFileDialog openFileDialog = new SaveFileDialog())
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.Filter = "Shape Files (*.shape)|*.shape|All Files (*.*)|*.*";
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
