@@ -27,10 +27,7 @@ namespace k_rab
             Color = color;
             BorderColor = borderColor;
         }
-        public override float GetArea()
-        {
-            return (float)(Math.PI * _width * _height);
-        }
+        public override float GetArea() => (float)(Math.PI * _width * _height);
 
         public override void Draw(Graphics g, SolidBrush brush, Pen pen)
         {

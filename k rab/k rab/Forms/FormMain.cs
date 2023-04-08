@@ -215,7 +215,7 @@ namespace k_rab
             if (_selectedShape == null)
                 AreaLabel.Text = "No shape selected";
             else
-                AreaLabel.Text = _selectedShape.GetArea().ToString();
+                AreaLabel.Text = _selectedShape.GetArea().ToString() + " cm";
         }
 
         private void UndoBtn_Click(object sender, EventArgs e)

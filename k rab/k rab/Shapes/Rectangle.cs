@@ -29,10 +29,7 @@ namespace k_rab
             BorderColor = borderColor;
         }
 
-        public override float GetArea()
-        {
-           return _width * _height;
-        }
+        public override float GetArea() => _width * _height;
 
         public override void Draw(Graphics g, SolidBrush brush, Pen pen)
         {
