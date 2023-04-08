@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 namespace k_rab
 {
+    [Serializable]
     internal class Triangle : Shape
     {
         private int sideLength;
@@ -19,9 +20,11 @@ namespace k_rab
         {
             sideLength = info.ShapeSide;
         }
-        public Triangle(int x, int y, int size): base(x, y)
+        public Triangle(int x, int y, int size, Color color, Color borderColor): base(x, y)
         {
             sideLength = size;
+            Color = color;
+            BorderColor = borderColor;
         }
 
         public override float GetArea()
@@ -66,6 +69,6 @@ namespace k_rab
                       x3 * (y1 - y2)) / 2.0);
 
         public override Shape GetCopy() =>
-            new Triangle(X, Y, sideLength);
+            new Triangle(X, Y, sideLength, Color, BorderColor);
     }
 }

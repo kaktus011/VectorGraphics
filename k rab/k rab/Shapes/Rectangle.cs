@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace k_rab
 {
+    [Serializable]
     internal class Rectangle : Shape
     {
         private int _width;
@@ -19,10 +20,13 @@ namespace k_rab
             _height = info.ShapeHeight;
         }
 
-        public Rectangle(int x, int y, int width, int height) : base(x, y)
+        public Rectangle(int x, int y, int width, int height,
+                        Color color, Color borderColor) : base(x, y)
         {
             _width = width;
             _height = height;
+            Color = color;
+            BorderColor = borderColor;
         }
 
         public override float GetArea()
@@ -53,6 +57,6 @@ namespace k_rab
             point.Y <= Y + _height;
 
         public override Shape GetCopy() =>
-            new Rectangle(X, Y, _width, _height);
+            new Rectangle(X, Y, _width, _height, Color, BorderColor);
     }
 }

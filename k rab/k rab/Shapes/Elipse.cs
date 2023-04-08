@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace k_rab
 {
+    [Serializable]
     internal class Elipse : Shape
     {
         private int _width;
@@ -18,10 +19,13 @@ namespace k_rab
             _height = info.ShapeHeight;
         }
 
-        public Elipse(int x, int y, int width, int height) : base(x, y)
+        public Elipse(int x, int y, int width, int height,
+                      Color color, Color borderColor) : base(x, y)
         {
             _width = width;
             _height = height;
+            Color = color;
+            BorderColor = borderColor;
         }
         public override float GetArea()
         {
@@ -72,6 +76,6 @@ namespace k_rab
             }
         }
         public override Shape GetCopy() =>
-            new Elipse(X, Y, _width, _height);
+            new Elipse(X, Y, _width, _height, Color, BorderColor);
     }
 }

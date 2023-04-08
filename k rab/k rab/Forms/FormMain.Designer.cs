@@ -42,6 +42,8 @@
             this.UndoBtn = new System.Windows.Forms.Button();
             this.RedoBtn = new System.Windows.Forms.Button();
             this.doubleBufferedPanel1 = new k_rab.DoubleBufferedPanel();
+            this.SaveBtn = new System.Windows.Forms.Button();
+            this.LoadBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ElipseBtn
@@ -152,10 +154,10 @@
             // 
             // EditShapeBtn
             // 
-            this.EditShapeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EditShapeBtn.Location = new System.Drawing.Point(350, 825);
+            this.EditShapeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditShapeBtn.Location = new System.Drawing.Point(341, 827);
             this.EditShapeBtn.Name = "EditShapeBtn";
-            this.EditShapeBtn.Size = new System.Drawing.Size(266, 63);
+            this.EditShapeBtn.Size = new System.Drawing.Size(282, 63);
             this.EditShapeBtn.TabIndex = 12;
             this.EditShapeBtn.Text = "Edit selected shape";
             this.EditShapeBtn.UseVisualStyleBackColor = true;
@@ -195,12 +197,36 @@
             this.doubleBufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.doubleBufferedPanel1_MouseMove);
             this.doubleBufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.doubleBufferedPanel1_MouseUp);
             // 
+            // SaveBtn
+            // 
+            this.SaveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveBtn.Location = new System.Drawing.Point(717, 879);
+            this.SaveBtn.Name = "SaveBtn";
+            this.SaveBtn.Size = new System.Drawing.Size(193, 69);
+            this.SaveBtn.TabIndex = 15;
+            this.SaveBtn.Text = "Save to:";
+            this.SaveBtn.UseVisualStyleBackColor = true;
+            this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
+            // 
+            // LoadBtn
+            // 
+            this.LoadBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoadBtn.Location = new System.Drawing.Point(916, 879);
+            this.LoadBtn.Name = "LoadBtn";
+            this.LoadBtn.Size = new System.Drawing.Size(193, 69);
+            this.LoadBtn.TabIndex = 16;
+            this.LoadBtn.Text = "Load from:";
+            this.LoadBtn.UseVisualStyleBackColor = true;
+            this.LoadBtn.Click += new System.EventHandler(this.LoadBtn_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1368, 1012);
+            this.Controls.Add(this.LoadBtn);
+            this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.RedoBtn);
             this.Controls.Add(this.UndoBtn);
             this.Controls.Add(this.EditShapeBtn);
@@ -238,6 +264,8 @@
         private System.Windows.Forms.Button EditShapeBtn;
         private System.Windows.Forms.Button UndoBtn;
         private System.Windows.Forms.Button RedoBtn;
+        private System.Windows.Forms.Button SaveBtn;
+        private System.Windows.Forms.Button LoadBtn;
     }
 }
 

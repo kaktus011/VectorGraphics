@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 namespace k_rab
 {
+    [Serializable]
     internal class Square : Shape
     {
         private int sideLength;
@@ -18,9 +19,11 @@ namespace k_rab
             sideLength = info.ShapeSide;
         }
 
-        public Square(int x, int y, int side) : base(x, y)
+        public Square(int x, int y, int side, Color color, Color borderColor) : base(x, y)
         {
             sideLength = side;
+            Color = color;
+            BorderColor = borderColor;
         }
 
         public override float GetArea()
@@ -50,6 +53,6 @@ namespace k_rab
             point.Y <= Y + sideLength;
 
         public override Shape GetCopy() =>
-            new Square(X, Y, sideLength);
+            new Square(X, Y, sideLength, Color, BorderColor);
     }
 }

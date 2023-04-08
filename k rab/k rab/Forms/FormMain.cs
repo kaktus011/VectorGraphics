@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace k_rab
 {
@@ -86,7 +89,8 @@ namespace k_rab
                     undoStack.Push(_selectedShape.GetCopy());
                     if (redoStack.Count > 0)
                     {
-                        undoStack.Push(redoStack.Pop());
+                        //undoStack.Push(redoStack.Pop());
+                        redoStack.Clear();
                     }
 
                     break;
@@ -142,7 +146,10 @@ namespace k_rab
 
             undoStack.Push(_shapeForEditing);
             if (redoStack.Count > 0)
-                undoStack.Push(redoStack.Pop());
+            {
+                //undoStack.Push(redoStack.Pop());
+                redoStack.Clear();
+            }
             _shapes.Remove(_shapeForEditing);
             doubleBufferedPanel1.Refresh();
         }
@@ -154,7 +161,10 @@ namespace k_rab
             {
                 undoStack.Push(_shapeForEditing.GetCopy());
                 if (redoStack.Count > 0)
-                    undoStack.Push(redoStack.Pop());
+                {
+                    //undoStack.Push(redoStack.Pop());
+                    redoStack.Clear();
+                }
                 _shapeForEditing.Color = cd.Color;
                 doubleBufferedPanel1.Refresh();
             }
@@ -167,7 +177,10 @@ namespace k_rab
             {
                 undoStack.Push(_shapeForEditing.GetCopy());
                 if (redoStack.Count > 0)
-                    undoStack.Push(redoStack.Pop());
+                {
+                    //undoStack.Push(redoStack.Pop());
+                    redoStack.Clear();
+                }
                 _shapeForEditing.BorderColor = cd.Color;
                 doubleBufferedPanel1.Refresh();
             }
@@ -179,7 +192,10 @@ namespace k_rab
 
             undoStack.Push(_shapeForEditing.GetCopy());
             if (redoStack.Count > 0)
-                undoStack.Push(redoStack.Pop());
+            {
+                //undoStack.Push(redoStack.Pop());
+                redoStack.Clear();
+            }
             _shapeForEditing.EditShape();
             _shapes[_shapes.Count - 1] = _shapeForEditing;
             doubleBufferedPanel1.Refresh();
@@ -223,9 +239,55 @@ namespace k_rab
             undoStack.Push(_shapeForEditing.GetCopy());
             doubleBufferedPanel1.Refresh();
         }
+
+        private void SaveBtn_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Shape Files (*.shape)|*.shape|All Files (*.*)|*.*";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    List<Shape> shapeInfos = new List<Shape>();
+
+                    foreach(Shape shape in _shapes)
+                        shapeInfos.Add(shape.GetCopy());
+
+                    using (FileStream fileStream = new FileStream(saveFileDialog.FileName, FileMode.Create))
+                    {
+                        BinaryFormatter binaryFormatter = new BinaryFormatter();
+                        binaryFormatter.Serialize(fileStream, shapeInfos);
+                    }
+                }
+            }
+        }
+
+        private void LoadBtn_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog openFileDialog = new SaveFileDialog())
+            {
+                openFileDialog.Filter = "Shape Files (*.shape)|*.shape|All Files (*.*)|*.*";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    _shapes.Clear();
+                    using (FileStream fileStream = new FileStream(openFileDialog.FileName, FileMode.Open))
+                    {
+                        BinaryFormatter binaryFormatter = new BinaryFormatter();
+                        List<Shape> shapeInfos = (List<Shape>)binaryFormatter.Deserialize(fileStream);
+
+                        foreach(Shape shape in shapeInfos)
+                        {
+                            _shapes.Add(shape);
+                        }
+                        shapeInfos.Clear();
+                    }
+                }
+            }
+            doubleBufferedPanel1.Refresh();
+        }
     }
     public class DoubleBufferedPanel : Panel
     {
         public DoubleBufferedPanel() => DoubleBuffered = true;
     }
+
 }

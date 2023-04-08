@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\SaveLoadFiles.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\SaveLoadFiles.Designer.cs">
-      <DependentUpon>SaveLoadFiles.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Shape_Info_Input.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,9 +68,6 @@
     <Compile Include="Shapes\Triangle.cs" />
     <EmbeddedResource Include="Forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SaveLoadFiles.resx">
-      <DependentUpon>SaveLoadFiles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Shape_Info_Input.resx">
       <DependentUpon>Shape_Info_Input.cs</DependentUpon>

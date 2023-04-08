@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace k_rab
 {
+    [Serializable]
     abstract class Shape : IDrawable
     {
         public Color Color { get; set; } = Color.Black;
