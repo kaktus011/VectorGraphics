@@ -87,11 +87,7 @@ namespace k_rab
                     _shapes[i] = _shapes[_shapes.Count - 1];
                     _shapes[_shapes.Count - 1] = _selectedShape;
                     undoStack.Push(_selectedShape.GetCopy());
-                    if (redoStack.Count > 0)
-                    {
-                        //undoStack.Push(redoStack.Pop());
-                        redoStack.Clear();
-                    }
+                    redoStack.Clear();
 
                     break;
                 }
@@ -145,11 +141,7 @@ namespace k_rab
             if(_shapeForEditing == null) return;
 
             undoStack.Push(_shapeForEditing);
-            if (redoStack.Count > 0)
-            {
-                //undoStack.Push(redoStack.Pop());
-                redoStack.Clear();
-            }
+            redoStack.Clear();
             _shapes.Remove(_shapeForEditing);
             doubleBufferedPanel1.Refresh();
         }
@@ -160,11 +152,7 @@ namespace k_rab
             if (cd.ShowDialog() == DialogResult.OK && _shapeForEditing != null)
             {
                 undoStack.Push(_shapeForEditing.GetCopy());
-                if (redoStack.Count > 0)
-                {
-                    //undoStack.Push(redoStack.Pop());
-                    redoStack.Clear();
-                }
+                redoStack.Clear();
                 _shapeForEditing.Color = cd.Color;
                 doubleBufferedPanel1.Refresh();
             }
@@ -176,11 +164,7 @@ namespace k_rab
             if (cd.ShowDialog() == DialogResult.OK && _shapeForEditing != null)
             {
                 undoStack.Push(_shapeForEditing.GetCopy());
-                if (redoStack.Count > 0)
-                {
-                    //undoStack.Push(redoStack.Pop());
-                    redoStack.Clear();
-                }
+                redoStack.Clear();
                 _shapeForEditing.BorderColor = cd.Color;
                 doubleBufferedPanel1.Refresh();
             }
@@ -191,11 +175,7 @@ namespace k_rab
             if (_shapeForEditing == null) return;
 
             undoStack.Push(_shapeForEditing.GetCopy());
-            if (redoStack.Count > 0)
-            {
-                //undoStack.Push(redoStack.Pop());
-                redoStack.Clear();
-            }
+            redoStack.Clear();
             _shapeForEditing.EditShape();
             _shapes[_shapes.Count - 1] = _shapeForEditing;
             doubleBufferedPanel1.Refresh();
@@ -252,7 +232,8 @@ namespace k_rab
                     foreach(Shape shape in _shapes)
                         shapeInfos.Add(shape.GetCopy());
 
-                    using (FileStream fileStream = new FileStream(saveFileDialog.FileName, FileMode.Create))
+                    using (FileStream fileStream = new FileStream
+                            (saveFileDialog.FileName, FileMode.Create))
                     {
                         BinaryFormatter binaryFormatter = new BinaryFormatter();
                         binaryFormatter.Serialize(fileStream, shapeInfos);
@@ -269,22 +250,25 @@ namespace k_rab
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     _shapes.Clear();
-                    using (FileStream fileStream = new FileStream(openFileDialog.FileName, FileMode.Open))
+                    using (FileStream fileStream = new FileStream
+                            (openFileDialog.FileName, FileMode.Open))
                     {
                         BinaryFormatter binaryFormatter = new BinaryFormatter();
-                        List<Shape> shapeInfos = (List<Shape>)binaryFormatter.Deserialize(fileStream);
+                        List<Shape> shapeInfos = (List<Shape>)binaryFormatter
+                                                        .Deserialize(fileStream);
 
                         foreach(Shape shape in shapeInfos)
-                        {
                             _shapes.Add(shape);
-                        }
+
                         shapeInfos.Clear();
                     }
                 }
             }
+
             doubleBufferedPanel1.Refresh();
         }
     }
+
     public class DoubleBufferedPanel : Panel
     {
         public DoubleBufferedPanel() => DoubleBuffered = true;
