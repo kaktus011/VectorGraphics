@@ -60,14 +60,14 @@ namespace k_rab
             //l.BringToFront();
         }
 
-        private void doubleBufferedPanel1_Paint(object sender, PaintEventArgs e)
+        private void DoubleBufferedPanel1_Paint(object sender, PaintEventArgs e)
         {
             foreach (var shape in _shapes)
                 shape.Draw(e.Graphics, _brush, _pen);
             DisplaySelectedShapeArea();
         }
 
-        private void doubleBufferedPanel1_MouseDown(object sender, MouseEventArgs e)
+        private void DoubleBufferedPanel1_MouseDown(object sender, MouseEventArgs e)
         {
             base.OnMouseDown(e);
             if (e.Button == MouseButtons.Left)
@@ -94,14 +94,14 @@ namespace k_rab
             }
         }
 
-        private void doubleBufferedPanel1_MouseMove(object sender, MouseEventArgs e)
+        private void DoubleBufferedPanel1_MouseMove(object sender, MouseEventArgs e)
         {
             base.OnMouseMove(e);
             
             MoveSelected(e.Location);
         }
 
-        private void doubleBufferedPanel1_MouseUp(object sender, MouseEventArgs e)
+        private void DoubleBufferedPanel1_MouseUp(object sender, MouseEventArgs e)
         {
             base.OnMouseUp(e);
 
@@ -115,35 +115,36 @@ namespace k_rab
         private void ElipseBtn_Click(object sender, EventArgs e)
         { 
             _shapes.Add(new Elipse(Shape_Info_Input.FromOneSide(false)));
-            doubleBufferedPanel1.Refresh();
+            DoubleBufferedPanel1.Refresh();
         }
 
         private void TriangleBtn_Click(object sender, EventArgs e)
         {
             _shapes.Add(new Triangle(Shape_Info_Input.FromTwoSides(false)));
-            doubleBufferedPanel1.Refresh();
+            DoubleBufferedPanel1.Refresh();
         }
 
         private void SquareBtn_Click(object sender, EventArgs e)
         {
             _shapes.Add(new Square(Shape_Info_Input.FromTwoSides(false)));
-            doubleBufferedPanel1.Refresh();
+            DoubleBufferedPanel1.Refresh();
         }
 
         private void RectangleBtn_Click(object sender, EventArgs e)
         {
             _shapes.Add(new Rectangle(Shape_Info_Input.FromOneSide(false)));
-            doubleBufferedPanel1.Refresh();
+            DoubleBufferedPanel1.Refresh();
         }
 
         private void DeleteShapeBtn_Click(object sender, EventArgs e)
         {
             if(_shapeForEditing == null) return;
 
-            undoStack.Push(_shapeForEditing);
+            undoStack.Push(_shapeForEditing.GetCopy());
             redoStack.Clear();
             _shapes.Remove(_shapeForEditing);
-            doubleBufferedPanel1.Refresh();
+            //_shapeForEditing = null;
+            DoubleBufferedPanel1.Refresh();
         }
 
         private void ChangeColorBtn_Click(object sender, EventArgs e)
@@ -154,7 +155,7 @@ namespace k_rab
                 undoStack.Push(_shapeForEditing.GetCopy());
                 redoStack.Clear();
                 _shapeForEditing.Color = cd.Color;
-                doubleBufferedPanel1.Refresh();
+                DoubleBufferedPanel1.Refresh();
             }
         }
 
@@ -166,7 +167,7 @@ namespace k_rab
                 undoStack.Push(_shapeForEditing.GetCopy());
                 redoStack.Clear();
                 _shapeForEditing.BorderColor = cd.Color;
-                doubleBufferedPanel1.Refresh();
+                DoubleBufferedPanel1.Refresh();
             }
         }
 
@@ -178,7 +179,7 @@ namespace k_rab
             redoStack.Clear();
             _shapeForEditing.EditShape();
             _shapes[_shapes.Count - 1] = _shapeForEditing;
-            doubleBufferedPanel1.Refresh();
+            DoubleBufferedPanel1.Refresh();
         }
 
         private void MoveSelected(Point point)
@@ -187,7 +188,7 @@ namespace k_rab
 
             _selectedShape.X = point.X - _offset.X;
             _selectedShape.Y = point.Y - _offset.Y;
-            doubleBufferedPanel1.Refresh();
+            DoubleBufferedPanel1.Refresh();
         }
 
         private void DisplaySelectedShapeArea()
@@ -206,7 +207,7 @@ namespace k_rab
             redoStack.Push(_shapeForEditing.GetCopy());
             _shapeForEditing = undoStack.Pop();
             _shapes.Add(_shapeForEditing);
-            doubleBufferedPanel1.Refresh();
+            DoubleBufferedPanel1.Refresh();
         }
 
         private void RedoBtn_Click(object sender, EventArgs e)
@@ -217,7 +218,7 @@ namespace k_rab
             _shapeForEditing = redoStack.Pop();
             _shapes.Add(_shapeForEditing);
             undoStack.Push(_shapeForEditing.GetCopy());
-            doubleBufferedPanel1.Refresh();
+            DoubleBufferedPanel1.Refresh();
         }
 
         private void SaveBtn_Click(object sender, EventArgs e)
@@ -265,7 +266,7 @@ namespace k_rab
                 }
             }
 
-            doubleBufferedPanel1.Refresh();
+            DoubleBufferedPanel1.Refresh();
         }
     }
 

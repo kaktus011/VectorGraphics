@@ -41,7 +41,7 @@
             this.EditShapeBtn = new System.Windows.Forms.Button();
             this.UndoBtn = new System.Windows.Forms.Button();
             this.RedoBtn = new System.Windows.Forms.Button();
-            this.doubleBufferedPanel1 = new k_rab.DoubleBufferedPanel();
+            this.DoubleBufferedPanel1 = new k_rab.DoubleBufferedPanel();
             this.SaveBtn = new System.Windows.Forms.Button();
             this.LoadBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -185,17 +185,17 @@
             this.RedoBtn.UseVisualStyleBackColor = true;
             this.RedoBtn.Click += new System.EventHandler(this.RedoBtn_Click);
             // 
-            // doubleBufferedPanel1
+            // DoubleBufferedPanel1
             // 
-            this.doubleBufferedPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.doubleBufferedPanel1.Location = new System.Drawing.Point(56, 85);
-            this.doubleBufferedPanel1.Name = "doubleBufferedPanel1";
-            this.doubleBufferedPanel1.Size = new System.Drawing.Size(1252, 734);
-            this.doubleBufferedPanel1.TabIndex = 5;
-            this.doubleBufferedPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.doubleBufferedPanel1_Paint);
-            this.doubleBufferedPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.doubleBufferedPanel1_MouseDown);
-            this.doubleBufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.doubleBufferedPanel1_MouseMove);
-            this.doubleBufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.doubleBufferedPanel1_MouseUp);
+            this.DoubleBufferedPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DoubleBufferedPanel1.Location = new System.Drawing.Point(56, 85);
+            this.DoubleBufferedPanel1.Name = "DoubleBufferedPanel1";
+            this.DoubleBufferedPanel1.Size = new System.Drawing.Size(1252, 734);
+            this.DoubleBufferedPanel1.TabIndex = 5;
+            this.DoubleBufferedPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.DoubleBufferedPanel1_Paint);
+            this.DoubleBufferedPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseDown);
+            this.DoubleBufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseMove);
+            this.DoubleBufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseUp);
             // 
             // SaveBtn
             // 
@@ -236,7 +236,7 @@
             this.Controls.Add(this.DeleteShapeBtn);
             this.Controls.Add(this.AreaLabel);
             this.Controls.Add(this.LabelForArea);
-            this.Controls.Add(this.doubleBufferedPanel1);
+            this.Controls.Add(this.DoubleBufferedPanel1);
             this.Controls.Add(this.RectangleBtn);
             this.Controls.Add(this.SquareBtn);
             this.Controls.Add(this.TriangleBtn);
@@ -254,7 +254,7 @@
         private System.Windows.Forms.Button TriangleBtn;
         private System.Windows.Forms.Button SquareBtn;
         private System.Windows.Forms.Button RectangleBtn;
-        private DoubleBufferedPanel doubleBufferedPanel1;
+        private DoubleBufferedPanel DoubleBufferedPanel1;
         private System.Windows.Forms.Label LabelForArea;
         private System.Windows.Forms.Label AreaLabel;
         private System.Windows.Forms.Button DeleteShapeBtn;
