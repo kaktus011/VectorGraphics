@@ -19,6 +19,7 @@ namespace k_rab
         public abstract float GetArea();
         public abstract void Draw(Graphics g, SolidBrush brush, Pen pen);
         public abstract void EditShape();
+        public abstract Shape GetCopy();
         public virtual bool IsPointInside(Point point) =>
             point.X >= X &&
             point.Y >= Y;
@@ -31,6 +32,5 @@ namespace k_rab
             X = x;
             Y = y;
         }
-        public abstract Shape GetCopy();
     }
 }
