@@ -75,9 +75,8 @@ namespace k_rab.Forms
             }
 
             if (_isOneSided)
-            {
                 ShapeSide = int.Parse(SideLengthBox.Text);
-            }
+
             else
             {
                 ShapeHeight = int.Parse(HeightBox.Text);

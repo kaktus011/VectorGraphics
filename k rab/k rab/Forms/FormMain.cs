@@ -224,7 +224,7 @@ namespace k_rab
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
-                saveFileDialog.Filter = "Shape Files (*.shape)|*.shape|All Files (*.*)|*.*";
+                saveFileDialog.Filter = "Shape Files (*.shape)|*.shape";
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     List<Shape> shapeInfos = new List<Shape>();
@@ -246,7 +246,7 @@ namespace k_rab
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.Filter = "Shape Files (*.shape)|*.shape|All Files (*.*)|*.*";
+                openFileDialog.Filter = "Shape Files (*.shape)|*.shape";
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     _shapes.Clear();
