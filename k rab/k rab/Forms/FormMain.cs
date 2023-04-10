@@ -215,6 +215,7 @@ namespace k_rab
         private void RedoBtn_Click(object sender, EventArgs e)
         {
             if (redoStack.Count == 0) return;
+
             if (_deleted)
             {
                 _shapes.Remove(_shapeForEditing);
