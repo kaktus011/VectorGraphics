@@ -27,6 +27,7 @@ namespace k_rab
         private Shape _selectedShape;
         private Shape _shapeForEditing;
         private Point _offset;
+        private bool _deleted;
 
         public FormMain()
         {
@@ -140,6 +141,7 @@ namespace k_rab
         {
             if(_shapeForEditing == null) return;
 
+            _deleted = true;
             undoStack.Push(_shapeForEditing.GetCopy());
             redoStack.Clear();
             _shapes.Remove(_shapeForEditing);
@@ -213,12 +215,20 @@ namespace k_rab
         private void RedoBtn_Click(object sender, EventArgs e)
         {
             if (redoStack.Count == 0) return;
-
-            _shapes.Remove(_shapeForEditing);
-            _shapeForEditing = redoStack.Pop();
-            _shapes.Add(_shapeForEditing);
-            undoStack.Push(_shapeForEditing.GetCopy());
-            DoubleBufferedPanel1.Refresh();
+            if (_deleted)
+            {
+                _shapes.Remove(_shapeForEditing);
+                undoStack.Push(_shapeForEditing.GetCopy());
+                DoubleBufferedPanel1.Refresh();
+            }
+            else
+            {
+                _shapes.Remove(_shapeForEditing);
+                _shapeForEditing = redoStack.Pop();
+                _shapes.Add(_shapeForEditing);
+                undoStack.Push(_shapeForEditing.GetCopy());
+                DoubleBufferedPanel1.Refresh();
+            }
         }
 
         private void SaveBtn_Click(object sender, EventArgs e)
