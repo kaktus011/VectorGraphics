@@ -27,7 +27,7 @@ namespace k_rab
         private Shape _selectedShape;
         private Shape _shapeForEditing;
         private Point _offset;
-        private StateTracker _tracker = new StateTracker();
+        private readonly StateTracker _tracker = new StateTracker();
         private bool _deleted;
 
         public FormMain()
@@ -205,6 +205,7 @@ namespace k_rab
             if(!_tracker.CanUndo()) return;
 
             _shapes.Remove(_shapeForEditing);
+            _tracker.AddToRedo(_shapeForEditing);
             _shapeForEditing = _tracker.Undo();
             _shapes.Add(_shapeForEditing);
 
@@ -236,6 +237,7 @@ namespace k_rab
             else
             {
                 _shapes.Remove(_shapeForEditing);
+                _tracker.AddToUndo(_shapeForEditing);
                 _shapeForEditing = _tracker.Redo();
                 _shapes.Add(_shapeForEditing);
 

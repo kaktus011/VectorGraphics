@@ -11,8 +11,10 @@ namespace k_rab
         private readonly Stack<Shape> undoStack = new Stack<Shape>();
         private readonly Stack<Shape> redoStack = new Stack<Shape>();
 
-        public bool CanUndo() => undoStack.Count > 0;
+        public bool CanUndo() => undoStack.Count > 0; 
+
         public bool CanRedo() => redoStack.Count > 0;
+
         public void AddToUndo(Shape shape)
         {
             if(CanUndo())
@@ -20,29 +22,31 @@ namespace k_rab
 
             undoStack.Push(shape);
         }
+
         public void AddToRedo(Shape shape)
         {
             redoStack.Push(shape);
         }
+
         public Shape Undo()
         {
             if(CanUndo())
             {
                 Shape undone = undoStack.Pop();
-                AddToRedo(undone);
                 return undone;
             }
             return null;
         }
+
         public Shape Redo()
         {
             if(CanRedo())
             {
                 Shape redone = redoStack.Pop();
-                undoStack.Push(redone);
                 return redone;
             }
             return null;
         }
+
     }
 }

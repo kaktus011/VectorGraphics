@@ -41,9 +41,9 @@
             this.EditShapeBtn = new System.Windows.Forms.Button();
             this.UndoBtn = new System.Windows.Forms.Button();
             this.RedoBtn = new System.Windows.Forms.Button();
-            this.DoubleBufferedPanel1 = new k_rab.DoubleBufferedPanel();
             this.SaveBtn = new System.Windows.Forms.Button();
             this.LoadBtn = new System.Windows.Forms.Button();
+            this.DoubleBufferedPanel1 = new k_rab.DoubleBufferedPanel();
             this.SuspendLayout();
             // 
             // ElipseBtn
@@ -185,18 +185,6 @@
             this.RedoBtn.UseVisualStyleBackColor = true;
             this.RedoBtn.Click += new System.EventHandler(this.RedoBtn_Click);
             // 
-            // DoubleBufferedPanel1
-            // 
-            this.DoubleBufferedPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DoubleBufferedPanel1.Location = new System.Drawing.Point(56, 85);
-            this.DoubleBufferedPanel1.Name = "DoubleBufferedPanel1";
-            this.DoubleBufferedPanel1.Size = new System.Drawing.Size(1252, 734);
-            this.DoubleBufferedPanel1.TabIndex = 5;
-            this.DoubleBufferedPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.DoubleBufferedPanel1_Paint);
-            this.DoubleBufferedPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseDown);
-            this.DoubleBufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseMove);
-            this.DoubleBufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseUp);
-            // 
             // SaveBtn
             // 
             this.SaveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -219,12 +207,24 @@
             this.LoadBtn.UseVisualStyleBackColor = true;
             this.LoadBtn.Click += new System.EventHandler(this.LoadBtn_Click);
             // 
+            // DoubleBufferedPanel1
+            // 
+            this.DoubleBufferedPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DoubleBufferedPanel1.Location = new System.Drawing.Point(19, 85);
+            this.DoubleBufferedPanel1.Name = "DoubleBufferedPanel1";
+            this.DoubleBufferedPanel1.Size = new System.Drawing.Size(1291, 734);
+            this.DoubleBufferedPanel1.TabIndex = 5;
+            this.DoubleBufferedPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.DoubleBufferedPanel1_Paint);
+            this.DoubleBufferedPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseDown);
+            this.DoubleBufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseMove);
+            this.DoubleBufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseUp);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1368, 1012);
+            this.ClientSize = new System.Drawing.Size(1322, 1012);
             this.Controls.Add(this.LoadBtn);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.RedoBtn);
