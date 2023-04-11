@@ -88,6 +88,7 @@ namespace k_rab
                     _selectedShape.IsSelected = true;
                     _shapes[i] = _shapes[_shapes.Count - 1];
                     _shapes[_shapes.Count - 1] = _selectedShape;
+
                     _tracker.AddToUndo(_shapeForEditing.GetCopy());
 
                     break;
@@ -204,10 +205,9 @@ namespace k_rab
             if(!_tracker.CanUndo()) return;
 
             _shapes.Remove(_shapeForEditing);
-            //izvikvane na metod za vsichkata logika za Undo funkciq i poluchavane na 
-            //nova figura _shapesForEditingAfterUndo
             _shapeForEditing = _tracker.Undo();
             _shapes.Add(_shapeForEditing);
+
             DoubleBufferedPanel1.Refresh();
 
             //old logic
@@ -226,6 +226,7 @@ namespace k_rab
             {
                 _shapes.Remove( _shapeForEditing);
                 _tracker.AddToUndo(_shapeForEditing);
+
                 DoubleBufferedPanel1.Refresh();
                 //old logic
                 //_shapes.Remove(_shapeForEditing);
@@ -237,6 +238,7 @@ namespace k_rab
                 _shapes.Remove(_shapeForEditing);
                 _shapeForEditing = _tracker.Redo();
                 _shapes.Add(_shapeForEditing);
+
                 DoubleBufferedPanel1.Refresh();
                 //old logic
                 //_shapes.Remove(_shapeForEditing);
@@ -257,7 +259,7 @@ namespace k_rab
                     List<Shape> shapeInfos = new List<Shape>();
 
                     foreach(Shape shape in _shapes)
-                        shapeInfos.Add(shape.GetCopy());
+                        shapeInfos.Add(shape);
 
                     using (FileStream fileStream = new FileStream
                             (saveFileDialog.FileName, FileMode.Create))

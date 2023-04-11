@@ -22,14 +22,14 @@ namespace k_rab
         }
         public void AddToRedo(Shape shape)
         {
-            redoStack.Push(undoStack.Pop());
+            redoStack.Push(shape);
         }
         public Shape Undo()
         {
             if(CanUndo())
             {
                 Shape undone = undoStack.Pop();
-                redoStack.Push(undone.GetCopy());
+                AddToRedo(undone);
                 return undone;
             }
             return null;
@@ -39,7 +39,7 @@ namespace k_rab
             if(CanRedo())
             {
                 Shape redone = redoStack.Pop();
-                undoStack.Push(redone.GetCopy());
+                undoStack.Push(redone);
                 return redone;
             }
             return null;
