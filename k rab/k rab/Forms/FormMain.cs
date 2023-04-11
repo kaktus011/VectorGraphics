@@ -27,7 +27,7 @@ namespace k_rab
         private Shape _selectedShape;
         private Shape _shapeForEditing;
         private Point _offset;
-        private readonly StateTracker _tracker = new StateTracker();
+        private readonly StateTracker _state = new StateTracker();
         private bool _deleted;
 
         public FormMain()
@@ -89,7 +89,7 @@ namespace k_rab
                     _shapes[i] = _shapes[_shapes.Count - 1];
                     _shapes[_shapes.Count - 1] = _selectedShape;
 
-                    _tracker.AddToUndo(_shapeForEditing.GetCopy());
+                    _state.AddNewState(_shapeForEditing.GetCopy());
 
                     break;
                 }
@@ -143,7 +143,7 @@ namespace k_rab
             if(_shapeForEditing == null) return;
 
             _deleted = true;
-            _tracker.AddToUndo(_shapeForEditing.GetCopy());
+            _state.AddNewState(_shapeForEditing.GetCopy());
             _shapes.Remove(_shapeForEditing);
             //_shapeForEditing = null;
             DoubleBufferedPanel1.Refresh();
@@ -154,7 +154,7 @@ namespace k_rab
             ColorDialog cd = new ColorDialog();
             if (cd.ShowDialog() == DialogResult.OK && _shapeForEditing != null)
             {
-                _tracker.AddToUndo(_shapeForEditing.GetCopy());
+                _state.AddNewState(_shapeForEditing.GetCopy());
                 _shapeForEditing.Color = cd.Color;
                 DoubleBufferedPanel1.Refresh();
             }
@@ -165,7 +165,7 @@ namespace k_rab
             ColorDialog cd = new ColorDialog();
             if (cd.ShowDialog() == DialogResult.OK && _shapeForEditing != null)
             {
-                _tracker.AddToUndo(_shapeForEditing.GetCopy());
+                _state.AddNewState(_shapeForEditing.GetCopy());
                 _shapeForEditing.BorderColor = cd.Color;
                 DoubleBufferedPanel1.Refresh();
             }
@@ -175,7 +175,7 @@ namespace k_rab
         {
             if (_shapeForEditing == null) return;
 
-            _tracker.AddToUndo(_shapeForEditing.GetCopy());
+            _state.AddNewState(_shapeForEditing.GetCopy());
             //undoStack.Push(_shapeForEditing.GetCopy());
             //redoStack.Clear();
             _shapeForEditing.EditShape();
@@ -202,11 +202,10 @@ namespace k_rab
 
         private void UndoBtn_Click(object sender, EventArgs e)
         {
-            if(!_tracker.CanUndo()) return;
+            if(!_state.CanUndo()) return;
 
             _shapes.Remove(_shapeForEditing);
-            _tracker.AddToRedo(_shapeForEditing);
-            _shapeForEditing = _tracker.Undo();
+            _shapeForEditing = _state.Undo(_shapeForEditing);
             _shapes.Add(_shapeForEditing);
 
             DoubleBufferedPanel1.Refresh();
@@ -221,12 +220,12 @@ namespace k_rab
 
         private void RedoBtn_Click(object sender, EventArgs e)
         {
-            if (!_tracker.CanRedo()) return;
+            if (!_state.CanRedo()) return;
 
             if (_deleted)
             {
                 _shapes.Remove( _shapeForEditing);
-                _tracker.AddToUndo(_shapeForEditing);
+                _state.AddNewState(_shapeForEditing);
 
                 DoubleBufferedPanel1.Refresh();
                 //old logic
@@ -237,8 +236,8 @@ namespace k_rab
             else
             {
                 _shapes.Remove(_shapeForEditing);
-                _tracker.AddToUndo(_shapeForEditing);
-                _shapeForEditing = _tracker.Redo();
+                _state.AddNewState(_shapeForEditing);
+                _shapeForEditing = _state.Redo();
                 _shapes.Add(_shapeForEditing);
 
                 DoubleBufferedPanel1.Refresh();

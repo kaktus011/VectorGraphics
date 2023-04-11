@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,24 +16,33 @@ namespace k_rab
 
         public bool CanRedo() => redoStack.Count > 0;
 
-        public void AddToUndo(Shape shape)
+        public void AddNewState(Shape shape)
         {
-            if(CanUndo())
+            if (CanUndo())
                 redoStack.Clear();
 
             undoStack.Push(shape);
         }
 
-        public void AddToRedo(Shape shape)
-        {
-            redoStack.Push(shape);
-        }
+        //public void AddToUndo(Shape shape)
+        //{
+        //    if(CanUndo())
+        //        redoStack.Clear();
 
-        public Shape Undo()
+        //    undoStack.Push(shape);
+        //}
+
+        //public void AddToRedo(Shape shape)
+        //{
+        //    redoStack.Push(shape);
+        //}
+
+        public Shape Undo(Shape shape)
         {
             if(CanUndo())
             {
                 Shape undone = undoStack.Pop();
+                redoStack.Push(shape);
                 return undone;
             }
             return null;
