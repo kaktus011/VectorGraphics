@@ -66,6 +66,7 @@
     <Compile Include="Shapes\Shape.cs" />
     <Compile Include="Shapes\Sqaure.cs" />
     <Compile Include="Shapes\Triangle.cs" />
+    <Compile Include="StateTracker.cs" />
     <EmbeddedResource Include="Forms\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
