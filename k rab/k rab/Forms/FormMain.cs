@@ -19,9 +19,6 @@ namespace k_rab
     {
         private readonly List<IDrawable> _shapes = new List<IDrawable>();
 
-        //private readonly Stack<Shape> undoStack = new Stack<Shape>();
-        //private readonly Stack<Shape> redoStack = new Stack<Shape>();
-
         private readonly SolidBrush _brush = new SolidBrush(Color.Black);
         private readonly Pen _pen = new Pen(Color.Pink, 5);
         private Shape _selectedShape;
@@ -145,7 +142,6 @@ namespace k_rab
             _deleted = true;
             _state.AddNewState(_shapeForEditing.GetCopy());
             _shapes.Remove(_shapeForEditing);
-            //_shapeForEditing = null;
             DoubleBufferedPanel1.Refresh();
         }
 
@@ -176,8 +172,6 @@ namespace k_rab
             if (_shapeForEditing == null) return;
 
             _state.AddNewState(_shapeForEditing.GetCopy());
-            //undoStack.Push(_shapeForEditing.GetCopy());
-            //redoStack.Clear();
             _shapeForEditing.EditShape();
             _shapes[_shapes.Count - 1] = _shapeForEditing;
             DoubleBufferedPanel1.Refresh();
@@ -202,36 +196,26 @@ namespace k_rab
 
         private void UndoBtn_Click(object sender, EventArgs e)
         {
-            if(!_state.CanUndo()) return;
+            if(!_state.CanUndo) return;
 
             _shapes.Remove(_shapeForEditing);
             _shapeForEditing = _state.Undo(_shapeForEditing);
             _shapes.Add(_shapeForEditing);
 
             DoubleBufferedPanel1.Refresh();
-
-            //old logic
-            //_shapes.Remove(_shapeForEditing);
-            //redoStack.Push(_shapeForEditing.GetCopy());
-            //_shapeForEditing = undoStack.Pop();
-            //_shapes.Add(_shapeForEditing);
-            //DoubleBufferedPanel1.Refresh();
         }
 
         private void RedoBtn_Click(object sender, EventArgs e)
         {
-            if (!_state.CanRedo()) return;
+            if (!_state.CanRedo) return;
 
             if (_deleted)
             {
                 _shapes.Remove( _shapeForEditing);
                 _state.AddNewState(_shapeForEditing);
+                _deleted = false;
 
                 DoubleBufferedPanel1.Refresh();
-                //old logic
-                //_shapes.Remove(_shapeForEditing);
-                //undoStack.Push(_shapeForEditing.GetCopy());
-                //DoubleBufferedPanel1.Refresh();
             }
             else
             {
@@ -241,12 +225,6 @@ namespace k_rab
                 _shapes.Add(_shapeForEditing);
 
                 DoubleBufferedPanel1.Refresh();
-                //old logic
-                //_shapes.Remove(_shapeForEditing);
-                //_shapeForEditing = redoStack.Pop();
-                //_shapes.Add(_shapeForEditing);
-                //undoStack.Push(_shapeForEditing.GetCopy());
-                //DoubleBufferedPanel1.Refresh();
             }
         }
 
@@ -297,16 +275,6 @@ namespace k_rab
 
             DoubleBufferedPanel1.Refresh();
         }
-        //internal void AddToShapes(Shape shape)
-        //{
-        //    if (shape != null)
-        //        _shapes.Add(shape);
-        //}
-        //internal void RemoveFromShapes(Shape shape)
-        //{
-        //    if (shape != null)
-        //        _shapes.Remove(shape);
-        //}
     }
 
     public class DoubleBufferedPanel : Panel
