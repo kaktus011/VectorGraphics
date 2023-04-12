@@ -78,6 +78,7 @@ namespace k_rab
                         _selectedShape = null;
                         continue;
                     }
+                    //d
 
                     _selectedShape = (Shape)_shapes[i];
                     _shapeForEditing = _selectedShape;
