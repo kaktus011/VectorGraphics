@@ -62,7 +62,7 @@ namespace k_rab
         private void DoubleBufferedPanel1_Paint(object sender, PaintEventArgs e)
         {
             foreach (var shape in _shapes)
-                shape.Draw(e.Graphics, _brush, _pen);
+                shape?.Draw(e.Graphics, _brush, _pen);
             DisplaySelectedShapeArea();
         }
 
