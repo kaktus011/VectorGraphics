@@ -27,11 +27,14 @@ namespace k_rab
         {
             sideLength = info.ShapeSide;
         }
-        public Triangle(int x, int y, int size, Color color, Color borderColor): base(x, y)
+        public Triangle(int x, int y, int size, Color color, Color borderColor,
+                        Stack<Shape> undo, Stack<Shape> redo) : base(x, y)
         {
             sideLength = size;
             Color = color;
             BorderColor = borderColor;
+            undoStack = undo;
+            redoStack = redo;
         }
 
         public override float GetArea() => (float)(sideLength * 1.732 * 0.25);
@@ -74,7 +77,7 @@ namespace k_rab
                       x3 * (y1 - y2)) / 2.0);
 
         public override Shape GetCopy() =>
-            new Triangle(X, Y, sideLength, Color, BorderColor);
+            new Triangle(X, Y, sideLength, Color, BorderColor, undoStack, redoStack);
 
         public override void UndoStackPush(Shape shape) => undoStack.Push(shape);
 

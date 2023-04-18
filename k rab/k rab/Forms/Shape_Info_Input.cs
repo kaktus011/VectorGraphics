@@ -14,7 +14,7 @@ namespace k_rab.Forms
         public int ShapeSide { get; private set; }
         public int ShapeHeight { get; private set; }
         public int ShapeWidth { get; private set; }
-        public bool ForcedExit { get; private set; }
+        public bool ForcedExit { get; private set; } = true;
         
         private Shape_Info_Input(bool isOneSided, bool edit)
         {
@@ -88,11 +88,12 @@ namespace k_rab.Forms
              Close();
         }
 
-        private void Shape_Info_Input_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (DialogResult == DialogResult.Cancel)
-                ForcedExit = true;
-        }
+        //private void Shape_Info_Input_FormClosing(object sender, FormClosingEventArgs e)
+        //{
+        //    if (DialogResult != DialogResult.None) return;
+
+        //    ForcedExit = true;
+        //}
 
     }
 }

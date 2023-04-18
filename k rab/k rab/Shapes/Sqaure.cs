@@ -25,11 +25,14 @@ namespace k_rab
             sideLength = info.ShapeSide;
         }
 
-        public Square(int x, int y, int side, Color color, Color borderColor) : base(x, y)
+        public Square(int x, int y, int side, Color color, Color borderColor,
+                      Stack<Shape> undo, Stack<Shape> redo) : base(x, y)
         {
             sideLength = side;
             Color = color;
             BorderColor = borderColor;
+            undoStack = undo;
+            redoStack = redo;
         }
 
         public override float GetArea() => sideLength * sideLength;
@@ -57,7 +60,7 @@ namespace k_rab
             point.Y <= Y + sideLength;
 
         public override Shape GetCopy() =>
-            new Square(X, Y, sideLength, Color, BorderColor);
+            new Square(X, Y, sideLength, Color, BorderColor, undoStack, redoStack);
 
         public override void UndoStackPush(Shape shape) => undoStack.Push(shape);
 

@@ -27,12 +27,15 @@ namespace k_rab
         }
 
         public Rectangle(int x, int y, int width, int height,
-                        Color color, Color borderColor) : base(x, y)
+                        Color color, Color borderColor, Stack<Shape> undo, Stack<Shape> redo)
+                        : base(x, y)
         {
             _width = width;
             _height = height;
             Color = color;
             BorderColor = borderColor;
+            undoStack = undo;
+            redoStack = redo;
         }
 
         public override float GetArea() => _width * _height;
@@ -63,7 +66,7 @@ namespace k_rab
             point.Y <= Y + _height;
 
         public override Shape GetCopy() =>
-            new Rectangle(X, Y, _width, _height, Color, BorderColor);
+            new Rectangle(X, Y, _width, _height, Color, BorderColor, undoStack, redoStack);
 
         public override void UndoStackPush(Shape shape) => undoStack.Push(shape);
 

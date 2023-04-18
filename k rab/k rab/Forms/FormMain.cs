@@ -218,16 +218,16 @@ namespace k_rab
 
             if (_deleted)
             {
-                _shapes.Remove( _lastSelectedShape);
-                _state.AddNewState(_lastSelectedShape);
-                _deleted = false;
+                //_shapes.Remove( _lastSelectedShape);
+                //_state.AddNewState(_lastSelectedShape);
+                //_deleted = false;
 
                 DoubleBufferedPanel1.Refresh();
             }
+
             else
             {
                 _shapes.Remove(_lastSelectedShape);
-                _state.AddNewState(_lastSelectedShape);
                 _lastSelectedShape = _state.Redo(_lastSelectedShape);
                 _shapes.Add(_lastSelectedShape);
 
