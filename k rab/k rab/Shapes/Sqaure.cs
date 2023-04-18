@@ -12,7 +12,13 @@ namespace k_rab
     [Serializable]
     internal class Square : Shape
     {
+        private readonly Stack<Shape> undoStack = new Stack<Shape>();
+        private readonly Stack<Shape> redoStack = new Stack<Shape>();
+
         private int sideLength;
+
+        public override bool CanUndo => undoStack.Count > 0;
+        public override bool CanRedo => redoStack.Count > 0;
 
         public Square(Shape_Info_Input info) : base(info)
         {
@@ -42,7 +48,8 @@ namespace k_rab
         public override void EditShape()
         {
             Shape_Info_Input info = Shape_Info_Input.FromTwoSides(true);
-            sideLength = info.ShapeSide;
+            if (!info.ForcedExit)
+                sideLength = info.ShapeSide;
         }
         public override bool IsPointInside(Point point) =>
             base.IsPointInside(point) &&
@@ -51,5 +58,15 @@ namespace k_rab
 
         public override Shape GetCopy() =>
             new Square(X, Y, sideLength, Color, BorderColor);
+
+        public override void UndoStackPush(Shape shape) => undoStack.Push(shape);
+
+        public override void RedoStackPush(Shape shape) => redoStack.Push(shape);
+
+        public override Shape UndoStackPop() => undoStack.Pop();
+
+        public override Shape RedoStackPop() => redoStack.Pop();
+
+        public override void RedoClear() => redoStack.Clear();
     }
 }

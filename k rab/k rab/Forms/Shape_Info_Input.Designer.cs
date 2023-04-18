@@ -163,6 +163,7 @@ namespace k_rab.Forms
             this.Controls.Add(this.xValBox);
             this.Name = "Shape_Info_Input";
             this.Text = "Shape Info ";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Shape_Info_Input_FormClosing);
             this.Load += new System.EventHandler(this.Shape_Info_Input_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();

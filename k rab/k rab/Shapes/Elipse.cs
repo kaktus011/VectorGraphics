@@ -5,14 +5,22 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace k_rab
 {
     [Serializable]
     internal class Elipse : Shape
     {
+        private readonly Stack<Shape> undoStack = new Stack<Shape>();
+        private readonly Stack<Shape> redoStack = new Stack<Shape>();
+
         private int _width;
         private int _height;
+
+        public override bool CanUndo => undoStack.Count > 0;
+        public override bool CanRedo => redoStack.Count > 0;
+
         public Elipse(Shape_Info_Input info) : base(info)
         {
             _width = info.ShapeWidth;
@@ -44,8 +52,11 @@ namespace k_rab
         public override void EditShape()
         {
             Shape_Info_Input info = Shape_Info_Input.FromOneSide(true);
-            _width = info.ShapeWidth;
-            _height = info.ShapeHeight;
+            if (!info.ForcedExit)
+            {
+                _width = info.ShapeWidth;
+                _height = info.ShapeHeight;
+            }
         }
         public override bool IsPointInside(Point point)
         {
@@ -74,5 +85,15 @@ namespace k_rab
         }
         public override Shape GetCopy() =>
             new Elipse(X, Y, _width, _height, Color, BorderColor);
+
+        public override void UndoStackPush(Shape shape) => undoStack.Push(shape);
+
+        public override void RedoStackPush(Shape shape) => redoStack.Push(shape);
+
+        public override Shape UndoStackPop() => undoStack.Pop();
+
+        public override Shape RedoStackPop() => redoStack.Pop();
+
+        public override void RedoClear() => redoStack.Clear();
     }
 }

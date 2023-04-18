@@ -12,10 +12,17 @@ namespace k_rab
     [Serializable]
     internal class Triangle : Shape
     {
+        private readonly Stack<Shape> undoStack = new Stack<Shape>();
+        private readonly Stack<Shape> redoStack = new Stack<Shape>();
+
         private int sideLength;
         private Point p1;
         private Point p2;
         private Point p3;
+
+        public override bool CanUndo => undoStack.Count > 0;
+        public override bool CanRedo => redoStack.Count > 0;
+
         public Triangle(Shape_Info_Input info) : base(info)
         {
             sideLength = info.ShapeSide;
@@ -49,23 +56,34 @@ namespace k_rab
         public override void EditShape()
         {
             Shape_Info_Input info = Shape_Info_Input.FromTwoSides(true);
-            sideLength = info.ShapeSide;
+            if (!info.ForcedExit)
+                sideLength = info.ShapeSide;
         }
         public override bool IsPointInside(Point point)
         {
-            double A = area(p1.X, p1.Y, p2.X, p2.Y, p3.X, p3.Y);
-            double A1 = area(point.X, point.Y, p2.X, p2.Y, p3.X, p3.Y);
-            double A2 = area(p1.X, p1.Y, point.X, point.Y, p3.X, p3.Y);
-            double A3 = area(p1.X, p1.Y, p2.X, p2.Y, point.X, point.Y);
+            double A = Area(p1.X, p1.Y, p2.X, p2.Y, p3.X, p3.Y);
+            double A1 = Area(point.X, point.Y, p2.X, p2.Y, p3.X, p3.Y);
+            double A2 = Area(p1.X, p1.Y, point.X, point.Y, p3.X, p3.Y);
+            double A3 = Area(p1.X, p1.Y, p2.X, p2.Y, point.X, point.Y);
 
             return (A == A1 + A2 + A3);
         }
-        static double area(int x1, int y1, int x2, int y2, int x3, int y3) =>
+        static double Area(int x1, int y1, int x2, int y2, int x3, int y3) =>
             Math.Abs((x1 * (y2 - y3) +
                       x2 * (y3 - y1) +
                       x3 * (y1 - y2)) / 2.0);
 
         public override Shape GetCopy() =>
             new Triangle(X, Y, sideLength, Color, BorderColor);
+
+        public override void UndoStackPush(Shape shape) => undoStack.Push(shape);
+
+        public override void RedoStackPush(Shape shape) => redoStack.Push(shape);
+
+        public override Shape UndoStackPop() => undoStack.Pop();
+
+        public override Shape RedoStackPop() => redoStack.Pop();
+
+        public override void RedoClear() => redoStack.Clear();
     }
 }

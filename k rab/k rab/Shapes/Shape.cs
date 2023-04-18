@@ -13,16 +13,30 @@ namespace k_rab
     {
         public Color Color { get; set; } = Color.Black;
         public Color BorderColor { get; set; }
+
         public int X { get; set; }
         public int Y { get; set; }
+
+        public abstract bool CanUndo { get; }
+        public abstract bool CanRedo { get; }
+
         public bool IsSelected { get; set; }
+
+        public abstract void UndoStackPush(Shape shape);
+        public abstract void RedoStackPush(Shape shape);
+        public abstract Shape UndoStackPop();
+        public abstract Shape RedoStackPop();
+        public abstract void RedoClear();
+
         public abstract float GetArea();
         public abstract void Draw(Graphics g, SolidBrush brush, Pen pen);
         public abstract void EditShape();
         public abstract Shape GetCopy();
+
         public virtual bool IsPointInside(Point point) =>
             point.X >= X &&
             point.Y >= Y;
+
         public Point GetOffset(Point point) => new Point(point.X - X, point.Y - Y);
 
         public Shape(Shape_Info_Input info) : this(info.X, info.Y) { }
@@ -32,5 +46,6 @@ namespace k_rab
             X = x;
             Y = y;
         }
+
     }
 }

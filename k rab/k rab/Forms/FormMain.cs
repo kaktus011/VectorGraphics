@@ -17,12 +17,12 @@ namespace k_rab
 {
     public partial class FormMain : Form
     {
-        private readonly List<IDrawable> _shapes = new List<IDrawable>();
+        private readonly List<Shape> _shapes = new List<Shape>();
 
         private readonly SolidBrush _brush = new SolidBrush(Color.Black);
         private readonly Pen _pen = new Pen(Color.Pink, 5);
         private Shape _selectedShape;
-        private Shape _shapeForEditing;
+        private Shape _lastSelectedShape;
         private Point _offset;
         private readonly StateTracker _state = new StateTracker();
         private bool _deleted;
@@ -78,16 +78,21 @@ namespace k_rab
                         _selectedShape = null;
                         continue;
                     }
-                    //d
 
-                    _selectedShape = (Shape)_shapes[i];
-                    _shapeForEditing = _selectedShape;
+                    if(_lastSelectedShape != null && _lastSelectedShape.IsSelected == true)
+                    {
+                        _lastSelectedShape.IsSelected = false;
+                        DoubleBufferedPanel1.Refresh();
+                    }
+
+                    _selectedShape = _shapes[i];
+                    _lastSelectedShape = _selectedShape;
                     _offset = _selectedShape.GetOffset(e.Location);
-                    _selectedShape.IsSelected = true;
+                    _lastSelectedShape.IsSelected = true;
                     _shapes[i] = _shapes[_shapes.Count - 1];
                     _shapes[_shapes.Count - 1] = _selectedShape;
 
-                    _state.AddNewState(_shapeForEditing.GetCopy());
+                    _state.AddNewState(_lastSelectedShape);
 
                     break;
                 }
@@ -108,7 +113,7 @@ namespace k_rab
             if (_selectedShape == null) return;
 
             MoveSelected(e.Location);
-            _selectedShape.IsSelected = false;
+            _lastSelectedShape.IsSelected = false;
             _selectedShape = null;
         }
 
@@ -138,21 +143,21 @@ namespace k_rab
 
         private void DeleteShapeBtn_Click(object sender, EventArgs e)
         {
-            if(_shapeForEditing == null) return;
+            if(_lastSelectedShape == null) return;
 
             _deleted = true;
-            _state.AddNewState(_shapeForEditing.GetCopy());
-            _shapes.Remove(_shapeForEditing);
+            _state.AddNewState(_lastSelectedShape);
+            _shapes.Remove(_lastSelectedShape);
             DoubleBufferedPanel1.Refresh();
         }
 
         private void ChangeColorBtn_Click(object sender, EventArgs e)
         {
             ColorDialog cd = new ColorDialog();
-            if (cd.ShowDialog() == DialogResult.OK && _shapeForEditing != null)
+            if (cd.ShowDialog() == DialogResult.OK && _lastSelectedShape != null)
             {
-                _state.AddNewState(_shapeForEditing.GetCopy());
-                _shapeForEditing.Color = cd.Color;
+                _state.AddNewState(_lastSelectedShape);
+                _lastSelectedShape.Color = cd.Color;
                 DoubleBufferedPanel1.Refresh();
             }
         }
@@ -160,21 +165,21 @@ namespace k_rab
         private void BorderColorBtn_Click(object sender, EventArgs e)
         {
             ColorDialog cd = new ColorDialog();
-            if (cd.ShowDialog() == DialogResult.OK && _shapeForEditing != null)
+            if (cd.ShowDialog() == DialogResult.OK && _lastSelectedShape != null)
             {
-                _state.AddNewState(_shapeForEditing.GetCopy());
-                _shapeForEditing.BorderColor = cd.Color;
+                _state.AddNewState(_lastSelectedShape);
+                _lastSelectedShape.BorderColor = cd.Color;
                 DoubleBufferedPanel1.Refresh();
             }
         }
 
         private void EditShapeBtn_Click(object sender, EventArgs e)
         {
-            if (_shapeForEditing == null) return;
+            if (_lastSelectedShape == null) return;
 
-            _state.AddNewState(_shapeForEditing.GetCopy());
-            _shapeForEditing.EditShape();
-            _shapes[_shapes.Count - 1] = _shapeForEditing;
+            _state.AddNewState(_lastSelectedShape);
+            _lastSelectedShape.EditShape();
+            _shapes[_shapes.Count - 1] = _lastSelectedShape;
             DoubleBufferedPanel1.Refresh();
         }
 
@@ -189,41 +194,42 @@ namespace k_rab
 
         private void DisplaySelectedShapeArea()
         {
-            if (_selectedShape == null)
+            if (_lastSelectedShape == null || _lastSelectedShape.IsSelected == false)
                 AreaLabel.Text = "No shape selected";
             else
-                AreaLabel.Text = _selectedShape.GetArea().ToString() + " cm";
+                AreaLabel.Text = _lastSelectedShape.GetArea().ToString() + " px";
         }
 
         private void UndoBtn_Click(object sender, EventArgs e)
         {
-            if(!_state.CanUndo) return;
+            if(!_lastSelectedShape.CanUndo) return;
 
-            _shapes.Remove(_shapeForEditing);
-            _shapeForEditing = _state.Undo(_shapeForEditing);
-            _shapes.Add(_shapeForEditing);
+            _shapes.Remove(_lastSelectedShape);
+            _lastSelectedShape = _state.Undo(_lastSelectedShape);
+            _lastSelectedShape.IsSelected = true;
+            _shapes.Add(_lastSelectedShape);
 
             DoubleBufferedPanel1.Refresh();
         }
 
         private void RedoBtn_Click(object sender, EventArgs e)
         {
-            if (!_state.CanRedo) return;
+            if (!_lastSelectedShape.CanRedo) return;
 
             if (_deleted)
             {
-                _shapes.Remove( _shapeForEditing);
-                _state.AddNewState(_shapeForEditing);
+                _shapes.Remove( _lastSelectedShape);
+                _state.AddNewState(_lastSelectedShape);
                 _deleted = false;
 
                 DoubleBufferedPanel1.Refresh();
             }
             else
             {
-                _shapes.Remove(_shapeForEditing);
-                _state.AddNewState(_shapeForEditing);
-                _shapeForEditing = _state.Redo();
-                _shapes.Add(_shapeForEditing);
+                _shapes.Remove(_lastSelectedShape);
+                _state.AddNewState(_lastSelectedShape);
+                _lastSelectedShape = _state.Redo(_lastSelectedShape);
+                _shapes.Add(_lastSelectedShape);
 
                 DoubleBufferedPanel1.Refresh();
             }
