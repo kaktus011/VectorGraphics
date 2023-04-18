@@ -92,7 +92,7 @@ namespace k_rab
                     _shapes[i] = _shapes[_shapes.Count - 1];
                     _shapes[_shapes.Count - 1] = _selectedShape;
 
-                    _state.AddNewState(_lastSelectedShape);
+                    _state.AddNewState(_lastSelectedShape, false);
 
                     break;
                 }
@@ -146,8 +146,9 @@ namespace k_rab
             if(_lastSelectedShape == null) return;
 
             _deleted = true;
-            _state.AddNewState(_lastSelectedShape);
+            _state.AddNewState(_lastSelectedShape, false);
             _shapes.Remove(_lastSelectedShape);
+
             DoubleBufferedPanel1.Refresh();
         }
 
@@ -156,7 +157,7 @@ namespace k_rab
             ColorDialog cd = new ColorDialog();
             if (cd.ShowDialog() == DialogResult.OK && _lastSelectedShape != null)
             {
-                _state.AddNewState(_lastSelectedShape);
+                _state.AddNewState(_lastSelectedShape, false);
                 _lastSelectedShape.Color = cd.Color;
                 DoubleBufferedPanel1.Refresh();
             }
@@ -167,7 +168,7 @@ namespace k_rab
             ColorDialog cd = new ColorDialog();
             if (cd.ShowDialog() == DialogResult.OK && _lastSelectedShape != null)
             {
-                _state.AddNewState(_lastSelectedShape);
+                _state.AddNewState(_lastSelectedShape, false);
                 _lastSelectedShape.BorderColor = cd.Color;
                 DoubleBufferedPanel1.Refresh();
             }
@@ -177,7 +178,7 @@ namespace k_rab
         {
             if (_lastSelectedShape == null) return;
 
-            _state.AddNewState(_lastSelectedShape);
+            _state.AddNewState(_lastSelectedShape, false);
             _lastSelectedShape.EditShape();
             _shapes[_shapes.Count - 1] = _lastSelectedShape;
             DoubleBufferedPanel1.Refresh();
@@ -218,9 +219,9 @@ namespace k_rab
 
             if (_deleted)
             {
-                //_shapes.Remove( _lastSelectedShape);
-                //_state.AddNewState(_lastSelectedShape);
-                //_deleted = false;
+                _shapes.Remove(_lastSelectedShape);
+                _state.AddNewState(_lastSelectedShape, true);
+                _deleted = false;
 
                 DoubleBufferedPanel1.Refresh();
             }

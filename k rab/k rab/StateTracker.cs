@@ -9,10 +9,11 @@ namespace k_rab
 {
     internal class StateTracker
     {
-        public void AddNewState(Shape shape)
+        public void AddNewState(Shape shape, bool delete)
         {
-            shape.RedoClear();
-            shape.UndoStackPush(shape.GetCopy());// stack contents get lost
+            if(!delete)
+                shape.RedoClear();
+            shape.UndoStackPush(shape.GetCopy());
         }
 
         public Shape Undo(Shape shape)
