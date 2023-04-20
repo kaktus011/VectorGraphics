@@ -11,7 +11,7 @@ namespace k_rab
     {
         public void AddNewState(Shape shape, bool delete)
         {
-            if(!delete)
+            if(!delete && shape.CanRedo)
                 shape.RedoClear();
             shape.UndoStackPush(shape.GetCopy());
         }

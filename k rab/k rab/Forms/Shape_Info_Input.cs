@@ -88,12 +88,5 @@ namespace k_rab.Forms
              Close();
         }
 
-        //private void Shape_Info_Input_FormClosing(object sender, FormClosingEventArgs e)
-        //{
-        //    if (DialogResult != DialogResult.None) return;
-
-        //    ForcedExit = true;
-        //}
-
     }
 }

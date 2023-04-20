@@ -71,7 +71,7 @@ namespace k_rab
 
             return (A == A1 + A2 + A3);
         }
-        static double Area(int x1, int y1, int x2, int y2, int x3, int y3) =>
+        internal static double Area(int x1, int y1, int x2, int y2, int x3, int y3) =>
             Math.Abs((x1 * (y2 - y3) +
                       x2 * (y3 - y1) +
                       x3 * (y1 - y2)) / 2.0);

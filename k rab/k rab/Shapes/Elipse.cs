@@ -63,20 +63,20 @@ namespace k_rab
         }
         public override bool IsPointInside(Point point)
         {
-            Point center = new Point((X + X+_width) / 2,
-                                     (Y + Y+_height) / 2);
+            Point center = new Point((X + X + _width) / 2,
+                                     (Y + Y + _height) / 2);
 
             if (_width == _height)
             {
-                int d = (point.X - center.X)*(point.X - center.X)
-                      + (point.Y - center.Y)*(point.Y - center.Y);
-                return d <= (_width/2) * (_height/2);
+                int d = (point.X - center.X) * (point.X - center.X)
+                      + (point.Y - center.Y) * (point.Y - center.Y);
+                return d <= (_width / 2) * (_height / 2);
             }
 
             else
             { 
-                double xRadius = _width/2.0;
-                double yRadius = _height/2.0;
+                double xRadius = _width / 2.0;
+                double yRadius = _height / 2.0;
 
                 double d = ((double)Math.Pow((point.X - center.X), 2)
                    / (double)Math.Pow(xRadius, 2))

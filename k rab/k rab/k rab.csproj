@@ -52,6 +52,7 @@
     <Compile Include="Forms\Shape_Info_Input.Designer.cs">
       <DependentUpon>Shape_Info_Input.cs</DependentUpon>
     </Compile>
+    <Compile Include="Shapes\Cone.cs" />
     <Compile Include="Shapes\Elipse.cs" />
     <Compile Include="Forms\FormMain.cs">
       <SubType>Form</SubType>

@@ -45,6 +45,7 @@ namespace k_rab.Forms
             // 
             // xValBox
             // 
+            this.xValBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.xValBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xValBox.Location = new System.Drawing.Point(341, 35);
             this.xValBox.Name = "xValBox";

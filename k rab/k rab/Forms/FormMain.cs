@@ -1,4 +1,5 @@
 using k_rab.Forms;
+using k_rab.Shapes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -141,6 +142,12 @@ namespace k_rab
             DoubleBufferedPanel1.Refresh();
         }
 
+        private void ConeBtn_Click(object sender, EventArgs e)
+        {
+            _shapes.Add(new Cone(Shape_Info_Input.FromOneSide(false)));
+            DoubleBufferedPanel1.Refresh();
+        }
+
         private void DeleteShapeBtn_Click(object sender, EventArgs e)
         {
             if(_lastSelectedShape == null) return;
@@ -245,7 +252,7 @@ namespace k_rab
                 {
                     List<Shape> shapeInfos = new List<Shape>();
 
-                    foreach(Shape shape in _shapes)
+                    foreach (Shape shape in _shapes)
                         shapeInfos.Add(shape);
 
                     using (FileStream fileStream = new FileStream
@@ -283,6 +290,8 @@ namespace k_rab
 
             DoubleBufferedPanel1.Refresh();
         }
+
+
     }
 
     public class DoubleBufferedPanel : Panel

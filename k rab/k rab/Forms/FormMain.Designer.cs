@@ -44,6 +44,7 @@
             this.SaveBtn = new System.Windows.Forms.Button();
             this.LoadBtn = new System.Windows.Forms.Button();
             this.DoubleBufferedPanel1 = new k_rab.DoubleBufferedPanel();
+            this.ConeBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ElipseBtn
@@ -219,12 +220,24 @@
             this.DoubleBufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseMove);
             this.DoubleBufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseUp);
             // 
+            // ConeBtn
+            // 
+            this.ConeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConeBtn.Location = new System.Drawing.Point(1115, 12);
+            this.ConeBtn.Name = "ConeBtn";
+            this.ConeBtn.Size = new System.Drawing.Size(193, 67);
+            this.ConeBtn.TabIndex = 17;
+            this.ConeBtn.Text = "Cone";
+            this.ConeBtn.UseVisualStyleBackColor = true;
+            this.ConeBtn.Click += new System.EventHandler(this.ConeBtn_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1322, 1012);
+            this.Controls.Add(this.ConeBtn);
             this.Controls.Add(this.LoadBtn);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.RedoBtn);
@@ -266,6 +279,7 @@
         private System.Windows.Forms.Button RedoBtn;
         private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.Button LoadBtn;
+        private System.Windows.Forms.Button ConeBtn;
     }
 }
 
