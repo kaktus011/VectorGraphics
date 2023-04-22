@@ -19,6 +19,8 @@ namespace k_rab
     public partial class FormMain : Form
     {
         private readonly List<Shape> _shapes = new List<Shape>();
+        //private readonly List<string> _shapeNames = new List<string>();
+        private readonly List<Shape> _shapesCopy = new List<Shape>();
 
         private readonly SolidBrush _brush = new SolidBrush(Color.Black);
         private readonly Pen _pen = new Pen(Color.Pink, 5);
@@ -31,39 +33,40 @@ namespace k_rab
         public FormMain()
         {
             InitializeComponent();
+
             //var shapes = typeof(Shape).Assembly
             //    .GetTypes()
             //    .Where(f => f.IsSubclassOf(typeof(Shape)))
             //    .ToArray();
-            //var constructorNames = shapes.Select(f => f.Name).ToArray();
+            //_shapeNames = shapes.Select(f => f.Name).ToList();
 
             //var buttons = new List<Button>();
-            //foreach (var name in constructorNames)
-            //    buttons.Add(new Button());
+            //int h = 195;
+            //foreach (var name in _shapeNames)
+            //{
+            //    Button button = new Button();
 
+            //    button.Click += ElipseBtn_Click;
 
-            //var btn = new Button();
-            //btn.Parent = this;
-            //btn.Location = new Point(158, 12);
-            //btn.Size = new Size(193, 67);
-            //btn.Text = constructorNames[0];
-            //btn.Show();
-            //btn.BringToFront();
-            //label.Font.Size = new Size(158, 12);
-            //var constructors = shapes.Select(t => t.GetConstructors()[1]).ToArray();
-            //var l = new Label();
-            //l.Parent = this;
-            //l.Location = new Point(100, 100);
-            //l.Size = new Size(200, 200);
-            //l.Text = constructors[0].GetParameters()[0].Name;
-            //l.Show();
-            //l.BringToFront();
+            //    button.Name = name;
+            //    button.Font = new Font(button.Font.FontFamily, 10, button.Font.Style);
+            //    button.Text = name;
+            //    button.Size = new Size(93, 37);
+            //    button.Location = new Point(0 + h, 5);
+            //    h += 93;
+            //    button.Visible = true;
+            //    buttons.Add(button);
+            //    this.Controls.Add(button);
+            //}
+
+            DoubleBufferedPanel1.Refresh();
         }
         
         private void DoubleBufferedPanel1_Paint(object sender, PaintEventArgs e)
         {
-            foreach (var shape in _shapes)
-                shape?.Draw(e.Graphics, _brush, _pen);
+            var drawables = _shapes.Where(s => s != null).ToList();
+            foreach (Shape shape in drawables)
+                shape.Draw(e.Graphics, _brush, _pen);
             DisplaySelectedShapeArea();
         }
 
@@ -191,21 +194,62 @@ namespace k_rab
             DoubleBufferedPanel1.Refresh();
         }
 
-        private void MoveSelected(Point point)
+        private void LargestShapeBtn_MouseDown(object sender, MouseEventArgs e)
         {
-            if (_selectedShape == null) return;
+            if (_shapes.Count == 0) return;
 
-            _selectedShape.X = point.X - _offset.X;
-            _selectedShape.Y = point.Y - _offset.Y;
+            foreach(Shape shape in _shapes)
+                _shapesCopy.Add(shape);
+            Shape biggestShape = _shapes.OrderByDescending(shape => shape.GetArea()).First();
+
+            _shapes.Clear();
+            _shapes.Add(biggestShape);
+
             DoubleBufferedPanel1.Refresh();
         }
 
-        private void DisplaySelectedShapeArea()
+        private void LargestShapeBtn_MouseUp(object sender, MouseEventArgs e)
         {
-            if (_lastSelectedShape == null || _lastSelectedShape.IsSelected == false)
-                AreaLabel.Text = "No shape selected";
-            else
-                AreaLabel.Text = _lastSelectedShape.GetArea().ToString() + " px";
+            if(_shapesCopy.Count == 0) return;
+
+            _shapes.Clear();
+            foreach(Shape shape in _shapesCopy)
+                _shapes.Add(shape);
+            _shapesCopy.Clear();
+            
+            DoubleBufferedPanel1.Refresh();
+        }
+        
+        private void ClosestToCenterBtn_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (_shapes.Count == 0) return;
+
+            foreach (Shape shape in _shapes)
+                _shapesCopy.Add(shape);
+
+            int centerX = DoubleBufferedPanel1.ClientSize.Width / 2;
+            int centerY = DoubleBufferedPanel1.ClientSize.Height / 2;
+            Point center = new Point(centerX, centerY);
+
+            Shape closest = _shapes.OrderBy(shape => 
+                    shape.DistanceBetweenPoints(new Point(shape.X, shape.Y), center)).First();
+
+            _shapes.Clear();
+            _shapes.Add(closest);
+
+            DoubleBufferedPanel1.Refresh();
+        }
+
+        private void ClosestToCenterBtn_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (_shapesCopy.Count == 0) return;
+
+            _shapes.Clear();
+            foreach (Shape shape in _shapesCopy)
+                _shapes.Add(shape);
+            _shapesCopy.Clear();
+
+            DoubleBufferedPanel1.Refresh();
         }
 
         private void UndoBtn_Click(object sender, EventArgs e)
@@ -291,6 +335,22 @@ namespace k_rab
             DoubleBufferedPanel1.Refresh();
         }
 
+        private void MoveSelected(Point point)
+        {
+            if (_selectedShape == null) return;
+
+            _selectedShape.X = point.X - _offset.X;
+            _selectedShape.Y = point.Y - _offset.Y;
+            DoubleBufferedPanel1.Refresh();
+        }
+
+        private void DisplaySelectedShapeArea()
+        {
+            if (_lastSelectedShape == null || _lastSelectedShape.IsSelected == false)
+                AreaLabel.Text = "No shape selected";
+            else
+                AreaLabel.Text = _lastSelectedShape.GetArea().ToString() + " px";
+        }
 
     }
 

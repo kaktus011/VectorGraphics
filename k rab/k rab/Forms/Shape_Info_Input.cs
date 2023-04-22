@@ -21,18 +21,18 @@ namespace k_rab.Forms
             _isOneSided = isOneSided;
             _isEditing = edit;
             InitializeComponent();
-            //var shapes = typeof(Shape).Assembly
-            //    .GetTypes()
-            //    .Where(f => f.IsSubclassOf(typeof(Shape)))
-            //    .ToArray();
-            //var constructors = shapes.Select(t => t.GetConstructors()[1]).ToArray();
-            //var l = new Label();
-            //l.Parent = this;
-            //l.Location = new Point(456, 125);
-            //l.Size = new Size(152, 46);
-            //l.Text = constructors[0].GetParameters()[2].Name;
-            //l.Show();
-            //l.BringToFront();
+            var shapes = typeof(Shape).Assembly
+                .GetTypes()
+                .Where(f => f.IsSubclassOf(typeof(Shape)))
+                .ToArray();
+            var constructors = shapes.Select(t => t.GetConstructors()[1]).ToArray();
+            var l = new Label();
+            l.Parent = this;
+            l.Location = new Point(456, 125);
+            l.Size = new Size(152, 46);
+            l.Text = constructors[0].GetParameters()[1].Name;
+            l.Show();
+            l.BringToFront();
         }
 
         public static Shape_Info_Input FromOneSide(bool edit)

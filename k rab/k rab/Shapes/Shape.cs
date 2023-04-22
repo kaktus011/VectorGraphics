@@ -37,6 +37,9 @@ namespace k_rab
             point.X >= X &&
             point.Y >= Y;
 
+        public double DistanceBetweenPoints(Point p1, Point p2)
+            => Math.Sqrt(Math.Pow(p1.X - p2.X, 2) + Math.Pow(p1.Y - p2.Y, 2));
+
         public Point GetOffset(Point point) => new Point(point.X - X, point.Y - Y);
 
         public Shape(Shape_Info_Input info) : this(info.X, info.Y) { }

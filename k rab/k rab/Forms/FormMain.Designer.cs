@@ -43,14 +43,16 @@
             this.RedoBtn = new System.Windows.Forms.Button();
             this.SaveBtn = new System.Windows.Forms.Button();
             this.LoadBtn = new System.Windows.Forms.Button();
-            this.DoubleBufferedPanel1 = new k_rab.DoubleBufferedPanel();
             this.ConeBtn = new System.Windows.Forms.Button();
+            this.LargestShapeBtn = new System.Windows.Forms.Button();
+            this.ClosestToCenterBtn = new System.Windows.Forms.Button();
+            this.DoubleBufferedPanel1 = new k_rab.DoubleBufferedPanel();
             this.SuspendLayout();
             // 
             // ElipseBtn
             // 
             this.ElipseBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ElipseBtn.Location = new System.Drawing.Point(319, 12);
+            this.ElipseBtn.Location = new System.Drawing.Point(324, 12);
             this.ElipseBtn.Name = "ElipseBtn";
             this.ElipseBtn.Size = new System.Drawing.Size(193, 67);
             this.ElipseBtn.TabIndex = 0;
@@ -61,7 +63,7 @@
             // TriangleBtn
             // 
             this.TriangleBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TriangleBtn.Location = new System.Drawing.Point(518, 12);
+            this.TriangleBtn.Location = new System.Drawing.Point(523, 12);
             this.TriangleBtn.Name = "TriangleBtn";
             this.TriangleBtn.Size = new System.Drawing.Size(193, 67);
             this.TriangleBtn.TabIndex = 1;
@@ -72,7 +74,7 @@
             // SquareBtn
             // 
             this.SquareBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SquareBtn.Location = new System.Drawing.Point(717, 12);
+            this.SquareBtn.Location = new System.Drawing.Point(722, 12);
             this.SquareBtn.Name = "SquareBtn";
             this.SquareBtn.Size = new System.Drawing.Size(193, 67);
             this.SquareBtn.TabIndex = 2;
@@ -83,7 +85,7 @@
             // RectangleBtn
             // 
             this.RectangleBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RectangleBtn.Location = new System.Drawing.Point(916, 12);
+            this.RectangleBtn.Location = new System.Drawing.Point(921, 12);
             this.RectangleBtn.Name = "RectangleBtn";
             this.RectangleBtn.Size = new System.Drawing.Size(193, 67);
             this.RectangleBtn.TabIndex = 3;
@@ -189,7 +191,7 @@
             // SaveBtn
             // 
             this.SaveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SaveBtn.Location = new System.Drawing.Point(717, 879);
+            this.SaveBtn.Location = new System.Drawing.Point(775, 879);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(193, 69);
             this.SaveBtn.TabIndex = 15;
@@ -200,7 +202,7 @@
             // LoadBtn
             // 
             this.LoadBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoadBtn.Location = new System.Drawing.Point(916, 879);
+            this.LoadBtn.Location = new System.Drawing.Point(974, 879);
             this.LoadBtn.Name = "LoadBtn";
             this.LoadBtn.Size = new System.Drawing.Size(193, 69);
             this.LoadBtn.TabIndex = 16;
@@ -208,22 +210,10 @@
             this.LoadBtn.UseVisualStyleBackColor = true;
             this.LoadBtn.Click += new System.EventHandler(this.LoadBtn_Click);
             // 
-            // DoubleBufferedPanel1
-            // 
-            this.DoubleBufferedPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.DoubleBufferedPanel1.Location = new System.Drawing.Point(19, 85);
-            this.DoubleBufferedPanel1.Name = "DoubleBufferedPanel1";
-            this.DoubleBufferedPanel1.Size = new System.Drawing.Size(1291, 734);
-            this.DoubleBufferedPanel1.TabIndex = 5;
-            this.DoubleBufferedPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.DoubleBufferedPanel1_Paint);
-            this.DoubleBufferedPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseDown);
-            this.DoubleBufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseMove);
-            this.DoubleBufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseUp);
-            // 
             // ConeBtn
             // 
             this.ConeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConeBtn.Location = new System.Drawing.Point(1115, 12);
+            this.ConeBtn.Location = new System.Drawing.Point(1120, 12);
             this.ConeBtn.Name = "ConeBtn";
             this.ConeBtn.Size = new System.Drawing.Size(193, 67);
             this.ConeBtn.TabIndex = 17;
@@ -231,12 +221,50 @@
             this.ConeBtn.UseVisualStyleBackColor = true;
             this.ConeBtn.Click += new System.EventHandler(this.ConeBtn_Click);
             // 
+            // LargestShapeBtn
+            // 
+            this.LargestShapeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LargestShapeBtn.Location = new System.Drawing.Point(151, 954);
+            this.LargestShapeBtn.Name = "LargestShapeBtn";
+            this.LargestShapeBtn.Size = new System.Drawing.Size(505, 63);
+            this.LargestShapeBtn.TabIndex = 18;
+            this.LargestShapeBtn.Text = "Show shape with biggest area only";
+            this.LargestShapeBtn.UseVisualStyleBackColor = true;
+            this.LargestShapeBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LargestShapeBtn_MouseDown);
+            this.LargestShapeBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LargestShapeBtn_MouseUp);
+            // 
+            // ClosestToCenterBtn
+            // 
+            this.ClosestToCenterBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ClosestToCenterBtn.Location = new System.Drawing.Point(662, 954);
+            this.ClosestToCenterBtn.Name = "ClosestToCenterBtn";
+            this.ClosestToCenterBtn.Size = new System.Drawing.Size(505, 63);
+            this.ClosestToCenterBtn.TabIndex = 19;
+            this.ClosestToCenterBtn.Text = "Show shape closest to the center";
+            this.ClosestToCenterBtn.UseVisualStyleBackColor = true;
+            this.ClosestToCenterBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ClosestToCenterBtn_MouseDown);
+            this.ClosestToCenterBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ClosestToCenterBtn_MouseUp);
+            // 
+            // DoubleBufferedPanel1
+            // 
+            this.DoubleBufferedPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.DoubleBufferedPanel1.Location = new System.Drawing.Point(19, 85);
+            this.DoubleBufferedPanel1.Name = "DoubleBufferedPanel1";
+            this.DoubleBufferedPanel1.Size = new System.Drawing.Size(1299, 734);
+            this.DoubleBufferedPanel1.TabIndex = 5;
+            this.DoubleBufferedPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.DoubleBufferedPanel1_Paint);
+            this.DoubleBufferedPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseDown);
+            this.DoubleBufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseMove);
+            this.DoubleBufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseUp);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1322, 1012);
+            this.ClientSize = new System.Drawing.Size(1334, 1050);
+            this.Controls.Add(this.ClosestToCenterBtn);
+            this.Controls.Add(this.LargestShapeBtn);
             this.Controls.Add(this.ConeBtn);
             this.Controls.Add(this.LoadBtn);
             this.Controls.Add(this.SaveBtn);
@@ -280,6 +308,8 @@
         private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.Button LoadBtn;
         private System.Windows.Forms.Button ConeBtn;
+        private System.Windows.Forms.Button LargestShapeBtn;
+        private System.Windows.Forms.Button ClosestToCenterBtn;
     }
 }
 
