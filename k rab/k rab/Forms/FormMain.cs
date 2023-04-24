@@ -14,6 +14,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
+using krab_Library;
+
 namespace k_rab
 {
     public partial class FormMain : Form
@@ -204,6 +206,8 @@ namespace k_rab
 
             _shapes.Clear();
             _shapes.Add(biggestShape);
+            if (_lastSelectedShape ==  biggestShape)
+                biggestShape.IsSelected = true;
 
             DoubleBufferedPanel1.Refresh();
         }
@@ -213,8 +217,15 @@ namespace k_rab
             if(_shapesCopy.Count == 0) return;
 
             _shapes.Clear();
-            foreach(Shape shape in _shapesCopy)
+            foreach (Shape shape in _shapesCopy)
+            {
                 _shapes.Add(shape);
+                if (shape ==  _lastSelectedShape)
+                {
+                    _lastSelectedShape = shape;
+                    _lastSelectedShape.IsSelected = true;
+                }
+            }
             _shapesCopy.Clear();
             
             DoubleBufferedPanel1.Refresh();
@@ -236,6 +247,8 @@ namespace k_rab
 
             _shapes.Clear();
             _shapes.Add(closest);
+            if(_lastSelectedShape == closest)
+                closest.IsSelected = true;
 
             DoubleBufferedPanel1.Refresh();
         }
@@ -246,7 +259,49 @@ namespace k_rab
 
             _shapes.Clear();
             foreach (Shape shape in _shapesCopy)
+            {
                 _shapes.Add(shape);
+                if (shape ==  _lastSelectedShape)
+                {
+                    _lastSelectedShape = shape;
+                    _lastSelectedShape.IsSelected = true;
+                }
+            }
+            _shapesCopy.Clear();
+
+            DoubleBufferedPanel1.Refresh();
+        }
+        private void SmallestEvenAreaBtn_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (_shapes.Count == 0) return;
+
+            foreach (Shape shape in _shapes)
+                _shapesCopy.Add(shape);
+            Shape biggestShape = _shapes.OrderByDescending(shape => shape.GetArea() % 2 == 0)
+                                        .ThenBy(shape => shape.GetArea()).First();
+
+            _shapes.Clear();
+            _shapes.Add(biggestShape);
+            if (_lastSelectedShape ==  biggestShape)
+                biggestShape.IsSelected = true;
+
+            DoubleBufferedPanel1.Refresh();
+        }
+
+        private void SmallestEvenAreaBtn_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (_shapesCopy.Count == 0) return;
+
+            _shapes.Clear();
+            foreach (Shape shape in _shapesCopy)
+            {
+                _shapes.Add(shape);
+                if (shape ==  _lastSelectedShape)
+                {
+                    _lastSelectedShape = shape;
+                    _lastSelectedShape.IsSelected = true;
+                }
+            }
             _shapesCopy.Clear();
 
             DoubleBufferedPanel1.Refresh();

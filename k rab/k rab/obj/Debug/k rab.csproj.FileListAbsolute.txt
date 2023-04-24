@@ -20,3 +20,6 @@ C:\Users\PiwKi\source\repos\k rab\k rab\k rab\obj\Debug\k rab.pdb
 C:\Users\PiwKi\source\repos\k rab\k rab\k rab\bin\Debug\k rab.exe.config
 C:\Users\PiwKi\source\repos\k rab\k rab\k rab\bin\Debug\k rab.exe
 C:\Users\PiwKi\source\repos\k rab\k rab\k rab\bin\Debug\k rab.pdb
+C:\Users\PiwKi\source\repos\k rab\k rab\k rab\bin\Debug\krab-Library.dll
+C:\Users\PiwKi\source\repos\k rab\k rab\k rab\bin\Debug\krab-Library.pdb
+C:\Users\PiwKi\source\repos\k rab\k rab\k rab\obj\Debug\k rab.csproj.CopyComplete

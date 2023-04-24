@@ -47,6 +47,7 @@
             this.LargestShapeBtn = new System.Windows.Forms.Button();
             this.ClosestToCenterBtn = new System.Windows.Forms.Button();
             this.DoubleBufferedPanel1 = new k_rab.DoubleBufferedPanel();
+            this.SmallestEvenAreaBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ElipseBtn
@@ -97,7 +98,7 @@
             // 
             this.LabelForArea.AutoSize = true;
             this.LabelForArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelForArea.Location = new System.Drawing.Point(688, 827);
+            this.LabelForArea.Location = new System.Drawing.Point(684, 901);
             this.LabelForArea.Name = "LabelForArea";
             this.LabelForArea.Size = new System.Drawing.Size(352, 37);
             this.LabelForArea.TabIndex = 6;
@@ -107,7 +108,7 @@
             // 
             this.AreaLabel.AutoSize = true;
             this.AreaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AreaLabel.Location = new System.Drawing.Point(1040, 827);
+            this.AreaLabel.Location = new System.Drawing.Point(1036, 901);
             this.AreaLabel.Name = "AreaLabel";
             this.AreaLabel.Size = new System.Drawing.Size(0, 37);
             this.AreaLabel.TabIndex = 7;
@@ -115,7 +116,7 @@
             // DeleteShapeBtn
             // 
             this.DeleteShapeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteShapeBtn.Location = new System.Drawing.Point(12, 825);
+            this.DeleteShapeBtn.Location = new System.Drawing.Point(23, 825);
             this.DeleteShapeBtn.Name = "DeleteShapeBtn";
             this.DeleteShapeBtn.Size = new System.Drawing.Size(323, 63);
             this.DeleteShapeBtn.TabIndex = 8;
@@ -158,9 +159,9 @@
             // EditShapeBtn
             // 
             this.EditShapeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EditShapeBtn.Location = new System.Drawing.Point(341, 827);
+            this.EditShapeBtn.Location = new System.Drawing.Point(352, 827);
             this.EditShapeBtn.Name = "EditShapeBtn";
-            this.EditShapeBtn.Size = new System.Drawing.Size(282, 63);
+            this.EditShapeBtn.Size = new System.Drawing.Size(293, 63);
             this.EditShapeBtn.TabIndex = 12;
             this.EditShapeBtn.Text = "Edit selected shape";
             this.EditShapeBtn.UseVisualStyleBackColor = true;
@@ -169,7 +170,7 @@
             // UndoBtn
             // 
             this.UndoBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UndoBtn.Location = new System.Drawing.Point(19, 12);
+            this.UndoBtn.Location = new System.Drawing.Point(23, 12);
             this.UndoBtn.Name = "UndoBtn";
             this.UndoBtn.Size = new System.Drawing.Size(111, 67);
             this.UndoBtn.TabIndex = 13;
@@ -180,7 +181,7 @@
             // RedoBtn
             // 
             this.RedoBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RedoBtn.Location = new System.Drawing.Point(136, 12);
+            this.RedoBtn.Location = new System.Drawing.Point(140, 12);
             this.RedoBtn.Name = "RedoBtn";
             this.RedoBtn.Size = new System.Drawing.Size(115, 67);
             this.RedoBtn.TabIndex = 14;
@@ -191,22 +192,22 @@
             // SaveBtn
             // 
             this.SaveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SaveBtn.Location = new System.Drawing.Point(775, 879);
+            this.SaveBtn.Location = new System.Drawing.Point(859, 825);
             this.SaveBtn.Name = "SaveBtn";
-            this.SaveBtn.Size = new System.Drawing.Size(193, 69);
+            this.SaveBtn.Size = new System.Drawing.Size(193, 63);
             this.SaveBtn.TabIndex = 15;
-            this.SaveBtn.Text = "Save to:";
+            this.SaveBtn.Text = "Save to";
             this.SaveBtn.UseVisualStyleBackColor = true;
             this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
             // LoadBtn
             // 
             this.LoadBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoadBtn.Location = new System.Drawing.Point(974, 879);
+            this.LoadBtn.Location = new System.Drawing.Point(1058, 825);
             this.LoadBtn.Name = "LoadBtn";
-            this.LoadBtn.Size = new System.Drawing.Size(193, 69);
+            this.LoadBtn.Size = new System.Drawing.Size(193, 63);
             this.LoadBtn.TabIndex = 16;
-            this.LoadBtn.Text = "Load from:";
+            this.LoadBtn.Text = "Load from";
             this.LoadBtn.UseVisualStyleBackColor = true;
             this.LoadBtn.Click += new System.EventHandler(this.LoadBtn_Click);
             // 
@@ -224,11 +225,11 @@
             // LargestShapeBtn
             // 
             this.LargestShapeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LargestShapeBtn.Location = new System.Drawing.Point(151, 954);
+            this.LargestShapeBtn.Location = new System.Drawing.Point(182, 954);
             this.LargestShapeBtn.Name = "LargestShapeBtn";
-            this.LargestShapeBtn.Size = new System.Drawing.Size(505, 63);
+            this.LargestShapeBtn.Size = new System.Drawing.Size(463, 63);
             this.LargestShapeBtn.TabIndex = 18;
-            this.LargestShapeBtn.Text = "Show shape with biggest area only";
+            this.LargestShapeBtn.Text = "Show shape with biggest area";
             this.LargestShapeBtn.UseVisualStyleBackColor = true;
             this.LargestShapeBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LargestShapeBtn_MouseDown);
             this.LargestShapeBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LargestShapeBtn_MouseUp);
@@ -236,9 +237,9 @@
             // ClosestToCenterBtn
             // 
             this.ClosestToCenterBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClosestToCenterBtn.Location = new System.Drawing.Point(662, 954);
+            this.ClosestToCenterBtn.Location = new System.Drawing.Point(651, 954);
             this.ClosestToCenterBtn.Name = "ClosestToCenterBtn";
-            this.ClosestToCenterBtn.Size = new System.Drawing.Size(505, 63);
+            this.ClosestToCenterBtn.Size = new System.Drawing.Size(463, 63);
             this.ClosestToCenterBtn.TabIndex = 19;
             this.ClosestToCenterBtn.Text = "Show shape closest to the center";
             this.ClosestToCenterBtn.UseVisualStyleBackColor = true;
@@ -257,17 +258,30 @@
             this.DoubleBufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseMove);
             this.DoubleBufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseUp);
             // 
+            // SmallestEvenAreaBtn
+            // 
+            this.SmallestEvenAreaBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SmallestEvenAreaBtn.Location = new System.Drawing.Point(410, 1023);
+            this.SmallestEvenAreaBtn.Name = "SmallestEvenAreaBtn";
+            this.SmallestEvenAreaBtn.Size = new System.Drawing.Size(505, 63);
+            this.SmallestEvenAreaBtn.TabIndex = 20;
+            this.SmallestEvenAreaBtn.Text = "Show shape with smallest even area";
+            this.SmallestEvenAreaBtn.UseVisualStyleBackColor = true;
+            this.SmallestEvenAreaBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SmallestEvenAreaBtn_MouseDown);
+            this.SmallestEvenAreaBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SmallestEvenAreaBtn_MouseUp);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1334, 1050);
+            this.ClientSize = new System.Drawing.Size(1340, 1094);
+            this.Controls.Add(this.SmallestEvenAreaBtn);
+            this.Controls.Add(this.LoadBtn);
+            this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.ClosestToCenterBtn);
             this.Controls.Add(this.LargestShapeBtn);
             this.Controls.Add(this.ConeBtn);
-            this.Controls.Add(this.LoadBtn);
-            this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.RedoBtn);
             this.Controls.Add(this.UndoBtn);
             this.Controls.Add(this.EditShapeBtn);
@@ -283,7 +297,7 @@
             this.Controls.Add(this.TriangleBtn);
             this.Controls.Add(this.ElipseBtn);
             this.Name = "FormMain";
-            this.Text = "FormMain";
+            this.Text = "TimeToDraw";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,6 +324,7 @@
         private System.Windows.Forms.Button ConeBtn;
         private System.Windows.Forms.Button LargestShapeBtn;
         private System.Windows.Forms.Button ClosestToCenterBtn;
+        private System.Windows.Forms.Button SmallestEvenAreaBtn;
     }
 }
 
