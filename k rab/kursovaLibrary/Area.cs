@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace kursovaLibrary
 {
-    public class EllipseArea
+    internal class Area
     {
-
-        public static double GetArea(int width, int height)
-            => Math.Round(Math.PI* width * height* 0.0264, 2);
-
     }
 }

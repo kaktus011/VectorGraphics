@@ -102,7 +102,7 @@
             this.LabelForArea.Name = "LabelForArea";
             this.LabelForArea.Size = new System.Drawing.Size(352, 37);
             this.LabelForArea.TabIndex = 6;
-            this.LabelForArea.Text = "Area of selected shape:";
+            this.LabelForArea.Text = "AreaForIsPointInside of selected shape:";
             // 
             // AreaLabel
             // 

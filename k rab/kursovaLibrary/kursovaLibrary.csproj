@@ -41,12 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConeArea.cs" />
-    <Compile Include="EllipseArea.cs" />
+    <Compile Include="Area.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RectangleArea.cs" />
-    <Compile Include="SquareArea.cs" />
-    <Compile Include="TriangleArea.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

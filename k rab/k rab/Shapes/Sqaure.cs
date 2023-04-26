@@ -36,7 +36,7 @@ namespace k_rab
             redoStack = redo;
         }
 
-        public override double GetArea() => SquareArea.GetArea(sideLength);
+        public override double GetArea() => Area.Square(sideLength);
 
         public override void Draw(Graphics g, SolidBrush brush, Pen pen)
         {

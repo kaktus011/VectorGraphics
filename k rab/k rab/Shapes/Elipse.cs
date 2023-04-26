@@ -40,7 +40,7 @@ namespace k_rab
             redoStack = redo;
         }
 
-        public override double GetArea() => EllipseArea.GetArea(_width, _height);
+        public override double GetArea() => Area.Ellipse(_width, _height);
 
         public override void Draw(Graphics g, SolidBrush brush, Pen pen)
         {

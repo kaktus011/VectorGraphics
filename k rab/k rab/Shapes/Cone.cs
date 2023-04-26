@@ -72,10 +72,10 @@ namespace k_rab.Shapes
 
         public override bool IsPointInside(Point point)
         {
-            double A = Triangle.Area(p1.X, p1.Y, p2.X, p2.Y, p3.X, p3.Y);
-            double A1 = Triangle.Area(point.X, point.Y, p2.X, p2.Y, p3.X, p3.Y);
-            double A2 = Triangle.Area(p1.X, p1.Y, point.X, point.Y, p3.X, p3.Y);
-            double A3 = Triangle.Area(p1.X, p1.Y, p2.X, p2.Y, point.X, point.Y);
+            double A = Triangle.AreaForIsPointInside(p1.X, p1.Y, p2.X, p2.Y, p3.X, p3.Y);
+            double A1 = Triangle.AreaForIsPointInside(point.X, point.Y, p2.X, p2.Y, p3.X, p3.Y);
+            double A2 = Triangle.AreaForIsPointInside(p1.X, p1.Y, point.X, point.Y, p3.X, p3.Y);
+            double A3 = Triangle.AreaForIsPointInside(p1.X, p1.Y, p2.X, p2.Y, point.X, point.Y);
 
             Point baseCenter = new Point((X + X +_width) / 2,
                                      (Y + Y + (_width / 4)) / 2);
@@ -102,7 +102,7 @@ namespace k_rab.Shapes
             }
         }
 
-        public override double GetArea() => ConeArea.GetArea(_width, _height);
+        public override double GetArea() => Area.Cone(_width, _height);
 
         public override Shape GetCopy() =>
             new Cone(X, Y, _width, _height, Color, BorderColor, undoStack, redoStack);

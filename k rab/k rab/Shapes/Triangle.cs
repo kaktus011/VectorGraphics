@@ -38,7 +38,7 @@ namespace k_rab
             redoStack = redo;
         }
 
-        public override double GetArea() => TriangleArea.GetArea(sideLength);
+        public override double GetArea() => Area.Triangle(sideLength);
 
         public override void Draw(Graphics g, SolidBrush brush, Pen pen)
         {
@@ -65,14 +65,14 @@ namespace k_rab
         }
         public override bool IsPointInside(Point point)
         {
-            double A = Area(p1.X, p1.Y, p2.X, p2.Y, p3.X, p3.Y);
-            double A1 = Area(point.X, point.Y, p2.X, p2.Y, p3.X, p3.Y);
-            double A2 = Area(p1.X, p1.Y, point.X, point.Y, p3.X, p3.Y);
-            double A3 = Area(p1.X, p1.Y, p2.X, p2.Y, point.X, point.Y);
+            double A = AreaForIsPointInside(p1.X, p1.Y, p2.X, p2.Y, p3.X, p3.Y);
+            double A1 = AreaForIsPointInside(point.X, point.Y, p2.X, p2.Y, p3.X, p3.Y);
+            double A2 = AreaForIsPointInside(p1.X, p1.Y, point.X, point.Y, p3.X, p3.Y);
+            double A3 = AreaForIsPointInside(p1.X, p1.Y, p2.X, p2.Y, point.X, point.Y);
 
             return (A == A1 + A2 + A3);
         }
-        internal static double Area(int x1, int y1, int x2, int y2, int x3, int y3) =>
+        internal static double AreaForIsPointInside(int x1, int y1, int x2, int y2, int x3, int y3) =>
             Math.Abs((x1 * (y2 - y3) +
                       x2 * (y3 - y1) +
                       x3 * (y1 - y2)) / 2.0);
