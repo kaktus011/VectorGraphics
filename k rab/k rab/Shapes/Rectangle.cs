@@ -38,7 +38,7 @@ namespace k_rab
             redoStack = redo;
         }
 
-        public override float GetArea() => _width * _height;
+        public override double GetArea() => _width * _height  * 0.0264;
 
         public override void Draw(Graphics g, SolidBrush brush, Pen pen)
         {

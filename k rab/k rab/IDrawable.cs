@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace k_rab
 {
-    public interface IDrawable
+    internal interface IDrawable
     {
         void Draw(Graphics g, SolidBrush brush, Pen p);
         bool IsPointInside(Point point);

@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace krab_Library
+namespace kursovaLibrary
 {
-    public class Class1
+    internal class Class1
     {
-        
     }
 }

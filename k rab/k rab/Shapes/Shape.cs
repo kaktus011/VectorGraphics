@@ -28,7 +28,7 @@ namespace k_rab
         public abstract Shape RedoStackPop();
         public abstract void RedoClear();
 
-        public abstract float GetArea();
+        public abstract double GetArea();
         public abstract void Draw(Graphics g, SolidBrush brush, Pen pen);
         public abstract void EditShape();
         public abstract Shape GetCopy();

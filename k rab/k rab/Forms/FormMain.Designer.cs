@@ -46,8 +46,8 @@
             this.ConeBtn = new System.Windows.Forms.Button();
             this.LargestShapeBtn = new System.Windows.Forms.Button();
             this.ClosestToCenterBtn = new System.Windows.Forms.Button();
-            this.DoubleBufferedPanel1 = new k_rab.DoubleBufferedPanel();
             this.SmallestEvenAreaBtn = new System.Windows.Forms.Button();
+            this.DoubleBufferedPanel1 = new k_rab.DoubleBufferedPanel();
             this.SuspendLayout();
             // 
             // ElipseBtn
@@ -239,12 +239,24 @@
             this.ClosestToCenterBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ClosestToCenterBtn.Location = new System.Drawing.Point(651, 954);
             this.ClosestToCenterBtn.Name = "ClosestToCenterBtn";
-            this.ClosestToCenterBtn.Size = new System.Drawing.Size(463, 63);
+            this.ClosestToCenterBtn.Size = new System.Drawing.Size(473, 63);
             this.ClosestToCenterBtn.TabIndex = 19;
             this.ClosestToCenterBtn.Text = "Show shape closest to the center";
             this.ClosestToCenterBtn.UseVisualStyleBackColor = true;
             this.ClosestToCenterBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ClosestToCenterBtn_MouseDown);
             this.ClosestToCenterBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ClosestToCenterBtn_MouseUp);
+            // 
+            // SmallestEvenAreaBtn
+            // 
+            this.SmallestEvenAreaBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SmallestEvenAreaBtn.Location = new System.Drawing.Point(410, 1023);
+            this.SmallestEvenAreaBtn.Name = "SmallestEvenAreaBtn";
+            this.SmallestEvenAreaBtn.Size = new System.Drawing.Size(521, 63);
+            this.SmallestEvenAreaBtn.TabIndex = 20;
+            this.SmallestEvenAreaBtn.Text = "Show shape with smallest even area";
+            this.SmallestEvenAreaBtn.UseVisualStyleBackColor = true;
+            this.SmallestEvenAreaBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SmallestEvenAreaBtn_MouseDown);
+            this.SmallestEvenAreaBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SmallestEvenAreaBtn_MouseUp);
             // 
             // DoubleBufferedPanel1
             // 
@@ -257,18 +269,6 @@
             this.DoubleBufferedPanel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseDown);
             this.DoubleBufferedPanel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseMove);
             this.DoubleBufferedPanel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DoubleBufferedPanel1_MouseUp);
-            // 
-            // SmallestEvenAreaBtn
-            // 
-            this.SmallestEvenAreaBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SmallestEvenAreaBtn.Location = new System.Drawing.Point(410, 1023);
-            this.SmallestEvenAreaBtn.Name = "SmallestEvenAreaBtn";
-            this.SmallestEvenAreaBtn.Size = new System.Drawing.Size(505, 63);
-            this.SmallestEvenAreaBtn.TabIndex = 20;
-            this.SmallestEvenAreaBtn.Text = "Show shape with smallest even area";
-            this.SmallestEvenAreaBtn.UseVisualStyleBackColor = true;
-            this.SmallestEvenAreaBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SmallestEvenAreaBtn_MouseDown);
-            this.SmallestEvenAreaBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SmallestEvenAreaBtn_MouseUp);
             // 
             // FormMain
             // 

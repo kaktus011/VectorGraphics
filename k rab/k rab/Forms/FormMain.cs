@@ -1,5 +1,6 @@
 using k_rab.Forms;
 using k_rab.Shapes;
+using kursovaLibrary;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,14 +15,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
-using krab_Library;
-
 namespace k_rab
 {
     public partial class FormMain : Form
     {
         private readonly List<Shape> _shapes = new List<Shape>();
-        //private readonly List<string> _shapeNames = new List<string>();
         private readonly List<Shape> _shapesCopy = new List<Shape>();
 
         private readonly SolidBrush _brush = new SolidBrush(Color.Black);
@@ -35,32 +33,6 @@ namespace k_rab
         public FormMain()
         {
             InitializeComponent();
-
-            //var shapes = typeof(Shape).Assembly
-            //    .GetTypes()
-            //    .Where(f => f.IsSubclassOf(typeof(Shape)))
-            //    .ToArray();
-            //_shapeNames = shapes.Select(f => f.Name).ToList();
-
-            //var buttons = new List<Button>();
-            //int h = 195;
-            //foreach (var name in _shapeNames)
-            //{
-            //    Button button = new Button();
-
-            //    button.Click += ElipseBtn_Click;
-
-            //    button.Name = name;
-            //    button.Font = new Font(button.Font.FontFamily, 10, button.Font.Style);
-            //    button.Text = name;
-            //    button.Size = new Size(93, 37);
-            //    button.Location = new Point(0 + h, 5);
-            //    h += 93;
-            //    button.Visible = true;
-            //    buttons.Add(button);
-            //    this.Controls.Add(button);
-            //}
-
             DoubleBufferedPanel1.Refresh();
         }
         
@@ -404,9 +376,8 @@ namespace k_rab
             if (_lastSelectedShape == null || _lastSelectedShape.IsSelected == false)
                 AreaLabel.Text = "No shape selected";
             else
-                AreaLabel.Text = _lastSelectedShape.GetArea().ToString() + " px";
+                AreaLabel.Text = _lastSelectedShape.GetArea().ToString() + " cm";
         }
-
     }
 
     public class DoubleBufferedPanel : Panel

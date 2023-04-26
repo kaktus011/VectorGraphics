@@ -101,7 +101,7 @@ namespace k_rab.Shapes
             }
         }
 
-        public override float GetArea()
+        public override double GetArea()
         {
             int baseHeigth = _width / 4;
             
@@ -111,7 +111,7 @@ namespace k_rab.Shapes
             double area = Math.PI * (baseHeigth + _width) * l
                        + (Math.PI * baseHeigth * _width);
 
-            return (float)area;
+            return area  * 0.0264;
         }
 
         public override Shape GetCopy() =>

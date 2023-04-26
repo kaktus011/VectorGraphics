@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="krab-Library">
-      <HintPath>..\..\krab-Library\krab-Library\obj\Debug\krab-Library.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -55,6 +52,7 @@
     <Compile Include="Forms\Shape_Info_Input.Designer.cs">
       <DependentUpon>Shape_Info_Input.cs</DependentUpon>
     </Compile>
+    <Compile Include="IDrawable.cs" />
     <Compile Include="Shapes\Cone.cs" />
     <Compile Include="Shapes\Elipse.cs" />
     <Compile Include="Forms\FormMain.cs">
@@ -97,6 +95,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\kursovaLibrary\kursovaLibrary.csproj">
+      <Project>{dde6f176-7986-4b3d-b3ed-02e68330bce4}</Project>
+      <Name>kursovaLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("krab_Library")]
+[assembly: AssemblyTitle("kursovaLibrary")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("krab_Library")]
+[assembly: AssemblyProduct("kursovaLibrary")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5ccf2f4a-e658-4867-a9ca-e7b47cc19276")]
+[assembly: Guid("dde6f176-7986-4b3d-b3ed-02e68330bce4")]
 
 // Version information for an assembly consists of the following four values:
 //

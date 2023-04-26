@@ -64,7 +64,7 @@ namespace k_rab.Forms
             // 
             this.xValLabel.AutoSize = true;
             this.xValLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xValLabel.Location = new System.Drawing.Point(162, 35);
+            this.xValLabel.Location = new System.Drawing.Point(175, 35);
             this.xValLabel.Name = "xValLabel";
             this.xValLabel.Size = new System.Drawing.Size(152, 46);
             this.xValLabel.TabIndex = 2;
@@ -74,7 +74,7 @@ namespace k_rab.Forms
             // 
             this.yValLabel.AutoSize = true;
             this.yValLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yValLabel.Location = new System.Drawing.Point(163, 131);
+            this.yValLabel.Location = new System.Drawing.Point(176, 131);
             this.yValLabel.Name = "yValLabel";
             this.yValLabel.Size = new System.Drawing.Size(151, 46);
             this.yValLabel.TabIndex = 3;
@@ -108,31 +108,31 @@ namespace k_rab.Forms
             // 
             this.widthValLabel.AutoSize = true;
             this.widthValLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.widthValLabel.Location = new System.Drawing.Point(162, 317);
+            this.widthValLabel.Location = new System.Drawing.Point(109, 317);
             this.widthValLabel.Name = "widthValLabel";
-            this.widthValLabel.Size = new System.Drawing.Size(122, 46);
+            this.widthValLabel.Size = new System.Drawing.Size(218, 46);
             this.widthValLabel.TabIndex = 7;
-            this.widthValLabel.Text = "Width";
+            this.widthValLabel.Text = "Width in px";
             // 
             // heightValLabel
             // 
             this.heightValLabel.AutoSize = true;
             this.heightValLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.heightValLabel.Location = new System.Drawing.Point(162, 421);
+            this.heightValLabel.Location = new System.Drawing.Point(96, 421);
             this.heightValLabel.Name = "heightValLabel";
-            this.heightValLabel.Size = new System.Drawing.Size(135, 46);
+            this.heightValLabel.Size = new System.Drawing.Size(231, 46);
             this.heightValLabel.TabIndex = 8;
-            this.heightValLabel.Text = "Height";
+            this.heightValLabel.Text = "Height in px";
             // 
             // SideLengthLabel
             // 
             this.SideLengthLabel.AutoSize = true;
             this.SideLengthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SideLengthLabel.Location = new System.Drawing.Point(81, 224);
+            this.SideLengthLabel.Location = new System.Drawing.Point(-1, 227);
             this.SideLengthLabel.Name = "SideLengthLabel";
-            this.SideLengthLabel.Size = new System.Drawing.Size(232, 46);
+            this.SideLengthLabel.Size = new System.Drawing.Size(328, 46);
             this.SideLengthLabel.TabIndex = 9;
-            this.SideLengthLabel.Text = "Side Length";
+            this.SideLengthLabel.Text = "Side Length in px";
             // 
             // Submit_InfoBtn
             // 
