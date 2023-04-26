@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using kursovaLibrary;
 
 namespace k_rab.Shapes
 {
@@ -101,18 +102,7 @@ namespace k_rab.Shapes
             }
         }
 
-        public override double GetArea()
-        {
-            int baseHeigth = _width / 4;
-            
-            double lSq = (Math.Pow(_height, 2) + Math.Pow((baseHeigth * _width), 2 )) / 4;
-            double l = Math.Sqrt(lSq);
-
-            double area = Math.PI * (baseHeigth + _width) * l
-                       + (Math.PI * baseHeigth * _width);
-
-            return area  * 0.0264;
-        }
+        public override double GetArea() => ConeArea.GetArea(_width, _height);
 
         public override Shape GetCopy() =>
             new Cone(X, Y, _width, _height, Color, BorderColor, undoStack, redoStack);

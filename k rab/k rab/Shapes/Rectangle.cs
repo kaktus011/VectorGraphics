@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using kursovaLibrary;
 
 namespace k_rab
 {
@@ -38,7 +39,7 @@ namespace k_rab
             redoStack = redo;
         }
 
-        public override double GetArea() => _width * _height  * 0.0264;
+        public override double GetArea() => RectangleArea.GetArea(_width, _height);
 
         public override void Draw(Graphics g, SolidBrush brush, Pen pen)
         {
