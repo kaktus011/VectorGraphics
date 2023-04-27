@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Area.cs" />
+    <Compile Include="LoadShapeFiles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveShapeFiles.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
