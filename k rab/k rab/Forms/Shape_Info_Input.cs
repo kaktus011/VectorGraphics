@@ -9,19 +9,13 @@ namespace k_rab.Forms
     {
         private readonly bool _isOneSided;
         private readonly bool _isEditing;
+
         public int X { get; private set; }
         public int Y { get; private set; }
         public int ShapeSide { get; private set; }
         public int ShapeHeight { get; private set; }
         public int ShapeWidth { get; private set; }
         public bool ForcedExit { get; private set; } = true;
-        
-        private Shape_Info_Input(bool isOneSided, bool edit)
-        {
-            _isOneSided = isOneSided;
-            _isEditing = edit;
-            InitializeComponent();
-        }
 
         public static Shape_Info_Input FromOneSide(bool edit)
         {
@@ -35,6 +29,13 @@ namespace k_rab.Forms
             Shape_Info_Input info = new Shape_Info_Input(true, edit);
             info.ShowDialog();
             return info;
+        }
+
+        private Shape_Info_Input(bool isOneSided, bool edit)
+        {
+            _isOneSided = isOneSided;
+            _isEditing = edit;
+            InitializeComponent();
         }
 
         private void Shape_Info_Input_Load_1(object sender, EventArgs e)
@@ -74,6 +75,17 @@ namespace k_rab.Forms
              }
 
              Close();
+        }
+
+        private void AllowOnlyNumbersInTextBox(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
         }
 
     }

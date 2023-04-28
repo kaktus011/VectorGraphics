@@ -8,7 +8,6 @@ namespace kursovaLibrary
 {
     public class Area
     {
-
         public static double Triangle(int sideLength) 
             => Math.Round(Math.Pow(sideLength, 2) *(Math.Sqrt(3) / 4) * 0.0264, 2);
 

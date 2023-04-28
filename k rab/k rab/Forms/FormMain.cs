@@ -64,11 +64,12 @@ namespace k_rab
                     }
 
                     _selectedShape = _shapes[i];
+                    _shapes[i] = _shapes[_shapes.Count - 1];
+                    _shapes[_shapes.Count - 1] = _selectedShape;
+
                     _lastSelectedShape = _selectedShape;
                     _offset = _selectedShape.GetOffset(e.Location);
                     _lastSelectedShape.IsSelected = true;
-                    _shapes[i] = _shapes[_shapes.Count - 1];
-                    _shapes[_shapes.Count - 1] = _selectedShape;
 
                     _state.AddNewState(_lastSelectedShape, false);
 
@@ -132,6 +133,7 @@ namespace k_rab
             _deleted = true;
             _state.AddNewState(_lastSelectedShape, false);
             _shapes.Remove(_lastSelectedShape);
+            _lastSelectedShape.IsSelected = false;
 
             DoubleBufferedPanel1.Refresh();
         }
@@ -164,7 +166,8 @@ namespace k_rab
 
             _state.AddNewState(_lastSelectedShape, false);
             _lastSelectedShape.EditShape();
-            _shapes[_shapes.Count - 1] = _lastSelectedShape;
+            _shapes.Remove(_lastSelectedShape);
+            _shapes.Add(_lastSelectedShape);
             DoubleBufferedPanel1.Refresh();
         }
 
@@ -281,7 +284,7 @@ namespace k_rab
 
         private void UndoBtn_Click(object sender, EventArgs e)
         {
-            if(!_lastSelectedShape.CanUndo) return;
+            if(_lastSelectedShape == null || !_lastSelectedShape.CanUndo) return;
 
             _shapes.Remove(_lastSelectedShape);
             _lastSelectedShape = _state.Undo(_lastSelectedShape);
@@ -293,7 +296,7 @@ namespace k_rab
 
         private void RedoBtn_Click(object sender, EventArgs e)
         {
-            if (!_lastSelectedShape.CanRedo) return;
+            if (_lastSelectedShape == null || !_lastSelectedShape.CanRedo) return;
 
             if (_deleted)
             {
@@ -358,7 +361,7 @@ namespace k_rab
                     }
                 }
             }
-
+            _lastSelectedShape = null;
             DoubleBufferedPanel1.Refresh();
         }
 

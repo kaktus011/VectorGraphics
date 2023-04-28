@@ -17,6 +17,14 @@ namespace k_rab
         public int X { get; set; }
         public int Y { get; set; }
 
+        public Shape(Shape_Info_Input info) : this(info.X, info.Y) { }
+
+        public Shape(int x, int y)
+        {
+            X = x;
+            Y = y;
+        }
+
         public abstract bool CanUndo { get; }
         public abstract bool CanRedo { get; }
 
@@ -41,14 +49,6 @@ namespace k_rab
             => Math.Sqrt(Math.Pow(p1.X - p2.X, 2) + Math.Pow(p1.Y - p2.Y, 2));
 
         public Point GetOffset(Point point) => new Point(point.X - X, point.Y - Y);
-
-        public Shape(Shape_Info_Input info) : this(info.X, info.Y) { }
-
-        public Shape(int x, int y)
-        {
-            X = x;
-            Y = y;
-        }
 
     }
 }

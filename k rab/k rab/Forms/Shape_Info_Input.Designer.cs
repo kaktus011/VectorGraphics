@@ -51,6 +51,7 @@ namespace k_rab.Forms
             this.xValBox.Name = "xValBox";
             this.xValBox.Size = new System.Drawing.Size(202, 53);
             this.xValBox.TabIndex = 0;
+            this.xValBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowOnlyNumbersInTextBox);
             // 
             // yValBox
             // 
@@ -59,6 +60,7 @@ namespace k_rab.Forms
             this.yValBox.Name = "yValBox";
             this.yValBox.Size = new System.Drawing.Size(202, 53);
             this.yValBox.TabIndex = 1;
+            this.yValBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowOnlyNumbersInTextBox);
             // 
             // xValLabel
             // 
@@ -87,6 +89,7 @@ namespace k_rab.Forms
             this.WidthBox.Name = "WidthBox";
             this.WidthBox.Size = new System.Drawing.Size(202, 53);
             this.WidthBox.TabIndex = 4;
+            this.WidthBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowOnlyNumbersInTextBox);
             // 
             // HeightBox
             // 
@@ -95,6 +98,7 @@ namespace k_rab.Forms
             this.HeightBox.Name = "HeightBox";
             this.HeightBox.Size = new System.Drawing.Size(202, 53);
             this.HeightBox.TabIndex = 5;
+            this.HeightBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowOnlyNumbersInTextBox);
             // 
             // SideLengthBox
             // 
@@ -103,6 +107,7 @@ namespace k_rab.Forms
             this.SideLengthBox.Name = "SideLengthBox";
             this.SideLengthBox.Size = new System.Drawing.Size(202, 53);
             this.SideLengthBox.TabIndex = 6;
+            this.SideLengthBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AllowOnlyNumbersInTextBox);
             // 
             // widthValLabel
             // 
